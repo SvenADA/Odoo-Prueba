@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<!--Visa Journal Entry Wizard form view  -->
+		<record model="ir.ui.view" id="deposit_journal_entry_wizard">
+			<field name="name">deposit_journal_entry.wizard.form</field>
+			<field name="model">deposit_journal_entry.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Visa Journal Entry" version="7.0">
+					<group colspan="4" col="4">
+					<field name="name"/>
+					<field name="booking_id"/>
+					<field name="partner_id"/>
+					<field name="payment_date"/>
+					<field name="journal_id"/>
+					<field name="service_cost" />
+					</group>
+					<footer>
+                        <button icon="fa-times" special="cancel" string="Cancel" />
+						<button icon="fa-check" name="allow_to_send" string="Create Journal Entry" type="object" />
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="act_deposit_journal_entry" model="ir.actions.act_window">
+			<field name="name">Deposit Journal Entry</field>
+			<field name="res_model">deposit_journal_entry.wizard</field>
+			<field name="binding_model_id" ref="model_hotel_reservation"/>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_mode">form</field>
+			<!--<field name="auto_refresh" eval="1" />-->
+			<field name="target">new</field>
+			<field name="context">{'ids':active_id}</field>
+		</record>
+	</data>
+</odoo>

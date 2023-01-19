@@ -1,0 +1,1467 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hotel_housekeeping
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-21 05:11+0000\n"
+"PO-Revision-Date: 2020-05-21 05:11+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__bom_count
+msgid "# Bill of Material"
+msgstr "Список материалов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__used_in_bom_count
+msgid "# BoM Where Used"
+msgstr "# Материалов использовано"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__product_variant_count
+msgid "# Product Variants"
+msgstr "Варианты продукции"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__product_count
+msgid "# Products"
+msgstr "# Продукты"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__a_list
+msgid "A List"
+msgstr "список"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__description_sale
+msgid "A description of the Product that you want to communicate to your customers. This description will be copied to every Sales Order, Delivery Order and Customer Invoice/Credit Note"
+msgstr "Описание продукта, которое Вы хотели бы предоставлять вашим потребителям.Это описание будет отображаться в каждом заказе покупателя, заказе на доставку и счете покупателю/ кредитном обязательстве"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__type
+msgid "A storable product is a product for which you manage stock. The Inventory app has to be installed.\n"
+"A consumable product is a product for which stock is not managed.\n"
+"A service is a non-material product you provide."
+msgstr "Товар сохраняется - это товар, которым вы управляете на складе. Необходимо установить приложение Состав. Затратный товар - это товар, для которого состав не руководствуется. Услуга - это нематериальный товар, который вы предоставляете."
+
+#. module: hotel_housekeeping
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_activity_type_form
+msgid "Account Properties"
+msgstr "Параметры счёта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_needaction
+msgid "Action Needed"
+msgstr "Требует внимания"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__active
+msgid "Active"
+msgstr "Активно"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__activity_ids
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__activity_lines
+#: model:ir.ui.menu,name:hotel_housekeeping.menu_open_h_activity_form
+msgid "Activities"
+msgstr "Деятельность"
+
+#. module: hotel_housekeeping
+#: model:ir.model,name:hotel_housekeeping.model_activity_housekeeping
+msgid "Activity"
+msgstr "Мероприятие"
+
+#. module: hotel_housekeeping
+#: model:ir.ui.menu,name:hotel_housekeeping.menu_action_hotel_housekeeping_activity_type_view_form
+msgid "Activity Categories"
+msgstr "Вид деятельности"
+
+#. module: hotel_housekeeping
+#: model:ir.ui.menu,name:hotel_housekeeping.menu_action_hotel_housekeeping_activity_type_view_form_parent
+msgid "Activity Definations"
+msgstr "Определения Деятельности"
+
+#. module: hotel_housekeeping
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_form
+msgid "Activity Lines"
+msgstr "Направление деятельности"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__activity_state
+msgid "Activity State"
+msgstr "Этап действия"
+
+#. module: hotel_housekeeping
+#: model:ir.model,name:hotel_housekeeping.model_activity_type
+#: model:ir.model,name:hotel_housekeeping.model_hotel_housekeeping_activity_type
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.hotel_activity_housekeeping_form
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.hotel_activity_housekeeping_tree
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.hotel_activity_type_form
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.hotel_activity_type_tree
+msgid "Activity Type"
+msgstr "Тип действия"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_attachment_count
+msgid "Attachment Count"
+msgstr "Количество вложений"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__attribute_value_ids
+msgid "Attribute Values"
+msgstr "Значение атрибута"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__available_in_pos
+msgid "Available in POS"
+msgstr "Доступен в ТП"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__produce_delay
+msgid "Average lead time in days to manufacture this product. In the case of multi-level BOM, the manufacturing lead times of the components will be added."
+msgstr "Среднее время выполнения заказа в днях для того чтобы изготовить этот продукт. В случае многоуровневой спецификации будет добавлено изготовлении компонентов."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__variant_bom_ids
+msgid "BOM Product Variants"
+msgstr "Варианты спецификации товара"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__barcode
+msgid "Barcode"
+msgstr "Штрих-код"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__image
+msgid "Big-sized image"
+msgstr "Изображение большого размера"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__bom_ids
+msgid "Bill of Materials"
+msgstr "Список материалов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__bom_line_ids
+msgid "BoM Components"
+msgstr "Компоненты СМ"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__purchase_ok
+msgid "Can be Purchased"
+msgstr "Можно закупать"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__rental
+msgid "Can be Rent"
+msgstr "Можно арендовать"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__sale_ok
+msgid "Can be Sold"
+msgstr "Можно продавать"
+
+#. module: hotel_housekeeping
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_form
+msgid "Cancel"
+msgstr "Отменить"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,state:0
+msgid "Cancelled"
+msgstr "Отмененный"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping__categ_id
+msgid "Category"
+msgstr "Категория"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__route_from_categ_ids
+msgid "Category Routes"
+msgstr "Категории технологических карт"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__pos_categ_id
+msgid "Category used in the Point of Sale."
+msgstr "Категория используется в точке продажи."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__to_weight
+msgid "Check if the product should be weighted using the hardware scale integration."
+msgstr "Проверьте, следует взвешивать продукт с помощью устройства взвешивания."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__available_in_pos
+msgid "Check if you want this product to appear in the Point of Sale."
+msgstr "Проверьте, хотите ли вы, чтобы этот товар появился в точке продажи."
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,clean_type:0
+msgid "Checkin"
+msgstr "Заезд"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,clean_type:0
+msgid "Checkout"
+msgstr "Выезд"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__child_id
+msgid "Child Categories"
+msgstr "Подчиненные категории"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,state:0
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__clean
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_form
+msgid "Clean"
+msgstr "Чистый"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__clean_end_time
+msgid "Clean End Time"
+msgstr "Время Окончания Уборки"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__clean_start_time
+msgid "Clean Start Time"
+msgstr "Время Начала уборки"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__clean_type
+msgid "Clean Type"
+msgstr "Тип Уборки"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,quality:0
+msgid "Cleaning"
+msgstr "Уборка"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__color
+msgid "Color Index"
+msgstr "Цветовая палитра"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__company_id
+msgid "Company"
+msgstr "Компания"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__complete_name
+msgid "Complete Name"
+msgstr "Полное название"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__standard_price
+msgid "Cost"
+msgstr "Стоимость"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__cost_currency_id
+msgid "Cost Currency"
+msgstr "Валюта стоимости"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__cost_method
+msgid "Cost Method"
+msgstr "Метод оплаты"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__standard_price
+msgid "Cost used for stock valuation in standard price and as a first price to set in average/fifo. Also used as a base price for pricelists. Expressed in the default unit of measure of the product."
+msgstr "Стоимость используется для складской оценки стоимости по стандартной цене и как первая цена устанавливается в среднем / FIFO. Также используется как базовая цена для ПРАЙСЛИСТ. Выражается в единице измерения товара по умолчанию."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__property_cost_method
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_cost_method
+msgid "Costing Method"
+msgstr "Метод ценообразования"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping__create_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type__create_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__create_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__create_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__create_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping__create_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type__create_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__create_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__create_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__create_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__create_date
+msgid "Created on"
+msgstr "Создан"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__currency_id
+msgid "Currency"
+msgstr "Валюта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__qty_available
+msgid "Current quantity of products.\n"
+"In a context with a single Stock Location, this includes goods stored at this Location, or any of its children.\n"
+"In a context with a single Warehouse, this includes goods stored in the Stock Location of this Warehouse, or any of its children.\n"
+"stored in the Stock Location of the Warehouse of this Shop, or any of its children.\n"
+"Otherwise, this includes goods stored in any Stock Location with 'internal' type."
+msgstr "Текущее количество продукции.\n"
+"В контексте Единого Места хранения, включает в себя товары, хранящиеся в этом месте, или любом из его детей.\n"
+"В контексте единого Склада, это включает в себя товары, хранящиеся в Месте хранения этого Склад, или в любом из его детей.\n"
+"хранится в Месте Хранения склада этого магазина, или любого из его детей.\n"
+"В противном случае, включает в себя товары, хранящиеся в любом Месте Хранения «внутреннего» типа."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__sale_delay
+msgid "Customer Lead Time"
+msgstr "Срок поставки заказчика"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__partner_ref
+msgid "Customer Ref"
+msgstr "Справка клиента"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__taxes_id
+msgid "Customer Taxes"
+msgstr "Налоги с покупателя"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,clean_type:0
+msgid "Daily"
+msgstr "Ежедневный"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__supplier_taxes_id
+msgid "Default taxes used when buying the product."
+msgstr "Типичные налоги применяются при покупке товара."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__taxes_id
+msgid "Default taxes used when selling the product."
+msgstr "Типичные налоги применяются при продаже товара."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr "Стандартная единица измерения, используемое для всех складских операций."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__uom_po_id
+msgid "Default unit of measure used for purchase orders. It must be in the same category as the default unit of measure."
+msgstr "Единица измерения по умолчанию, используемый для заказов на покупку. Она должна быть в той же категории, что и единица измерения по умолчанию."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__seller_ids
+msgid "Define vendor pricelists."
+msgstr "Определите прайс-лист поставщика."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__sale_delay
+msgid "Delivery lead time, in days. It's the number of days, promised to the customer, between the confirmation of the sales order and the delivery."
+msgstr "Срок выполнения доставки в днях. Это количество дней, обещанная заказчику, между подтверждением заказа на продажу и доставкой."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__route_ids
+msgid "Depending on the modules installed, this will allow you to define the route of the product: whether it will be bought, manufactured, MTO, etc."
+msgstr "В зависимости от установленных модулей, это позволит вам определить маршрут товара: будет ли он покупаться, изготавливаться на заказ и т. Д."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__description
+msgid "Description"
+msgstr "Описание"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__description_pickingout
+msgid "Description on Delivery Orders"
+msgstr "Описание на заказах на доставку"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__description_picking
+msgid "Description on Picking"
+msgstr "Описание по Комлектации"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__description_pickingin
+msgid "Description on Receptions"
+msgstr "Описание на приемах"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,state:0
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__dirty
+msgid "Dirty"
+msgstr "Грязный"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping__display_name
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type__display_name
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__display_name
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__display_name
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__display_name
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,state:0
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_form
+msgid "Done"
+msgstr "Сделано"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__tracking
+msgid "Ensure the traceability of a storable product in your warehouse."
+msgstr "Обеспечение отслеживания товара, хранящегося на вашем складе."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__end_date
+msgid "Expected End Date"
+msgstr "Ожидаемая Конечная Дата"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__property_account_expense_id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_account_expense_categ_id
+msgid "Expense Account"
+msgstr "Счет расходов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__expense_policy
+msgid "Expenses and vendor bills can be re-invoiced to a customer.With this option, a validated expense can be re-invoice to a customer at its cost or sales price."
+msgstr "Расходы и счета поставщиков могут быть повторно выставлены в счете клиенту. При таком варианте проверка расходов может быть повторно выставлена в счете клиенту по себестоимости или цене продажи."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_follower_ids
+msgid "Followers"
+msgstr "Подписчики"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Подписчики (Каналы)"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Подписчики (Партнеры)"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__removal_strategy_id
+msgid "Force Removal Strategy"
+msgstr "Стратегия принудительного удаления"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__virtual_available
+msgid "Forecast Quantity"
+msgstr "Прогнозируемое Количество"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__virtual_available
+msgid "Forecast quantity (computed as Quantity On Hand - Outgoing + Incoming)\n"
+"In a context with a single Stock Location, this includes goods stored in this location, or any of its children.\n"
+"In a context with a single Warehouse, this includes goods stored in the Stock Location of this Warehouse, or any of its children.\n"
+"Otherwise, this includes goods stored in any Stock Location with 'internal' type."
+msgstr "Прогноз количества (рассчитывается как Количество в наличии - исходящее + входящее)\n"
+"В контексте с одним Складским Местом хранения, сюда входят товары, хранящиеся в этом месте, или какого-либо из его дочерних.\n"
+"В контексте с одного Склада, это включает в себя товары, хранящиеся в Месте хранения Склада, или любого из его дочерних.\n"
+"В противном случае, это включает в себя товары, хранящиеся на любых Местах хранения с типом \"внутренний\"."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__packaging_ids
+msgid "Gives the different ways to package the same product."
+msgstr "Предоставляет различные варианты упаковки одного и того же продукта."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__sequence
+msgid "Gives the sequence order when displaying a product list"
+msgstr "Определяет порядок следования при отображении списка товаров"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__hide_expense_policy
+msgid "Hide Expense Policy"
+msgstr "Скрыть политику расходов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__housekeeper
+msgid "Housekeeper"
+msgstr "Горничная"
+
+#. module: hotel_housekeeping
+#: model:ir.actions.act_window,name:hotel_housekeeping.open_hotel_housekeeping_form_tree
+#: model:ir.ui.menu,name:hotel_housekeeping.hotel_housekeeping_menu
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_form
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_tree
+msgid "Housekeeping"
+msgstr "Хозяйственная служба"
+
+#. module: hotel_housekeeping
+#: model:ir.model,name:hotel_housekeeping.model_hotel_housekeeping_activities
+msgid "Housekeeping Activities "
+msgstr "Деятельность Хозяйственной службы"
+
+#. module: hotel_housekeeping
+#: model:ir.actions.act_window,name:hotel_housekeeping.action_activity_housekeeping_view_form
+#: model:ir.actions.act_window,name:hotel_housekeeping.action_h_activity_form
+#: model:ir.model,name:hotel_housekeeping.model_h_activity
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__activity_id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__activity_name
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_h_activity_form
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_h_activity_tree
+msgid "Housekeeping Activity"
+msgstr "Деятельность Хозяйственной службы"
+
+#. module: hotel_housekeeping
+#: model:ir.actions.act_window,name:hotel_housekeeping.action_activity_type_view_form
+#: model:ir.actions.act_window,name:hotel_housekeeping.action_hotel_housekeeping_activity_type_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_activity_type_form
+msgid "Housekeeping Activity Types"
+msgstr "Виды Деятельности Хозяйственной службы"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__quality
+msgid "Housekeeping Type"
+msgstr "Виды Хозяйственной службы"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping__id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type__id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__id
+msgid "ID"
+msgstr "Номер"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Если отмечено, новые сообщения будут требовать вашего внимания."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Если отмечено - новые сообщения требуют Вашего внимания."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Если обозначено, некоторые сообщения имеют ошибку доставки."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__active
+msgid "If unchecked, it will allow you to hide the product without removing it."
+msgstr "Если не установлено, это позволит вам скрыть продукт, не удаляя его ."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__image
+msgid "Image of the product variant (Big-sized image of product template if false). It is automatically resized as a 1024x1024px image, with aspect ratio preserved."
+msgstr "Изображение варианта товара (Изображение образца товара большого размера, если значение \"ошибочно\"). Его размер изменяется автоматически на изображение 1024x1024 пкс, с сохраненным соотношением сторон."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__image_medium
+msgid "Image of the product variant (Medium-sized image of product template if false)."
+msgstr "Изображение варианта товара (Изображение образца товара среднего размера, если значение \"ошибочно\")."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__image_small
+msgid "Image of the product variant (Small-sized image of product template if false)."
+msgstr "Изображение варианта товара (Изображение образца товара маленького размера, если значение ошибочно)."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__property_account_income_id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_account_income_categ_id
+msgid "Income Account"
+msgstr "Cчёт доходов и расходов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__incoming_qty
+msgid "Incoming"
+msgstr "Входящие"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,state:0
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_form
+msgid "Inspect"
+msgstr "Проверить"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__inspect_date_time
+msgid "Inspect Date Time"
+msgstr "Проверьте Дату И Время"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__inspector
+msgid "Inspector"
+msgstr "Проверяющий"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__default_code
+msgid "Internal Reference"
+msgstr "Внутренний артикул"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__barcode
+msgid "International Article Number used for product identification."
+msgstr "Международный  номер товара используется для идентификации товара."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__property_stock_inventory
+msgid "Inventory Location"
+msgstr "Место инвентаризации"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__property_valuation
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_valuation
+msgid "Inventory Valuation"
+msgstr "Оценка запасов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__invoice_policy
+msgid "Invoicing Policy"
+msgstr "Политика выставления счетов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__isact
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_room__isact
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_room_amenities__isact
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_services__isact
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_product_product__isact
+msgid "Is Activity"
+msgstr "Активность"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__isactivitytype
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_room_amenities_type__isactivitytype
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_room_type__isactivitytype
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_service_type__isactivitytype
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_product_category__isactivitytype
+msgid "Is Activity Type"
+msgstr "Тип деятельности"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_is_follower
+msgid "Is Follower"
+msgstr "Подписчик"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__is_product_variant
+msgid "Is Product Variant"
+msgstr "Есть вариантом товара"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__isroom
+msgid "Is Room"
+msgstr "Номер"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__isroomtype
+msgid "Is Room Type"
+msgstr "Тип номера"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__isservicetype
+msgid "Is Service Type"
+msgstr "Тип Услуги"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__isservice
+msgid "Is Service id"
+msgstr "Номер Услуги"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__isamenitype
+msgid "Is amenities Type"
+msgstr "Тип Услуг"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__iscategid
+msgid "Is categ id"
+msgstr "Номер категории"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__property_account_income_id
+msgid "Keep this field empty to use the default value from the product category."
+msgstr "Оставьте поле пустым, чтобы использовать значение по умолчанию в категории товара."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__property_account_expense_id
+msgid "Keep this field empty to use the default value from the product category. If anglo-saxon accounting with automated valuation method is configured, the expense account on the product category will be used."
+msgstr "Оставьте это поле пустым, чтобы использовать значение по умолчанию из категории товара. Если настроено англосаксонский учет с автоматизированным методом оценки, будут использованы счет расходов на категорию товара."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping____last_update
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type____last_update
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity____last_update
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping____last_update
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities____last_update
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type____last_update
+msgid "Last Modified on"
+msgstr "Последнее изменение"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping__write_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type__write_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__write_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__write_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__write_uid
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping__write_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type__write_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__write_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__write_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activities__write_date
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__write_date
+msgid "Last Updated on"
+msgstr "Последнее обновление"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__location_id
+msgid "Location"
+msgstr "Место"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Основное прикрепления"
+
+#. module: hotel_housekeeping
+#: selection:hotel.housekeeping,quality:0
+msgid "Maintenance"
+msgstr "Поддержка"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__property_valuation
+msgid "Manual: The accounting entries to value the inventory are not posted automatically.\n"
+"        Automated: An accounting entry is automatically created to value the inventory when a product enters or leaves the company."
+msgstr "Вручную бухгалтерьки записи для оценки состава не публикуются автоматически. Автоматизировано: бухгалтерская запись автоматически создается для оценки состава, когда товар входит или выходит из компании."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_valuation
+msgid "Manual: The accounting entries to value the inventory are not posted automatically.\n"
+"        Automated: An accounting entry is automatically created to value the inventory when a product enters or leaves the company.\n"
+"        "
+msgstr "Вручную бухгалтерьки записи для оценки состава не публикуются автоматически. Автоматизировано: бухгалтерская запись автоматически создается для оценки состава, когда товар входит или выходит из компании."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__service_type
+msgid "Manually set quantities on order: Invoice based on the manually entered quantity, without creating an analytic account.\n"
+"Timesheets on contract: Invoice based on the tracked hours on the related timesheet.\n"
+"Create a task and track hours: Create a task on the sales order validation and track the work hours."
+msgstr "Задавайте количество в заказе вручную: счет на основе количества, введенного вручную, без создания аналитического счета.\n"
+"Табели учета рабочего времени в контракте: счет на основе записанных часов в соответствующем табеле.\n"
+"Создавайте задачи и вносите часы: Создайте задачу при подтверждении заказа и вносите в нее рабочие часы."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__mrp_product_qty
+msgid "Manufactured"
+msgstr "Произведено"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__produce_delay
+msgid "Manufacturing Lead Time"
+msgstr "Время производства"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__image_medium
+msgid "Medium-sized image"
+msgstr "Изображение средних размеров"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_has_error
+msgid "Message Delivery error"
+msgstr "Ошибка доставки сообщения"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__sale_line_warn_msg
+msgid "Message for Sales Order Line"
+msgstr "Сообщение по позиции заказа продаж"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_ids
+msgid "Messages"
+msgstr "Сообщения"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__orderpoint_ids
+msgid "Minimum Stock Rules"
+msgstr "Правила минимальных запасов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_housekeeping__name
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type__name
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__name
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__name
+msgid "Name"
+msgstr "Название"
+
+#. module: hotel_housekeeping
+#: model:ir.ui.menu,name:hotel_housekeeping.menu_open_hotel_housekeeping_form_tree
+msgid "New HouseKeeping"
+msgstr "Новая Уборка Номеров"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Дедлайн следующему шагу"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__activity_summary
+msgid "Next Activity Summary"
+msgstr "Резюме следующего мероприятия"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__activity_type_id
+msgid "Next Activity Type"
+msgstr "Тип следующему шагу"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Количество действий"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_has_error_counter
+msgid "Number of error"
+msgstr "Количество ошибок"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Количество сообщений, требующих внимания"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Количество сообщений с ложной дставкою"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Количество непрочитанных сообщений"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__optional_product_ids
+msgid "Optional Products"
+msgstr "Дополнительные товары"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__optional_product_ids
+msgid "Optional Products are suggested whenever the customer hits *Add to Cart* (cross-sell strategy, e.g. for computers: warranty, software, etc.)."
+msgstr "Дополнительные продукты предлагаются всякий раз, когда клиент попадает *Добавить в корзину * (кросс продажи стратегии, например, для компьютеров: гарантия, программное обеспечение и т.д.)."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__invoice_policy
+msgid "Ordered Quantity: Invoice quantities ordered by the customer.\n"
+"Delivered Quantity: Invoice quantities delivered to the customer."
+msgstr "Заказанное количество: количество счетов-фактур заказанных клиентом. Доставлена количество: количество счетов, доставленных клиенту."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__outgoing_qty
+msgid "Outgoing"
+msgstr "Исходящие"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_activity_type__parent_id
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__parent_id
+msgid "Parent Category"
+msgstr "Категория предка"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__parent_path
+msgid "Parent Path"
+msgstr "Родительский путь"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__pos_categ_id
+msgid "Point of Sale Category"
+msgstr "Категории для точки продаж"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__price
+msgid "Price"
+msgstr "Цена"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__list_price
+msgid "Price at which the product is sold to customers."
+msgstr "Цена, по которой продается товар клиентам."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__pricelist_id
+msgid "Pricelist"
+msgstr "Прайс-лист"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__pricelist_item_ids
+msgid "Pricelist Item"
+msgstr "Пункт прайслиста"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__item_ids
+msgid "Pricelist Items"
+msgstr "Позиции прайс-листа"
+
+#. module: hotel_housekeeping
+#: model:ir.model,name:hotel_housekeeping.model_product_product
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__product_variant_id
+msgid "Product"
+msgstr "Продукт"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__attribute_line_ids
+msgid "Product Attributes"
+msgstr "Атрибуты ТМЦ"
+
+#. module: hotel_housekeeping
+#: model:ir.model,name:hotel_housekeeping.model_product_category
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__categ_id
+msgid "Product Category"
+msgstr "Категория продукта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__packaging_ids
+msgid "Product Packages"
+msgstr "Варианты упаковки продукта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__product_tmpl_id
+msgid "Product Template"
+msgstr "Шаблон продукта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__type
+msgid "Product Type"
+msgstr "Тип продукта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__h_id
+msgid "Product_id"
+msgstr "Номер продукта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__property_stock_production
+msgid "Production Location"
+msgstr "Место производства"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__product_variant_ids
+msgid "Products"
+msgstr "Продукты"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__description_purchase
+msgid "Purchase Description"
+msgstr "Описание закупки"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__uom_po_id
+msgid "Purchase Unit of Measure"
+msgstr "Единицы измерения при закупке"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__qty_at_date
+msgid "Quantity"
+msgstr "Количество"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__qty_available
+msgid "Quantity On Hand"
+msgstr "Количество на руках"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__incoming_qty
+msgid "Quantity of planned incoming products.\n"
+"In a context with a single Stock Location, this includes goods arriving to this Location, or any of its children.\n"
+"In a context with a single Warehouse, this includes goods arriving to the Stock Location of this Warehouse, or any of its children.\n"
+"Otherwise, this includes goods arriving to any Stock Location with 'internal' type."
+msgstr "Количество запланированных входящих товаров. В контексте, состоящий из одной позиции на складе, включая товары, поступающие к этому местонахождение, или любых дочерних. В контексте с одним составом это включает товары, поступающие к местонахождению этого состава, или любого дочернего состава. В противном случае это включает товары, прибывающие к любому местонахождение склада с `внутренним` типом."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__outgoing_qty
+msgid "Quantity of planned outgoing products.\n"
+"In a context with a single Stock Location, this includes goods leaving this Location, or any of its children.\n"
+"In a context with a single Warehouse, this includes goods leaving the Stock Location of this Warehouse, or any of its children.\n"
+"Otherwise, this includes goods leaving any Stock Location with 'internal' type."
+msgstr "Количество запланированных выходных товаров. В контексте, состоящий из одного места расположения магазина, это включает товары, которые оставляют это местонахождение, или любой из его дочерних складов. В контексте единого состава это включает товары, которые оставляют место расположения этого склада или любого его дочернего. В противном случае это включает в себя товары, оставляют любое местонахождение во `внутреннем` типу."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__expense_policy
+msgid "Re-Invoice Policy"
+msgstr "Политика повторного выставления счетов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__code
+msgid "Reference"
+msgstr "Ссылка"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__reordering_max_qty
+msgid "Reordering Max Qty"
+msgstr "Максимальное количество пополнений"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__reordering_min_qty
+msgid "Reordering Min Qty"
+msgstr "Минимальное количество пополнений"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__nbr_reordering_rules
+msgid "Reordering Rules"
+msgstr "Правила повторных заказов"
+
+#. module: hotel_housekeeping
+#: model:ir.model,name:hotel_housekeeping.model_hotel_housekeeping
+msgid "Reservation"
+msgstr "Резервирование"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__responsible_id
+msgid "Responsible"
+msgstr "Ответственный"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__activity_user_id
+msgid "Responsible User"
+msgstr "Ответственный"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__room_no
+msgid "Room No"
+msgstr "Номер комнаты"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__route_ids
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__route_ids
+msgid "Routes"
+msgstr "Маршруты"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__description_sale
+msgid "Sale Description"
+msgstr "Описание продажи"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__lst_price
+msgid "Sale Price"
+msgstr "Цена продажи"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__sale_line_warn
+msgid "Sales Order Line"
+msgstr "Строка заказа на продажу"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__list_price
+msgid "Sales Price"
+msgstr "Продажная цена"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__categ_id
+msgid "Select category for the current product"
+msgstr "Выберите категорию для продукта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__sale_line_warn
+msgid "Selecting the \"Warning\" option will notify user with the message, Selecting \"Blocking Message\" will throw an exception with the message and block the flow. The Message has to be written in the next field."
+msgstr "\"Предупреждение\" - сообщить пользователю. \"Блокирующее сообщение\" - исключительная ситуация, сообщить пользователю и заблокировать рабочий процесс. Текст сообщения должен быть записан в следующее поле."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__sequence
+msgid "Sequence"
+msgstr "Нумерация"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__removal_strategy_id
+msgid "Set a specific removal strategy that will be used regardless of the source location for this product category"
+msgstr "Выберите конкретную стратегию удаления, которая будет использоваться независимо от расположения источника этой категории продукции"
+
+#. module: hotel_housekeeping
+#: model_terms:ir.ui.view,arch_db:hotel_housekeeping.view_hotel_housekeeping_form
+msgid "Set to Dirty"
+msgstr "Установить на грязный"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__image_small
+msgid "Small-sized image"
+msgstr "Маленькое изображение"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__sales_count
+msgid "Sold"
+msgstr "Продано"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__property_cost_method
+msgid "Standard Price: The products are valued at their standard cost defined on the product.\n"
+"        Average Cost (AVCO): The products are valued at weighted average cost.\n"
+"        First In First Out (FIFO): The products are valued supposing those that enter the company first will also leave it first."
+msgstr "Стандартная цена: товары оцениваются по их стандартной стоимости, определенной на товаре. Средняя цена (AVCO): товары оцениваются по средней стоимости. First In First Out (FIFO): товары оцениваются, считая, что те, кто входит в компанию впервые, также оставят его сначала."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_cost_method
+msgid "Standard Price: The products are valued at their standard cost defined on the product.\n"
+"        Average Cost (AVCO): The products are valued at weighted average cost.\n"
+"        First In First Out (FIFO): The products are valued supposing those that enter the company first will also leave it first.\n"
+"        "
+msgstr "Стандартная цена: товары оцениваются по их стандартной стоимости, определенной на товаре. Средняя цена (AVCO): товары оцениваются по средней стоимости. First In First Out (FIFO): товары оцениваются, считая, что те, кто входит в компанию впервые, также оставят его сначала."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__current_date
+msgid "Start Date"
+msgstr "Дата начала"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__state
+msgid "Status"
+msgstr "Статус"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__activity_state
+msgid "Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr "Этап основан на действиях Просроченный: срок исполнения уже прошел Сегодня: дата действия сегодня Запланировано: будущие действия."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__stock_fifo_manual_move_ids
+msgid "Stock Fifo Manual Move"
+msgstr "Ручное перемещение по Fifo"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__stock_fifo_real_time_aml_ids
+msgid "Stock Fifo Real Time Aml"
+msgstr "Перемещение в реальном времени по Fifo"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__property_stock_account_input
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_stock_account_input_categ_id
+msgid "Stock Input Account"
+msgstr "Счет стоимости входящих ТМЦ"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_stock_journal
+msgid "Stock Journal"
+msgstr "Складской журнал"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__stock_move_ids
+msgid "Stock Move"
+msgstr "Перемещение запасов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__property_stock_account_output
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_stock_account_output_categ_id
+msgid "Stock Output Account"
+msgstr "Счет стоимости исходящих ТМЦ"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__stock_quant_ids
+msgid "Stock Quant"
+msgstr "Количество на складе"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_stock_valuation_account_id
+msgid "Stock Valuation Account"
+msgstr "Счёт оценки запасов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__stock_value_currency_id
+msgid "Stock Value Currency"
+msgstr "Валюта остатков запаса"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__valid_archived_variant_ids
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__valid_existing_variant_ids
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__valid_product_attribute_ids
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__valid_product_attribute_value_ids
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__valid_product_attribute_value_wnva_ids
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__valid_product_attribute_wnva_ids
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__valid_product_template_attribute_line_ids
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__valid_product_template_attribute_line_wnva_ids
+msgid "Technical compute"
+msgstr "Техническое вычисления"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__pricelist_id
+msgid "Technical field. Used for searching on pricelists, not stored in database."
+msgstr "Техническое поле. Используется для поиска по прайс-листам, не хранится в базе данных."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__stock_move_ids
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__stock_quant_ids
+msgid "Technical: used to compute quantities."
+msgstr "Технический: используется для вычисления количества."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__state
+msgid "Tells the user if room is available of booked."
+msgstr "Сообщает пользователю, свободен ли забронированный номер."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__product_template_attribute_value_ids
+msgid "Template Attribute Values"
+msgstr "Значение шаблона атрибута"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_account_expense_categ_id
+msgid "The expense is accounted for when a vendor bill is validated, except in anglo-saxon accounting with perpetual inventory valuation in which case the expense (Cost of Goods Sold account) is recognized at the customer invoice validation."
+msgstr "Расходы учитываются при проверке счета поставщика, за исключением англосаксонского бухучета с бесконечной оценке запаса, в этом случае расходы (счет стоимости продаваемого товара) признаются подтверждением счета-фактуры клиента."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__product_count
+msgid "The number of products under this category (Does not consider the children categories)"
+msgstr "Количество продуктов этой категории (не учитывает подчиненные категории )"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__lst_price
+msgid "The sale price is managed from the product template. Click on the 'Configure Variants' button to set the extra attribute prices."
+msgstr "Цена продажи управляется из шаблона товара. Нажмите кнопку `Настроить варианты`, чтобы установить дополнительные цены атрибутов."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__volume
+msgid "The volume in m3."
+msgstr "Объём в метрах куб."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_account_income_categ_id
+msgid "This account will be used when validating a customer invoice."
+msgstr "Этот счет будет использовано при проверке счета-фактуры клиента."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__image_variant
+msgid "This field holds the image used as image for the product variant, limited to 1024x1024px."
+msgstr "Это поле содержит изображение варианта продукта, лимит - 1024x1024px."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__price_extra
+msgid "This is the sum of the extra price of all attributes"
+msgstr "Это сумма дополнительной цены всех атрибутов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__property_stock_production
+msgid "This stock location will be used, instead of the default one, as the source location for stock moves generated by manufacturing orders."
+msgstr "Это место хранения будет использоваться, вместо места хранения по умолчанию, как исходное место хранения для движений созданных производственными заказами."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__property_stock_inventory
+msgid "This stock location will be used, instead of the default one, as the source location for stock moves generated when you do an inventory."
+msgstr "Это место хранения будет использоваться, вместо места хранения по умолчанию, как исходное место хранения для движений созданных при проведении инвентаризации."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__responsible_id
+msgid "This user will be responsible of the next activities related to logistic operations for this product."
+msgstr "Этот пользователь будет отвечать за следующие действия, связанные с логистическими операциями для этого товара."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__to_weight
+msgid "To Weigh With Scale"
+msgstr "Для взвешивания на весах"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__total_route_ids
+msgid "Total routes"
+msgstr "Итого маршрутов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__service_type
+msgid "Track Service"
+msgstr "Сервис отслеживания"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__tracking
+msgid "Tracking"
+msgstr "Отслеживание"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__uom_id
+msgid "Unit of Measure"
+msgstr "Единица измерения"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__uom_name
+msgid "Unit of Measure Name"
+msgstr "Название единицы измерения"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_unread
+msgid "Unread Messages"
+msgstr "Непрочитанные Сообщения"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Счетчик непрочитанных сообщений"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valid_archived_variant_ids
+msgid "Valid Archived Variants"
+msgstr "Действительные заархивированные варианты"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valid_existing_variant_ids
+msgid "Valid Existing Variants"
+msgstr "Действительные существующие варианты"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valid_product_template_attribute_line_ids
+msgid "Valid Product Attribute Lines"
+msgstr "Действительные строки атрибутов товара"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valid_product_template_attribute_line_wnva_ids
+msgid "Valid Product Attribute Lines Without No Variant Attributes"
+msgstr "Действительные строки атрибутов товара без варианта атрибутов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valid_product_attribute_value_ids
+msgid "Valid Product Attribute Values"
+msgstr "Действительные значения атрибута товара"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valid_product_attribute_value_wnva_ids
+msgid "Valid Product Attribute Values Without No Variant Attributes"
+msgstr "Действительные значения атрибута товара без вариантов атрибутов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valid_product_attribute_ids
+msgid "Valid Product Attributes"
+msgstr "Действительные атрибуты товара"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valid_product_attribute_wnva_ids
+msgid "Valid Product Attributes Without No Variant Attributes"
+msgstr "Действительные атрибуты товара без вариантов атрибутов"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__valuation
+msgid "Valuation"
+msgstr "Оценка"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__stock_value
+msgid "Value"
+msgstr "Объём"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__image_variant
+msgid "Variant Image"
+msgstr "Изображение варианта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__price_extra
+msgid "Variant Price Extra"
+msgstr "Экстра-цена варианта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__variant_seller_ids
+msgid "Variant Seller"
+msgstr "Вариант продавца"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__supplier_taxes_id
+msgid "Vendor Taxes"
+msgstr "Налоги поставщика"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__seller_ids
+msgid "Vendors"
+msgstr "Производители"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__volume
+msgid "Volume"
+msgstr "Объём"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__warehouse_id
+msgid "Warehouse"
+msgstr "Склад"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__website_message_ids
+msgid "Website Messages"
+msgstr "Сообщения с сайта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__website_message_ids
+msgid "Website communication history"
+msgstr "История общения с сайта"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__weight
+msgid "Weight"
+msgstr "Вес"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__weight_uom_id
+msgid "Weight Unit of Measure"
+msgstr "Единица измерения веса"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__weight
+msgid "Weight of the product, packaging not included. The unit of measure can be changed in the general settings"
+msgstr "Вес изделия, упаковка не входит. Единицу можно изменить в общих настройках"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_h_activity__weight_uom_name
+msgid "Weight unit of measure label"
+msgstr "Метка единицы измерения веса"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_stock_account_input_categ_id
+msgid "When doing real-time inventory valuation, counterpart journal items for all incoming stock moves will be posted in this account, unless there is a specific valuation account set on the source location. This is the default value for all products in this category. It can also directly be set on each product"
+msgstr "При проведении оценки инвентаризации в реальном времени, корреспондирующие элементы журнала для всех входящих перемещений запасов будут отправлены на этот счёт, если нет конкретного счёта заданного по исходному месту хранения. Его также можно установить непосредственно для каждого продукта."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__property_stock_account_input
+msgid "When doing real-time inventory valuation, counterpart journal items for all incoming stock moves will be posted in this account, unless there is a specific valuation account set on the source location. When not set on the product, the one from the product category is used."
+msgstr "При проведении оценки инвентаризации в реальном времени, корреспондирующие пункты журнала для всех входящих перемещений запасов будут отправлены на этот счёт, если нет конкретного счёта заданного по исходному месту хранения. Его также можно установить непосредственно для каждого товара."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_stock_account_output_categ_id
+msgid "When doing real-time inventory valuation, counterpart journal items for all outgoing stock moves will be posted in this account, unless there is a specific valuation account set on the destination location. This is the default value for all products in this category. It can also directly be set on each product"
+msgstr "При проведении оценки инвентаризации в реальном времени, корреспондирующие пункты журнала для всех входящих перемещений запасов будут отправлены на этот счёт, если нет конкретного счёта заданного по месту назначения. Его также можно установить непосредственно для каждого продукта."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_h_activity__property_stock_account_output
+msgid "When doing real-time inventory valuation, counterpart journal items for all outgoing stock moves will be posted in this account, unless there is a specific valuation account set on the destination location. When not set on the product, the one from the product category is used."
+msgstr "При проведении оценки инвентаризации в реальном времени, корреспондирующие элементы журнала для всех исходящих перемещений будут помещены на этот счёт, если нет задан счёт в месте назначения. Его также можно установить непосредственно для каждого продукта."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_stock_journal
+msgid "When doing real-time inventory valuation, this is the Accounting Journal in which entries will be automatically posted when stock moves are processed."
+msgstr "При оценке стоимости запасов в реальном времени, это бухгалтерский журнал в который будут автоматически добавляться записи при обработке перемещений ТМЦ."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,help:hotel_housekeeping.field_hotel_housekeeping_activity_type__property_stock_valuation_account_id
+msgid "When real-time inventory valuation is enabled on a product, this account will hold the current value of the products."
+msgstr "При оценке запасов в реальном времени, этот счет будет содержать текущую оценку стоимости продуктов."
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping_activity_type__activity_id
+msgid "category"
+msgstr "Категория"
+
+#. module: hotel_housekeeping
+#: model:ir.model.fields,field_description:hotel_housekeeping.field_hotel_housekeeping__state
+msgid "state"
+msgstr "Государство"
+

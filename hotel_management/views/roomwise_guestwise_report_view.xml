@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="roomwise_guestwise_report_view">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page">
+                            <h1 style="text-align:center;">Room and Guest wise Report</h1>
+
+                            <table cellpadding="5" class="table table-condensed" width="100%">
+                                <thead>
+                                    <tr style="background-color:#eaeaea;">
+                                        <th>Room No</th>
+                                        <th class="text-right">Check In</th>
+                                        <th class="text-right">Check Out</th>
+                                        <th class="text-right">Guest Name</th>
+                                        <th class="text-right">Address</th>
+                                        <th class="text-right">Is Checkin</th>
+                                        <th class="text-right">Is Checkout</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="temp" t-value="0"/>
+                                    <t t-foreach="get_roomtype_guest_information(doc)" t-as="line">
+                                        <t t-foreach="line.get('data')" t-as="line_data">
+                                        <tr>
+                                            <t t-if="temp == line.get('room_name')">
+                                                <td></td>
+                                            </t>
+                                            <t t-else="">
+                                                <td>
+                                                    <span t-esc="line.get('room_name')"/>
+                                                    <t t-set="temp" t-value="line.get('room_name')"/>
+                                                </td>
+                                            </t>
+                                                <td class="text-right">
+                                                    <span t-esc="line_data.get('checkin')"
+                                                          t-options='{"widget": "datetime"}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="line_data.get('checkout')"
+                                                          t-options='{"widget": "datetime"}'/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="line_data.get('guest_name')"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="line_data.get('address')"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="line_data.get('is_checkin')"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="line_data.get('is_checkout')"/>
+                                                </td>
+
+                                            </tr>
+                                            </t>
+                                        </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

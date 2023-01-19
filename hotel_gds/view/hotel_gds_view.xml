@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+	
+	
+	<record model="ir.ui.view" id="view_banquet_form_inherit_gds">
+			<field name="name">hotel.reservation.form.inherit.gds</field>
+			<field name="model">hotel.reservation</field>
+            <field name="inherit_id" ref="banquet_managment.view_banquet_form"/>
+            <field name="arch" type="xml">
+                <field name="banquet_id" position="after">
+					<field name="meal_id" />
+				</field>
+			</field>
+        </record>	
+		
+		<record model="ir.ui.view" id="view_hotel_reservation_form1_inherit_gds">
+			<field name="name">hotel.reservation.form.inherit.gds1</field>
+			<field name="model">hotel.reservation</field>
+            <field name="inherit_id" ref="hotel_management.view_hotel_reservation_form1"/>
+            <field name="arch" type="xml">
+                <field name="number_of_rooms" position="after">
+					<field name="meal_id" />
+				</field>
+			</field>
+        </record>	
+		
+		
+<!--	<record model="ir.ui.view" id="hotel_room_form_inherit_gds">
+			<field name="name">hotel.room.inherit.gds</field>
+			<field name="model">hotel.room</field>
+			<field name="inherit_id" ref="hotel.view_hotel_room_form" />
+			<field name="arch" type="xml">
+				<field name="max_child" position="after">
+					<separator string="Room Availability"/>
+					<group col="8" colspan="7">
+						<field name="mon_bool" />
+						<field name="tue_bool" />
+						<field name="wed_bool" />
+						<field name="thr_bool" />
+						<field name="fri_bool" />
+						<field name="sat_bool" />
+						<field name="sun_bool" />
+            		</group>
+				</field>
+			</field>
+	</record>-->
+		
+	<record model="ir.ui.view" id="view_gds_configuration_form">
+			<field name="name">hotel.reservation.through.gds.configuration.form</field>
+			<field name="model">hotel.reservation.through.gds.configuration</field>
+			<field name="arch" type="xml">
+				<form string="GDS Configuration">
+					<group colspan="4" col="4">
+					<field name="name"/>
+					<field name="to_date"/>
+					<field name="shop_id"/>
+					<field name="company_id"  invisible="1"/>
+					<field name="line_ids" colspan="4" nolabel="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_gds_configuration_tree">
+			<field name="name">hotel.reservation.through.gds.configuration.tree</field>
+			<field name="model">hotel.reservation.through.gds.configuration</field>
+			<field name="arch" type="xml">
+				<tree string="GDS Configuration">
+					<field name="name"/>
+					<field name="to_date"/>
+					<field name="shop_id"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_gds_room_line_form">
+			<field name="name">hotel.reservation.through.gds.line.form</field>
+			<field name="model">hotel.reservation.through.gds.line</field>
+			<field name="arch" type="xml">
+				<form string="Room Line">
+					<field name="categ_id" colspan="4"/>
+					<field name="room_number" domain="[('shop_id','=',parent.shop_id),('isroom','=',True),('categ_id','=',categ_id)]" colspan="4"/>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_gds_room_line_tree">
+			<field name="name">hotel.reservation.through.gds.line.tree</field>
+			<field name="model">hotel.reservation.through.gds.line</field>
+			<field name="arch" type="xml">
+				<tree string="Room Line">
+					<field name="categ_id"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="gds_configuration_action">
+			<field name="name">GDS Configuration</field>
+			<field name="res_model">hotel.reservation.through.gds.configuration</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+		</record>
+		<menuitem name="GDS Configuration" 
+				  id="gds_configuration_id" 
+				  action="gds_configuration_action"
+				  parent="hotel.hotel_configuration_menu"/>
+
+		<menuitem name="Dashboard Configuration" 
+			  id="dashboard_url_menu" 
+			  parent="hotel.hotel_configuration_menu" 
+			  action="hotel_management.dashboard_url_configuration_action"/>
+	
+	</data>
+	<data noupdate="1">
+	<record model="ir.rule" id="hotel_gds_comp_rule">
+        <field name="name">Hotel GDS multi-company</field>
+        <field name="model_id" ref="model_hotel_reservation_through_gds_configuration"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+	</data>
+</odoo>

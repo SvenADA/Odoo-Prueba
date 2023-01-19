@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <?xml version="1.0"?> -->
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_hotel_folio_pos_form_id">
+			<field name="name">hotel.folio.inherit123</field>
+			<field name="model">hotel.folio</field>
+			<field name="inherit_id" ref="hotel.view_hotel_folio1_form" />
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/notebook/page[@name='table_reservations']"
+					position="after">
+					<page string="POS ORDERS">
+						<separator string="POS Order Entries" colspan="4" />
+						<field name="pos_order_ids" colspan="4" nolabel="1" />
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_hotel_form_inherit1">
+			<field name="name">pos.order.inherit1</field>
+			<field name="model">pos.order</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+			<field name="arch" type="xml">
+				<button name="%(point_of_sale.action_pos_payment)d" class="oe_highlight"
+					type="action" states="draft"
+					position="replace">
+					<button name="%(point_of_sale.action_pos_payment)d" string="Payment"
+						class="oe_highlight" type="action" states="draft,credit"
+						/>
+				</button>
+				<!-- <button name="refund" type="object"
+					attrs="{'invisible':[('state','=','draft')]}" position="replace">
+					<button name="refund" string="Return Products" type="object"
+						attrs="{'invisible':[('state','in',('draft','credit'))]}" />
+				</button> -->
+
+				<button name="action_pos_order_invoice" position="replace">
+					<button name="action_pos_order_invoice" string="Invoice"
+						type="object" states="draft,paid,credit" attrs="{'readonly': [('partner_id','=',False)]}" />
+				</button>
+
+				<field name="partner_id" position="after">
+					<field name="folio_line_id"></field>
+					<field name="folio_ids"></field>
+					<group col="4" colspan="4" string="Tables">
+						<field name="table_ids" nolabel="1">
+							<tree>
+								<field name="name" />
+								<field name="state" invisible="1"></field>
+							</tree>
+						</field>
+					</group>
+				</field>
+
+			</field>
+		</record>
+
+
+
+		<!-- <record model="ir.ui.view" id="view_hotel_form_inherit1"> <field name="name">pos.order.inherit1</field> 
+			<field name="model">pos.order</field> <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" 
+			/> <field name="arch" type="xml"> <button name="%(point_of_sale.action_pos_payment)d" 
+			class="oe_highlight" type="action" states="draft" context="{'pos_session_id' 
+			: session_id}" position="replace"> <button name="%(point_of_sale.action_pos_payment)d" 
+			string="Payment" class="oe_highlight" type="action" states="draft,credit" 
+			context="{'pos_session_id' : session_id}" /> </button> <button name="refund" 
+			type="object" attrs="{'invisible':[('state','=','draft')]}" position="replace"> 
+			<button name="refund" string="Return Products" type="object" attrs="{'invisible':[('state','in',('draft','credit'))]}" 
+			/> </button> <button name="action_pos_order_invoice" position="replace"> 
+			<button name="action_pos_order_invoice" string="Invoice" type="object" states="draft,paid,credit" 
+			attrs="{'readonly': [('partner_id','=',False)]}" /> </button> COMMENTED BY 
+			RADHIKA NOT FOUNT IN BASE <button name="%(point_of_sale.action_report_pos_receipt)d" 
+			string="Reprint" type="action" states="paid,done,invoiced" position="replace"> 
+			<button name="%(point_of_sale.action_report_pos_receipt)d" string="Reprint" 
+			type="action" states="paid,done,invoiced,credit" /> </button> <field name="partner_id" 
+			position="after"> <group col="4" colspan="4" string="Tables"> <field name="table_ids" 
+			nolabel="1"> <tree> <field name="name" /> <field name="state" invisible="1"></field> 
+			</tree> </field> </group> </field> COMMENTED BY RADHIKA NOT FOUNT IN BASE 
+			<field name="shop_id" position="after"> <field name="waiter_name"> </field> 
+			</field> </field> </record> -->
+
+
+		<record model="ir.ui.view" id="hotel_reservation_order_form_inherited">
+			<field name="name">hotel.reservation.order.form.inherited</field>
+			<field name="model">hotel.reservation.order</field>
+			<field name="inherit_id"
+				ref="hotel_restaurant.view_hotel_reservation_order_form" />
+			<field name="arch" type="xml">
+				<field name="reservation_id" position="after">
+					<field name="pos_ref" readonly="1" />
+				</field>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_pos_config_form_inherit">
+			<field name="name">pos.config.form.view.inherit</field>
+			<field name="model">pos.config</field>
+			<field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
+			<field name="arch" type="xml">
+				<field name="barcode_nomenclature_id" position="after">
+					<label for="shop_id" string="Hotel Name" class="col-lg-3 o_light_label"/>
+					<field name="shop_id" string="Hotel id" />
+				</field>
+			</field>
+		</record>
+
+
+	</data>
+</odoo>
+	    
+	           

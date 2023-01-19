@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    
+    <!-- Resource: sale.shop -->
+        <record id="sale_shop_1" model="sale.shop">
+            <field name="company_id" ref="base.main_company"/>
+            <!--<field name="payment_default_id" ref="account.account_payment_term_net"/>-->
+            <field name="payment_default_id" ref="account.account_payment_term_30days"/>
+            <field name="pricelist_id" ref="product.list0"/>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+
+            <!--  Copy the name of any company. Without demo data this will yield
+                  the main company name, which is correct. With demo data it will
+                  be random, but it does not matter much -->
+            <field model="res.company" name="name" search="[]" use="name"/>
+        </record>
+		
+        <!-- <function eval="('default',False,'shop_id', [('sale.order', False)], sale_shop_1, True, False, False, False, True)" id="sale_default_set" model="ir.values" name="set"/> --> 
+        <!-- <function eval="('default',False,'shop_id', [('sale.order', False)], sale_shop_1, True, False, False, False, True)" id="sale_default_set" model="ir.values"/> -->
+        
+    </data>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+     <record id="view_shop_form_inherit" model="ir.ui.view">
+             <field name="name">hotel.sale.shop.inherit</field> 
+             <field name="model">sale.shop</field> 
+             <field name="inherit_id" ref="sale_enhancement.view_shop_form"/> 
+             <field name="arch" type="xml"> 
+ 	            <label for="name" class="oe_edit_only" position="replace"/>
+                    <field name="name" position="replace"/>
+		    <h1 position="replace"></h1>
+		    <h2 position="replace"></h2>
+		   
+		 <label for="warehouse_id" class="oe_edit_only"  position="replace">
+			
+			<field name="shop_img" widget='image' class="oe_left oe_avatar"/> 
+ 	                    <div class="oe_title">
+ 	                        <div class="oe_edit_only">
+	                            <label for="name"/>
+				    
+ 	                        </div>
+ 	                        <h3>
+ 	                            <field name="name" default_focus="1" placeholder="Name" />
+				    <label for="warehouse_id" class="oe_edit_only"/>
+				    <field name="warehouse_id" nolabel="1"/>
+ 	                        </h3> 
+				
+                            </div>
+			
+			<group colspan="2"></group>
+			<group colspan="2">
+			
+			</group>
+			
+		    </label >
+
+
+            	</field> 
+     </record> 
+     
+       <record id="sale_view_order_tree1" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Orders">
+                    <field name="name"/>
+                    <field name="order_line"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+     
+    </data>
+</odoo>

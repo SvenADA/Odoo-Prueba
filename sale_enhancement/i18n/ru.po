@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_enhancement
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-21 05:22+0000\n"
+"PO-Revision-Date: 2020-05-21 05:22+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__project_id
+msgid "Analytic Account"
+msgstr "Аналитический счёт"
+
+#. module: sale_enhancement
+#: model_terms:ir.actions.act_window,help:sale_enhancement.action_shop_form
+msgid "Click to define a new sale shop."
+msgstr "Нажмите, чтобы определить новый магазин продаж."
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__company_id
+msgid "Company"
+msgstr "Компания"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__create_date
+msgid "Created on"
+msgstr "Создан"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__payment_default_id
+msgid "Default Payment Term"
+msgstr "Срок Оплаты По Умолчанию"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
+
+#. module: sale_enhancement
+#: model_terms:ir.actions.act_window,help:sale_enhancement.action_shop_form
+msgid "Each quotation or sales order must be linked to a shop. The\n"
+"                shop also defines the warehouse from which the products will be\n"
+"                delivered for each particular sales."
+msgstr ""
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__id
+msgid "ID"
+msgstr "Номер"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop____last_update
+msgid "Last Modified on"
+msgstr "Последнее изменение"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__write_date
+msgid "Last Updated on"
+msgstr "Последнее обновление"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__pricelist_id
+msgid "Pricelist"
+msgstr "Прайс-лист"
+
+#. module: sale_enhancement
+#: model:ir.model,name:sale_enhancement.model_product_product
+msgid "Product"
+msgstr "Продукт"
+
+#. module: sale_enhancement
+#: model:ir.model,name:sale_enhancement.model_sale_order
+msgid "Sales Order"
+msgstr "заказ на покупку"
+
+#. module: sale_enhancement
+#: model_terms:ir.ui.view,arch_db:sale_enhancement.view_shop_form
+#: model_terms:ir.ui.view,arch_db:sale_enhancement.view_shop_tree
+msgid "Sales Shop"
+msgstr "Торговый Магазин"
+
+#. module: sale_enhancement
+#: model:ir.actions.act_window,name:sale_enhancement.action_shop_form
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_order__shop_id
+#: model:ir.ui.menu,name:sale_enhancement.menu_action_shop_form
+msgid "Shop"
+msgstr "Магазин"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__name
+msgid "Shop Name"
+msgstr "Название магазина"
+
+#. module: sale_enhancement
+#: model:ir.model.fields,field_description:sale_enhancement.field_sale_shop__warehouse_id
+msgid "Warehouse"
+msgstr "Склад"
+
+#. module: sale_enhancement
+#: model:ir.model,name:sale_enhancement.model_sale_shop
+msgid "sale shop used for territory name"
+msgstr "Продажа магазин используется для названия территории"
+

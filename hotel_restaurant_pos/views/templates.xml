@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="my_assets" inherit_id="point_of_sale.assets">
+
+		<xpath expr="." position="inside">
+			<link rel="stylesheet"
+				href="/hotel_restaurant_pos/static/src/css/jquery.multiselect.css" />
+			<link rel="stylesheet" href="/hotel_restaurant_pos/static/src/css/switch.css" />
+			<link rel="stylesheet" href="/hotel_restaurant_pos/static/src/css/pos.css" />
+			
+			<script type="text/javascript" src="/hotel_restaurant_pos/static/src/js/models.js" />
+			<!-- <script type="text/javascript" src="/hotel_restaurant_pos/static/src/js/db.js" /> -->
+			<script type="text/javascript" src="/hotel_restaurant_pos/static/src/js/screens.js"/>
+			<script type="text/javascript" src="/hotel_restaurant_pos/static/src/js/roomlistscreen.js"/>
+		</xpath>
+
+	</template>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="hotel_compare_widget_client_actn" model="ir.actions.client">
+            <field name="name">Dashboard</field>
+            <field name="tag">HotelDashboardView_temp</field>
+        </record>
+
+        <menuitem name="Hotel Dashboard"
+                  id="mnu_my_widget_main_hotel"
+                  action="hotel_compare_widget_client_actn"
+                  web_icon="hotel_room_dashboard_view,static/description/icon.png"/>
+    </data>
+</odoo>
+
+
+
+
+

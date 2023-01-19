@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--<report             
+            id="report_hotel_folio_id" 
+            model="hotel.folio" 
+            name="hotel.folio" 
+            rml="addons/hotel_management/report/folio_invoice.rml" 
+            string="Hotel Boarding Invoice"
+            auto="False" usage="default"/>
+
+	 <menuitem name="Report" parent="school_mode_menu" id="school_teachers_reports_menu"/>
+	<menuitem name="View Report" parent="school_teachers_reports_menu" id="school_lib_submenu_issue" action="report_school_teachers"/>
+	 -->	
+	
+    </data>
+</odoo>

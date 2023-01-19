@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+
+<odoo>
+    <data>
+		
+		<menuitem name="Agent Commission" id="menu_agent_commission" parent="hotel.hotel_management_menu" sequence="90"/>
+		
+	
+	<!--
+		========================================================= 
+		 Agent Commission Invoice Line tree view        
+		=========================================================	
+        -->
+        <record id="agent_commission_invoice_line_tree_view" model="ir.ui.view">
+			<field name="name">agent.commission.invoice.line.tree</field>
+			<field name="model">agent.commission.invoice.line</field>
+			<field name="arch" type="xml">
+				<tree string="Agent Commission Invoice Line" editable="bottom"><!-- made editable -->
+					<field name="book_id" select="1" on_change="on_change_tour_book_id(book_id)"/>
+	            	<field name="partner_id" select="1"/>
+	            	<field name="tour_cost" select="1"/>
+	            	<field name="commission_percentage"  on_change="on_change_commission_amt(tour_cost, commission_percentage)" select="1" />
+	            	<field name="commission_amt" select="1"/>
+	            	<!-- <field name="can_be_confirmed" select="1"/> -->
+	            </tree>
+			</field>
+		</record>
+		
+	<!--
+		=========================================================
+       		Agent Commission Invoice  Form View 	
+       	=========================================================
+        -->
+       	<record id="agent_commission_invoic_form_view1" model="ir.ui.view">
+            <field name="name">agent.commission.invoice.form</field>
+            <field name="model">agent.commission.invoice</field>
+            <field name="arch" type="xml">
+           		<form string="Agent Commission Invoice" version="7.0">
+					<header>
+	            		<button string="Confirm" name="confirm_commission" states="draft" type="object"/>
+	            		<button string="Create Invoice" name="make_commission_invoice" states="confirm" type="object"/>
+						<button string="Paid" name="done" states="invoiced" type="object"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm,invoiced,done" />
+					</header>
+           			<group colspan="4" col="6">
+	            		<field name="name" select="1"/>
+	            		<field name="current_date"/>
+	            		<field name="partner_id" select="1" on_change="on_change_partner_id(partner_id)" domain="[('agent','=',True)]"/>
+	            		<field name="commission_percentage" invisible="1"/>
+						<field name="recv_acc"/>
+						<field name="pricelist_id" select="1"/>
+					</group>
+					<separator string="" colspan="4"/>
+					<notebook colspan="6">
+						<page string="Commission Line">
+							<group colspan="4" col="6">
+	            				<field name="commission_line" attrs="{'readonly': [('state','!=','draft')]}" select="1" nolabel="1" />
+							</group>
+            			</page>
+						<page string="History">
+            				<group col="7" colspan="3">
+	            				<field name="agent_invoice_ids" nolabel="1"/>
+            				</group>
+            			</page>
+					</notebook>
+				<group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+					<field name="total_amt" string="Commission Amount"/>
+				</group>
+				</form>
+			</field>
+		</record>
+
+		<!--
+		========================================================= 
+					Agent Commission Invoice tree view        
+		=========================================================	
+        -->
+        <record id="agent_commission_invoice_tree_view" model="ir.ui.view">
+			<field name="name">agent.commission.invoice.tree</field>
+			<field name="model">agent.commission.invoice</field>
+			<field name="arch" type="xml">
+				<tree string="Agent Commission Invoice">
+					<field name="name"/>
+					<field name="current_date" select="1"/>
+	            	<field name="partner_id" select="1"/>
+	            	<field name="pricelist_id" select="1"/>
+	            	<field name="total_amt" select="1"/>
+	            	<field name="state" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+        <record model="ir.actions.act_window" id="action_agent_commission_invoice_form_view">
+			<field name="name">Agent Commission Invoice</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">agent.commission.invoice</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+   <menuitem name="Agent Commission Invoice" action="action_agent_commission_invoice_form_view" sequence="5"
+		id="menu_agent_commission_invoice"  parent="menu_agent_commission" />
+		
+    </data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+			
+		<record id="hotel_restaurant_reservation_report1" model="ir.actions.report">
+			<field name="name">Hotel Restaurant Reservation Report</field>
+			<field name="model">hotel.restaurant.reservation</field>
+			<field name="report_type">qweb-pdf</field>
+			<field name="report_name">hotel_restaurant.hotel_restaurant_reservation_report123</field>
+			<field name="report_file">hotel_restaurant.hotel_restaurant_reservation_report123</field>
+			<field name="print_report_name">(object._get_report_base_filename())</field>
+		</record>
+	</data>
+</odoo>
+
+		

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="monthly_occupency_report_view">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page">
+                            <h1 style="text-align:center;">Monthly Occupancy Report</h1>
+                            <table cellpadding="5" class="table table-bordered table-condensed" width="100%">
+                                <thead>
+                                    <tr style="background-color:#eaeaea;">
+                                        <th style="text-align:left;">Date</th>
+                                        <th style="text-align:center;">Booked Room</th>
+                                        <th style="text-align:center;">Percentage</th>
+                                        <th style="text-align:right;">Total Rent</th>
+                                        <th style="text-align:right;">Total Service</th>
+                                        <th style="text-align:right;">Total Rest</th>
+                                        <th style="text-align:right;">Total Laundry</th>
+                                        <th style="text-align:right;">Total Gross</th>
+                                        <th style="text-align:right;">Total Tax</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody width="100%">
+                                    <tr t-foreach="get_monthly_occupancy_information(docs)" t-as="line">
+                                        <td align="left">
+                                            <span t-esc="line.get('date')" t-options='{"widget": "date"}'/>
+                                        </td>
+                                        <td align="center">
+                                            <span t-esc="'%.2f'% line.get('no_booked_room')"/>
+                                        </td>
+                                        <td align="center">
+                                            <span t-esc="'%.2f'% line.get('occ_percent')"/>
+                                            %
+                                        </td>
+                                        <td align="right">
+                                            <span t-esc="'%.2f'% line.get('tot_rent')"/>
+                                        </td>
+                                        <td align="right">
+                                            <span t-esc="'%.2f'% line.get('tot_service')"/>
+                                        </td>
+                                        <td align="right">
+                                            <span t-esc="'%.2f'% line.get('tot_rest')"/>
+                                        </td>
+                                        <td align="right">
+                                            <span t-esc="'%.2f'% line.get('tot_laundry')"/>
+                                        </td>
+                                        <td align="right">
+                                            <span t-esc="'%.2f'% line.get('gross_tot')"/>
+                                        </td>
+                                        <td align="right">
+                                            <span t-esc="'%.2f'% line.get('tot_tax')"/>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

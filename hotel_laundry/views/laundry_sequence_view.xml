@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for tour.preference -->
+<!--         <record id="seq_type_laundry_order" model="ir.sequence.type"> -->
+<!--             <field name="name">Laundry Order</field> -->
+<!--             <field name="code">laundry.management</field> -->
+<!--         </record> -->
+
+        <record id="seq_laundry_order" model="ir.sequence">
+            <field name="name">Laundry Order</field>
+            <field name="code">laundry.management</field>
+            <field name="prefix">LDR</field>
+            <field name="padding">4</field>
+			<field name="company_id" eval="False"/>
+        </record>
+		
+		
+
+    </data>
+</odoo>

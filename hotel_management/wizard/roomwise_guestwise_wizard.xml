@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<odoo>
+    <data>
+
+        <!-- Hotel wizard form view -->
+        <record model="ir.ui.view" id="room_guest_wizard_view_new">
+            <field name="name">room.guestwise.wizard.form</field>
+            <field name="model">room.guestwise.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Report Wizard" version="7.0">
+<!--                    <header>-->
+<!--                    </header>-->
+                    <separator string="Fill The Dates" colspan="4"/>
+                    <group colspan="4" col="4">
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" icon="fa-times"/>
+                        <button name="print_report" string="Print Report" type="object" icon="fa-backward"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

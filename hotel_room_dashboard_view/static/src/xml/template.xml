@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template id="hotel_dashboard_template" xml:space="preserve">
+    <t t-name="hotel_dashboard_template">
+        <div class="container-fluid">
+            <div class="col-xs-12 col-md-12">
+                <center>
+                    <h1>Hotel Dashboard</h1>
+                </center>
+                <br/>
+                <center>
+                    Hotel
+                    <div>
+                        <div>
+                        <select id="shops" style="width: 150px !important;" title="Select Hotel">
+                            <option value="1">My Company</option>
+                        </select>
+                        </div>
+                        <div style="position: fixed;top: 120px;right: 545px;">
+                        <button id="dashboard_reload" class="btn btn-primary btn-sm">
+                            <span class="fa fa-refresh"/>
+                        </button>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <div class="color_information row">
+                <div class="col-md-6">
+                    <div>
+                        <span style="color:#32CD32;background-color: #32CD32;">******</span>
+                                : Available
+                        <span style="color:#FFDA2F;background-color:#FFDA2F">******</span>
+                                : Booking
+                        <span style="color:#A6A6A6;background-color:#A6A6A6;">******</span>
+                                : Confirmed Booking
+                    </div>
+                    <div>
+                        <span style="color:#FF0000;background-color:#FF0000">******</span>
+                                : Checked-in
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <span style="color:#4169e1;background-color:#4169e1">******</span>
+                            : Checkout
+                        <span style="color:black;background-color:black">******</span>
+                            : Under Cleaning
+                    </div>
+                    <div>
+                        <span style="color:purple;background-color:purple">******</span>
+                            : Under Maintenance
+                    </div>
+                </div>
+            </div>
+            <!--  <table class="color_information"><tr><td><span style="color:#32CD32;background-color: #32CD32;">******</span></td><td>: Available</td></tr><tr><td><span style="color:#FFDA2F;background-color:#FFDA2F">******</span></td><td>: Booked - Status : Draft</td></tr><tr><td><span style="color:#A6A6A6;background-color:#A6A6A6;">******</span></td><td>: Booked - Status : Complete</td></tr><tr><td><span style="color:#FF0000;background-color:#FF0000">******</span></td><td>: Booked - Status : Done</td></tr><tr><td><span style="color:#4169e1;background-color:#4169e1">******</span></td><td>: Booked - Status : Checkout</td></tr><tr><td><span style="color:black;background-color:black">******</span></td><td>: Unavailable/ Under Cleaning</td></tr><tr><td><span style="color:purple;background-color:purple">******</span></td><td>: Unavailable/ Under Maintenance</td></tr></table> -->
+            <div class="col-xs-12 col-md-12" >
+                <div id='booking_calendar'></div>
+            </div>
+        </div>
+    </t>
+</template>

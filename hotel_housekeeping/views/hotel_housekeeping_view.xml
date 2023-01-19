@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+	<!--============================================================
+								Housekeeping
+		============================================================ -->
+		
+		<menuitem id="hotel_housekeeping_menu" name="Housekeeping"  parent="hotel.hotel_management_menu" sequence="4"/>
+		
+		<record model="ir.ui.view" id="view_hotel_housekeeping_form">
+			<field name="name">hotel.housekeeping.form</field>
+			<field name="model">hotel.housekeeping</field>
+			<field name="arch" type="xml">
+				<form string="Housekeeping">
+					<header>
+						<!-- <button string="Clean" name="clean" states="dirty" type="workflow" class="oe_highlight"/>
+						<button string="Inspect" name="inspect" states="clean" type="workflow" class="oe_highlight"/>
+						<button string="Done" name="done" states="inspect" type="workflow" class="oe_highlight"/>
+						<button string="Cancel" name="cancel" states="clean,inspect" type="workflow" class="oe_highlight"/>
+						<button string="Set to Dirty" name="action_set_to_dirty" states="cancel" type="object" class="oe_highlight"/>
+						<field name="state" widget="statusbar" statusbar_visible="dirty,clean,inspect,done"/>  commented by krishna, workflow does not exist in odoo 11-->
+						
+						<button string="Clean" name="room_clean" states="dirty" type="object" class="oe_highlight"/>
+						<button string="Inspect" name="room_inspect" states="clean" type="object" class="oe_highlight"/>
+						<button string="Done" name="room_done" states="inspect" type="object" class="oe_highlight"/>
+						<button string="Cancel" name="room_cancel" states="clean,inspect" type="object" class="oe_highlight"/>
+						<button string="Set to Dirty" name="action_set_to_dirty" states="cancel" type="object" class="oe_highlight"/>
+						<field name="state" widget="statusbar" statusbar_visible="dirty,clean,inspect,done"/>
+						
+						
+					</header>
+					<sheet>
+					<notebook>
+						<page string="Housekeeping">
+							<group colspan="4" col="4">
+							    
+								<!-- <field name="current_date" select="1" on_change="onchange_current_date(current_date,end_date)"/> -->
+								<field name="current_date" select="1"/>
+								
+								<!-- <field name="end_date" on_change="onchange_current_date(current_date,end_date)"/> -->
+								<field name="end_date"/>
+								
+								<field name="clean_type"/>
+								<field name="room_no" select="1" domain="[('isroom','=',True)]"/>
+								<field name="inspector"/>
+								<field name="inspect_date_time"/>
+								<field name="quality"/>
+								<field name="company_id"/>
+								
+							</group>
+							
+							<field name="activity_lines" colspan="4" nolabel="1">
+								<form string="Activity Lines">
+									<group col="4">
+									<field name="activity_id"/>
+									<field name="housekeeper"/>
+									<field name="clean_start_time"/>
+									<field name="clean_end_time"/>
+									<field name="dirty"/>
+									<field name="clean"/>
+									</group>
+								</form>
+								<tree string="Activity Lines">
+									<field name="activity_id"/>
+									<field name="housekeeper"/>
+									<field name="clean_start_time"/>
+									<field name="clean_end_time"/>
+									<field name="dirty"/>
+									<field name="clean"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_hotel_housekeeping_tree">
+			<field name="name">hotel.housekeeping.tree</field>
+			<field name="model">hotel.housekeeping</field>
+			<field name="arch" type="xml">
+				<tree string="Housekeeping">
+					<field name="current_date"/>
+					<field name="clean_type"/>
+					<field name="room_no"/>
+					<field name="activity_lines"/>
+					<field name="inspector"/>
+					<field name="inspect_date_time"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>		
+
+		<record model="ir.actions.act_window" id="open_hotel_housekeeping_form_tree">
+			<field name="name">Housekeeping</field>
+			<field name="res_model">hotel.housekeeping</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">form,tree</field>
+			<field name="view_id" ref="view_hotel_housekeeping_tree"/>
+		</record> 
+			
+		<!-- 
+		================ New HouseKeeping =================
+		 -->
+
+		<!-- <record model="ir.actions.act_window" id="open_hotel_housekeeping_form_tree_int">
+			<field name="name">New Housekeeping</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.housekeeping</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+			<field name="view_id" ref="view_hotel_housekeeping_tree"/>
+		</record>  -->
+		
+		<menuitem name="New HouseKeeping"
+		          id="menu_open_hotel_housekeeping_form_tree" 
+				  action="open_hotel_housekeeping_form_tree"
+				  parent="hotel_housekeeping_menu"/>
+		
+		
+				  
+		<!-- 
+		================ Activity Category=================
+		 -->	
+		 	  
+		<record model="ir.ui.view" id="view_hotel_housekeeping_activity_type_form">
+			<field name="name">hotel_housekeeping_activity_type_form</field>
+			<field name="model">hotel.housekeeping.activity.type</field>
+			<field name="arch" type="xml">
+				<form string="Housekeeping Activity Types" version="7.0">
+					<sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="parent" col="4">
+                                <field name="parent_id" domain="[('isactivitytype','=',True)]"/>
+                                <field name="isactivitytype"/>
+                            </group>
+							<group name="account_property" string="Account Properties" colspan="2">
+                            <field name="property_account_income_categ_id" />
+                            <field name="property_account_expense_categ_id" />
+                        </group>
+                        </group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- <record model="ir.ui.view" id="view_hotel_housekeeping_activity_type_list">
+			<field name="name">hotel_housekeeping_activity_type_list</field>
+			<field name="model">hotel.housekeeping.activity.type</field>
+			<field name="arch" type="xml">
+				<tree string="Housekeeping Activity Types">
+					<field name="complete_name"/>
+					
+				</tree>
+			</field>
+		</record> -->
+		
+		<record model="ir.actions.act_window" id="action_hotel_housekeeping_activity_type_view_form">
+			<field name="name">Housekeeping Activity Types</field>
+			<field name="res_model">hotel.housekeeping.activity.type</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+	   	</record>
+	   	
+		<menuitem name="Activity Definations"
+				  id="menu_action_hotel_housekeeping_activity_type_view_form_parent"				  
+				  sequence="9"
+				  parent="hotel.hotel_configuration_menu"/>  
+				  
+		<menuitem name="Activity Categories"
+				  id="menu_action_hotel_housekeeping_activity_type_view_form"
+				  action="action_hotel_housekeeping_activity_type_view_form"
+				  parent="menu_action_hotel_housekeeping_activity_type_view_form_parent"
+				  sequence = "9"/>  
+	
+	<!--  activity as product -->
+	
+		<record model="ir.ui.view" id="view_h_activity_form">
+			<field name="name">h.activity.form</field>
+			<field name="model">h.activity</field>
+			<field name="arch" type="xml">
+				<form string="Housekeeping Activity">
+					<field name="name" select="1"/>
+					<field name="categ_id" select="1" domain="[('isactivitytype','=',True)]"/>
+				</form>
+			</field>	
+		</record>
+		<record model="ir.ui.view" id="view_h_activity_tree">
+			<field name="name">h.activity.tree</field>
+			<field name="model">h.activity</field>
+			<field name="arch" type="xml">
+				<tree string="Housekeeping Activity">
+					<field name="name"/>
+					<field name="categ_id" select="1"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_h_activity_form">
+			<field name="name">Housekeeping Activity</field>
+			<field name="res_model">h.activity</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+		</record>
+		 
+		<menuitem name="Activities"
+					 id="menu_open_h_activity_form" 
+					 action="action_h_activity_form"
+					 parent="menu_action_hotel_housekeeping_activity_type_view_form_parent"
+					 sequence = "8"/>
+					 
+		
+		<record model="ir.ui.view" id="hotel_activity_type_form">
+			<field name="name">activity.type.from</field>
+			<field name="model">activity.type</field>
+			<field name="arch" type="xml">
+				<form string="Activity Type">
+					<sheet>
+                    <group col="4">
+						<field name="name"/>
+						<field name="parent_id"/>
+					</group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="hotel_activity_type_tree">
+			<field name="name">activity.type.tree</field>
+			<field name="model">activity.type</field>
+			<field name="arch" type="xml">
+				<tree string="Activity Type">
+					<field name="name"/>
+					<field name="parent_id"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_activity_type_view_form">
+			<field name="name">Housekeeping Activity Types</field>
+			<field name="res_model">activity.type</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+	   	</record>
+		<menuitem name="Activity Categories" sequence = "9" 
+				  id="hotel_housekeeping.menu_action_hotel_housekeeping_activity_type_view_form"
+				  action="action_activity_type_view_form"
+				  parent="hotel_housekeeping.menu_action_hotel_housekeeping_activity_type_view_form_parent"/>
+		
+		<record model="ir.ui.view" id="hotel_activity_housekeeping_form">
+			<field name="name">activity.housekeeping.from</field>
+			<field name="model">activity.housekeeping</field>
+			<field name="arch" type="xml">
+				<form string="Activity Type">
+					<sheet>
+                    <group col="4">
+						<field name="name"/>
+						<field name="categ_id"/>
+					</group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="hotel_activity_housekeeping_tree">
+			<field name="name">activity.housekeeping.tree</field>
+			<field name="model">activity.housekeeping</field>
+			<field name="arch" type="xml">
+				<tree string="Activity Type">
+					<field name="name"/>
+					<field name="categ_id"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_activity_housekeeping_view_form">
+			<field name="name">Housekeeping Activity</field>
+			<field name="res_model">activity.housekeeping</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+	   	</record>
+		<menuitem name="Activities" sequence = "8" 
+					 id="hotel_housekeeping.menu_open_h_activity_form" 
+					 action="action_activity_housekeeping_view_form"
+					 parent="hotel_housekeeping.menu_action_hotel_housekeeping_activity_type_view_form_parent"/>
+		
+	</data>
+</odoo>

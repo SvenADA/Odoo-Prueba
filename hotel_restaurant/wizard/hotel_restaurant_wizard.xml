@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <!--Hotel wizard form view  -->
+        <record model="ir.ui.view" id="hotel_wizard_view">
+            <field name="name">hotel.restaurant.wizard.form</field>
+            <field name="model">hotel.restaurant.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Hotel Wizard">
+                    <field name="grouped"/>
+                    <separator string="" colspan="6"/>
+                    <button special="cancel" string="Cancel" icon="fa-times-circle text-danger"/>
+                    <!--                    <button name="kot" string="Create Kots" type="object" icon="fa-arrow-right text-success"/>-->
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_hotel_restaurant_wizard">
+            <field name="name">Make Kots</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hotel.restaurant.wizard</field>
+            <field name="binding_model_id" ref="model_hotel_restaurant_order"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <!--Hotel wizard form view  -->
+        <record model="ir.ui.view" id="hotel_restaurant_reservation_wizard_view">
+            <field name="name">hotel.restaurant.reservation.wizard.form</field>
+            <field name="model">hotel.restaurant.reservation.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Hotel Restaurant Wizard">
+                    <separator string="Fill The Dates" colspan="4"/>
+                    <group colspan="4" col="4">
+                        <field name="date_start"/>
+                        <field name="date_end"  />
+                    </group>
+                    <group colspan="4" col="4">
+                        <button special="cancel" string="Cancel" icon="fa-times-circle text-danger"/>
+                        <button name="print_report" string="Print Report" type="object" icon="fa-arrow-right text-success"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_hotel_restaurant_wizard">
+            <field name="name">Restaurant Reservation List</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hotel.restaurant.reservation.wizard</field>
+            <field name="binding_model_id" ref="model_hotel_restaurant_reservation"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

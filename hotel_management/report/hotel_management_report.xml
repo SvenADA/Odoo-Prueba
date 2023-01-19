@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="report_arrival_dept_guest" model="ir.actions.report">
+            <field name="name">Arrival/Depart Guest List</field>
+            <field name="model">arrival.dept.guest.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hotel_management.arrival_dept_guest</field>
+            <field name="report_file">hotel_management.arrival_dept_guest</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>            
+        </record>
+	</data>
+</odoo>

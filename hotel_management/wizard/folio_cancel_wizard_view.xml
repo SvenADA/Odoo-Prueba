@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<odoo>
+    <data>
+        <!--Hotel wizard form view  -->
+        <record model="ir.ui.view" id="cancel_foilo_wizard_form_view">
+            <field name="name">cancel.foilo.wizard.form</field>
+            <field name="model">cancel.foilo.wizard</field>
+            <field name="arch" type="xml">
+                <form col="3" string="Confirm">
+                    <group colspan="2" col="2" fill="0" height="500">
+                        <separator string="Confirm" colspan="2"/>
+                        <field name="desc" nolabel="1"/>
+                        <separator colspan="2"/>
+                        <group colspan="2">
+                            <button special="cancel" icon="fa-times" string="No"/>
+                            <button type="object" name="cancel_wizard" icon="fa-forward" string="Yes"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_cancel_on_datecheck" model="ir.actions.act_window">
+            <field name="name">cancel folio</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cancel.foilo.wizard</field>
+            <field name="view_mode">form,tree</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

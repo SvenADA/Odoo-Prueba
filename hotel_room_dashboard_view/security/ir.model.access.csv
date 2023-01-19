@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hotel_room_dashboard_res_user,hotel.room.dashboard,hotel_room_dashboard_view.model_hotel_room_dashboard,hotel_management.group_hotel_reservation_user,1,1,1,0
+access_hotel_room_dashboard_res_manager,hotel.room.dashboard,hotel_room_dashboard_view.model_hotel_room_dashboard,hotel_management.group_hotel_reservation_manager,1,1,1,1
+access_hotel_room_dashboard_user,hotel.room.dashboard,hotel_room_dashboard_view.model_hotel_room_dashboard,hotel.group_hotel_user,1,1,1,0
+access_hotel_room_dashboard_manager,hotel.room.dashboard,hotel_room_dashboard_view.model_hotel_room_dashboard,hotel.group_hotel_manager,1,1,1,1

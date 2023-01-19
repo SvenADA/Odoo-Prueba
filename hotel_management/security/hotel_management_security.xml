@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="0">
+    <record id="group_hotel_reservation_manager" model="res.groups">
+        <field name="name">Hotel Management/ Reseravation Manager</field>
+    </record>
+    <record id="group_hotel_reservation_user" model="res.groups">
+        <field name="name">Hotel Management / Reseravation User</field>
+    </record>
+	<record id="group_restaurant_manager" model="res.groups">
+        <field name="name">Hotel Management/ Restaurant Manager</field>
+    </record>
+    <record id="group_restaurant_user" model="res.groups">
+        <field name="name">Hotel Management / Restaurant User</field>
+    </record>
+    <record id="group_restaurant_kot_user" model="res.groups">
+        <field name="name">Hotel Management / Restaurant KOT User</field>
+    </record>
+	<record id="group_restaurant_bot_user" model="res.groups">
+        <field name="name">Hotel Management / Restaurant BOT User</field>
+    </record>
+
+    <record id="rules_for_salesperson_id" model="ir.rule">
+            <field name="name">Salesperson Record Rules</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+
+        </record>
+
+
+
+    <record id="rules_for_hotel_service" model="ir.rule">
+            <field name="name">Hotel Service</field>
+            <field name="model_id" ref="hotel.model_hotel_services"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+
+        </record>
+
+
+
+
+	 <!-- Multi - Company Rules -->
+	
+	<record model="ir.rule" id="hotel_room_comp_rule">
+        <field name="name">Hotel Room multi-company</field>
+        <field name="model_id" ref="model_hotel_room"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+
+    <record model="ir.rule" id="checkout_configuration_comp_rule">
+        <field name="name">Checkout Configuration multi-company</field>
+        <field name="model_id" ref="model_checkout_configuration"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+
+    <record model="ir.rule" id="hotel_reservation_line_comp_rule">
+        <field name="name">Sale Shop multi-company</field>
+        <field name="model_id" ref="model_hotel_reservation"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+
+
+     <record model="ir.rule" id="hotel_reservation_housekepping_comp_rule">
+        <field name="name">Sale Shop multi-company</field>
+        <field name="model_id" ref="hotel_housekeeping.model_hotel_housekeeping"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+
+     <record model="ir.rule" id="hotel_reservation_rr_housekepping_comp_rule">
+        <field name="name">Sale Shop multi-company</field>
+        <field name="model_id" ref="model_rr_housekeeping"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+
+
+	<record model="ir.rule" id="hotel_reservation_table_comp_rule">
+        <field name="name">Table multi-company</field>
+        <field name="model_id" ref="model_hotel_restaurant_tables"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+	<record model="ir.rule" id="hotel_hotel_menucard_comp_rule">
+        <field name="name">food multi-company</field>
+        <field name="model_id" ref="model_hotel_menucard"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+	<record model="ir.rule" id="hotel_restaurant_order_comp_rule">
+        <field name="name">restaurant order multi-company</field>
+        <field name="model_id" ref="model_hotel_restaurant_order"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+	<record model="ir.rule" id="hotel_restaurant_kitchen_order_tickets_rule">
+        <field name="name">Kot multi-company</field>
+        <field name="model_id" ref="model_hotel_restaurant_kitchen_order_tickets"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+	<record model="ir.rule" id="hotel_restaurant_reservation_rule">
+        <field name="name">restaurant rev multi-company</field>
+        <field name="model_id" ref="model_hotel_restaurant_reservation"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+	<record model="ir.rule" id="hotel_reservation_order_rule">
+        <field name="name">reservation order multi-company</field>
+        <field name="model_id" ref="model_hotel_reservation_order"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+	<record model="ir.rule" id="issue_material_details_rule">
+        <field name="name">Issue Material Details multi-company</field>
+        <field name="model_id" ref="model_issue_material_details"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','in',company_ids)]</field>
+    </record>
+</data>
+</odoo>

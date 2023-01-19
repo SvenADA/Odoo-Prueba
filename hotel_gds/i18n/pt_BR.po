@@ -1,0 +1,222 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hotel_gds
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-12 10:28+0000\n"
+"PO-Revision-Date: 2020-08-12 10:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_gds
+#: model:ir.model.fields.selection,name:hotel_gds.selection__hotel_reservation__meal_id__buff_break
+msgid "Buffet Breakfast"
+msgstr "Buffet Café da manha"
+
+#. module: hotel_gds
+#: model:ir.model.constraint,message:hotel_gds.constraint_hotel_reservation_through_gds_configuration_date_shop_id_uniq
+msgid "Combination Of From date, To date and shop must be unique !"
+msgstr "Combinação De data, A data e a loja deve ser exclusiva!"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__company_id
+msgid "Company"
+msgstr "Companhia"
+
+#. module: hotel_gds
+#: model:ir.model,name:hotel_gds.model_hotel_reservation_through_gds_configuration
+msgid "Configuration through gds"
+msgstr "Configuração através de gds"
+
+#. module: hotel_gds
+#: model:ir.model,name:hotel_gds.model_hotel_reservation_through_gds_line
+msgid "Configuration through gds line"
+msgstr "Configuração através da linha gds"
+
+#. module: hotel_gds
+#: model:ir.model.fields.selection,name:hotel_gds.selection__hotel_reservation__meal_id__cont_break
+msgid "Continental Breakfast"
+msgstr "Café da manha continental"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__create_uid
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__create_date
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hotel_gds
+#: model:ir.ui.menu,name:hotel_gds.dashboard_url_menu
+msgid "Dashboard Configuration"
+msgstr "Dashboard Configuration"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__display_name
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_room__fri_bool
+msgid "Friday"
+msgstr "Sexta-feira"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__name
+msgid "From Date"
+msgstr "De data"
+
+#. module: hotel_gds
+#: model:ir.model.fields.selection,name:hotel_gds.selection__hotel_reservation__meal_id__full_board
+msgid "Full-board"
+msgstr "Pensão completa"
+
+#. module: hotel_gds
+#: model:ir.actions.act_window,name:hotel_gds.gds_configuration_action
+#: model:ir.ui.menu,name:hotel_gds.gds_configuration_id
+#: model_terms:ir.ui.view,arch_db:hotel_gds.view_gds_configuration_form
+#: model_terms:ir.ui.view,arch_db:hotel_gds.view_gds_configuration_tree
+msgid "GDS Configuration"
+msgstr "Configuração de GDS "
+
+#. module: hotel_gds
+#: model:ir.model.fields.selection,name:hotel_gds.selection__hotel_reservation__meal_id__half_board
+msgid "Half-board"
+msgstr "Meia-pensão"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__id
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__id
+msgid "ID"
+msgstr ""
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration____last_update
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__write_uid
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__write_date
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__line_ids
+msgid "Line ID"
+msgstr "ID da Linha"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__name
+msgid "Line Id"
+msgstr "ID da Linha"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation__meal_id
+msgid "Meal Type"
+msgstr "Tipo de refeição"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_room__mon_bool
+msgid "Monday"
+msgstr "Segunda-feira"
+
+#. module: hotel_gds
+#: model:ir.model.fields.selection,name:hotel_gds.selection__hotel_reservation__meal_id__no_meal
+msgid "No Meal Included"
+msgstr "Nenhuma refeição incluída"
+
+#. module: hotel_gds
+#: model:ir.model,name:hotel_gds.model_hotel_reservation
+msgid "Reservation"
+msgstr "Reserva"
+
+#. module: hotel_gds
+#: model:ir.model,name:hotel_gds.model_hotel_reservation_line
+msgid "Reservation Line"
+msgstr "Linha de Reserva"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__room_number
+msgid "Room"
+msgstr "Quarto"
+
+#. module: hotel_gds
+#: model_terms:ir.ui.view,arch_db:hotel_gds.hotel_room_form_inherit_gds
+msgid "Room Availability"
+msgstr "Disponibilidade de quarto"
+
+#. module: hotel_gds
+#: model_terms:ir.ui.view,arch_db:hotel_gds.view_gds_room_line_form
+#: model_terms:ir.ui.view,arch_db:hotel_gds.view_gds_room_line_tree
+msgid "Room Line"
+msgstr "Linha quarto"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_line__categ_id
+msgid "Room Type"
+msgstr "Tipo de quarto"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_room__sat_bool
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__shop_id
+msgid "Shop"
+msgstr "Loja"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_room__sun_bool
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_room__thr_bool
+msgid "Thursday"
+msgstr "Quinta-feira"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_reservation_through_gds_configuration__to_date
+msgid "To Date"
+msgstr "Até à data"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_room__tue_bool
+msgid "Tuesday"
+msgstr "Terça-feira"
+
+#. module: hotel_gds
+#: model:ir.model.fields,field_description:hotel_gds.field_hotel_room__wed_bool
+msgid "Wednesday"
+msgstr "Quarta-feira"
+
+#. module: hotel_gds
+#: model:ir.model.fields,help:hotel_gds.field_hotel_reservation_through_gds_line__room_number
+msgid "Will list out all the rooms that belong to selected shop."
+msgstr ""
+
+#. module: hotel_gds
+#: model:ir.model,name:hotel_gds.model_hotel_room
+msgid "room Inherit "
+msgstr "Irá listar todos os quartos que pertencem a loja selecionada."

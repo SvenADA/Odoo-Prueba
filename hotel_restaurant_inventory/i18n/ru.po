@@ -1,0 +1,330 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hotel_restaurant_inventory
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-21 05:17+0000\n"
+"PO-Revision-Date: 2020-05-21 05:17+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_hotel_restaurant_kitchen_order_tickets
+msgid "Add BOM to restaurant module"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_hotel_restaurant_order_list
+msgid "Add restaurant inventory"
+msgstr "Добавить инвентарь ресторана"
+
+#. module: hotel_restaurant_inventory
+#: selection:hotel.restaurant.order.list,product_nature:0
+msgid "BOT"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.actions.act_window,name:hotel_restaurant_inventory.open_view_hotel_restaurant_order_form_tree_bot
+msgid "BOT Details"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__ordernobot
+msgid "BOT Number"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.ui.menu,name:hotel_restaurant_inventory.bot_menu_open_view_hotel_restaurant_tables_form_tree
+msgid "BOT Products"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_form
+msgid "Basic Info"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_tree_bot
+msgid "Bot Details"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: selection:hotel.restaurant.kitchen.order.tickets,state:0
+#: selection:hotel.restaurant.order.list,state:0
+msgid "Cancel"
+msgstr "Отменить"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__cost
+msgid "Cost"
+msgstr "Стоимость"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__create_uid
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__create_date
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__create_date
+msgid "Created on"
+msgstr "Создан"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__currency
+msgid "Currency"
+msgstr "Валюта"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,help:hotel_restaurant_inventory.field_stock_partial_picking_line__currency
+msgid "Currency in which Unit cost is expressed"
+msgstr "Валюта, в которой выражается удельная себестоимость"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__date
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__date
+msgid "Date"
+msgstr "Дата"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__location_dest_id
+msgid "Dest. Location"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__display_name
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
+
+#. module: hotel_restaurant_inventory
+#: selection:hotel.restaurant.kitchen.order.tickets,state:0
+#: selection:hotel.restaurant.order.list,state:0
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_kitchen_order_tickets_inherits_form
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_form
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_tree_bot
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_tree_kot
+msgid "Done"
+msgstr "Сделано"
+
+#. module: hotel_restaurant_inventory
+#: selection:hotel.restaurant.kitchen.order.tickets,state:0
+#: selection:hotel.restaurant.order.list,state:0
+msgid "Draft"
+msgstr "Черновик"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__id
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__id
+msgid "ID"
+msgstr "Номер"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_hotel_reservation_order
+msgid "Includes Hotel Reservation Order"
+msgstr "Включает В Себя Заказ Бронирования Отеля"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_hotel_restaurant_order
+msgid "Includes Hotel Restaurant Order"
+msgstr "Включает В Себя Заказ Отельного Ресторана"
+
+#. module: hotel_restaurant_inventory
+#: selection:hotel.restaurant.order.list,product_nature:0
+msgid "KOT"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.actions.act_window,name:hotel_restaurant_inventory.open_view_hotel_restaurant_order_form_tree_kot
+msgid "KOT Details"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__order_no
+msgid "KOT Number"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.ui.menu,name:hotel_restaurant_inventory.menu_open_view_hotel_restaurant_tables_form_tree
+msgid "KOT Products"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_tree_kot
+msgid "Kot Details"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking____last_update
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line____last_update
+msgid "Last Modified on"
+msgstr "Последнее изменение"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__write_uid
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__write_date
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__write_date
+msgid "Last Updated on"
+msgstr "Последнее обновление"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__location_id
+msgid "Location"
+msgstr "Место"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__move_id
+msgid "Move"
+msgstr "Перемещение"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__update_cost
+msgid "Need cost update"
+msgstr "Нужно обновить стоимость"
+
+#. module: hotel_restaurant_inventory
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_filter
+msgid "Order Details"
+msgstr "Детали заказа"
+
+#. module: hotel_restaurant_inventory
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_form
+msgid "Order List"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__resno
+msgid "Order Number"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_stock_partial_picking
+msgid "Partial Picking Processing Wizard"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__picking_id
+msgid "Picking"
+msgstr "Комплектование"
+
+#. module: hotel_restaurant_inventory
+#: selection:hotel.restaurant.kitchen.order.tickets,state:0
+#: selection:hotel.restaurant.order.list,state:0
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_kitchen_order_tickets_inherits_form
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_form
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_tree_bot
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_tree_kot
+msgid "Process"
+msgstr "Процесс"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__product_id
+msgid "Product"
+msgstr "Продукт"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__move_ids
+msgid "Product Moves"
+msgstr "Перемещение Товара"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__product_nature
+msgid "Product Nature"
+msgstr ""
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_uom_uom
+msgid "Product Unit of Measure"
+msgstr "Ед. изм. продукта"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_mrp_production
+msgid "Production Order"
+msgstr "Производственный заказ"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__quantity
+msgid "Quantity"
+msgstr "Количество"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__room_no
+msgid "Room Number"
+msgstr "№ Комнаты"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__prodlot_id
+msgid "Serial Number"
+msgstr "Серийный номер"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__shop_id
+msgid "Shop"
+msgstr "Магазин"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_kitchen_order_tickets__state
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__state
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_inventory.view_hotel_restaurant_order_list_filter
+msgid "State"
+msgstr "Регион"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__tableno
+msgid "Table Number"
+msgstr "№ Столика"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,help:hotel_restaurant_inventory.field_stock_partial_picking__hide_tracking
+msgid "This field is for internal purpose. It is used to decide if the column production lot has to be shown on the moves or not."
+msgstr "Это поле предназначено для внутреннего использования. Онр используется для того, чтобы решить, должна ли колонка производственного лота быть показана при перемещениях."
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking__hide_tracking
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__tracking
+msgid "Tracking"
+msgstr "Отслеживание"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_stock_picking
+msgid "Transfer"
+msgstr "Перемещение"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,help:hotel_restaurant_inventory.field_stock_partial_picking_line__cost
+msgid "Unit Cost for this product line"
+msgstr "Удельные затраты на эту продуктовую линейку"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__product_uom
+msgid "Unit of Measure"
+msgstr "Единица измерения"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_hotel_restaurant_order_list__waiter_name
+msgid "Waiter Name"
+msgstr "Имя официанта"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model.fields,field_description:hotel_restaurant_inventory.field_stock_partial_picking_line__wizard_id
+msgid "Wizard"
+msgstr "Мастер"
+
+#. module: hotel_restaurant_inventory
+#: model:ir.model,name:hotel_restaurant_inventory.model_stock_partial_picking_line
+msgid "stock.partial.picking.line"
+msgstr ""
+

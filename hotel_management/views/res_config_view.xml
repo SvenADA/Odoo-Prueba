@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_hotel_management_config_settings" model="ir.ui.view">
+            <field name="name">hotel management settings</field>
+            <field name="model">hotel.management.config.settings</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <form string="Configure Hotel Management" version="7.0" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <separator string="Hotel Management"/>
+                    <group>
+<!--                         <label for="id" string="Invoice"/> -->
+                        <div >
+                        	<field name="test" class="oe_inline" on_change="onchange_test(test)" />
+                                <label for="test"/>
+                        </div>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    <!--    <record id="action_hotel_management_config_settings" model="ir.actions.act_window">
+            <field name="name">hotel Project</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hotel.management.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="base.menu_hotel_management_config" name="Hotel" parent="base.menu_config" 
+            sequence="11" action="action_hotel_management_config_settings"/>
+ -->
+    </data>
+</odoo>

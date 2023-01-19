@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ProductItem" t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension" owl="1">
+    <xpath expr="//div[hasclass('product-name')]" position="after">
+         <span class="combo-tag" style="text-align:center;">
+            </span>
+    </xpath>
+    </t>
+
+    <t t-name="ComboProductPopup" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-combo">
+                <p class="title"><t t-esc=" props.product_name || 'Combo Product' " /></p>
+                <div class="combo-selection">
+                    <div class="combo-type">
+                        <div class="combo-type-head">Required</div>
+                        <div class="combo-required">
+                            <t t-foreach="props.required || []" t-as="combo" t-key="combo.id">
+                                <div class='combo-category' t-att-data-combo-id="combo.id">
+                                    <div class="combo-category-head"><t t-esc="combo.name"/></div>
+                                    <div class="combo-product-list">
+                                        <t t-foreach="combo.combo_products" t-as="product">
+                                           <div class="product">
+                                            <div class="product-img">
+                                                <span class="combo-selected-tag"></span>
+                                                <img t-att-src="product.image_url"/>
+
+                                            </div>
+                                               <div class="product-name">
+                                                <t t-esc="product.name"/>
+                                            </div>
+                                        </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="combo-type">
+                        <div class="combo-type-head">Optional</div>
+                        <div class="combo-optional">
+                            <t t-foreach="props.optional || []" t-as="combo">
+                                <div class='combo-category' t-att-data-combo-id="combo.id">
+                                    <div class="combo-category-head">
+                                    <span><t t-esc="combo.name"/></span>
+                                        <span style="font-size: 13px;"> ( Choose <t t-esc="combo.limit"/>
+                                            item )</span>
+                                </div>
+                                    <div class="combo-product-list">
+                                        <t t-foreach="combo.combo_products" t-as="product">
+                                            <div class="product combo-product-selection"
+                                                 t-on-click="select_optional_products"
+                                                 t-att-data-product-id="product.id" t-att-data-combo-id="combo.id"
+                                                 t-att-data-category-id="combo.category">
+                                                 <div class="product-img">
+                                                <span class="combo-selected-tag"></span>
+                                                     <img t-att-src="product.image_url"/>
+                                            </div>
+                                                <div class="product-name">
+                                                <t t-esc="product.name"/>
+                                            </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="click_confirm">
+                        <t t-esc="props.confirmText"/>
+                    </div>
+                    <div class="button cancel" t-on-click="click_cancel">
+                        <t t-esc="props.cancelText"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//ul[hasclass('info-list')]" position="after">
+           <t t-if="props.line.get_combo_items()">
+                <div class="combo-items">
+                    <t t-foreach="props.line.get_combo_items()" t-as="combo_item">
+                        <div class="combo-item">
+                            <t t-esc="combo_item.name"/> : 1
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </xpath>
+    </t>
+
+    <t t-name="OrderLinesReceipt" t-inherit="point_of_sale.OrderLinesReceipt" t-inherit-mode="extension" owl="1">
+        <t t-foreach="receipt.orderlines" t-as="line">
+            <xpath expr="//div[hasclass('orderlines')]" position="after">
+                <t t-if="line.combo_items">
+                        <t t-foreach="line.combo_items" t-as="combo_item">
+                            <div class="receipt-combo">
+                                 - <t t-esc="combo_item.name"/>
+                                With qty:
+                                1
+                            </div>
+                        </t>
+                </t>
+            </xpath>
+        </t>
+    </t>
+</templates>

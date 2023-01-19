@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+		<record id="view_shop_form" model="ir.ui.view">
+            <field name="name">sale.shop</field>
+            <field name="model">sale.shop</field>
+            <field name="arch" type="xml">
+                <form string="Sales Shop" version="7.0">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                    <label for="warehouse_id" class="oe_edit_only"/>
+                     <h2><field name="warehouse_id" required="1"/></h2>
+                    <group name="shop">
+                        <group>
+                            <field name="payment_default_id"/>
+                            <field name="pricelist_id" groups="product.group_sale_pricelist"/>
+                        </group>
+                        <group>
+                            <field name="project_id" groups="analytic.group_analytic_accounting"/>
+                            <field name="company_id" widget="selection" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                </form>
+           </field>
+        </record>
+        
+        <record id="view_shop_tree" model="ir.ui.view">
+            <field name="name">sale.shop</field>
+            <field name="model">sale.shop</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Shop">
+                    <field name="name"/>
+                    <field name="warehouse_id"/>
+                    <field name="pricelist_id" groups="product.group_sale_pricelist"/>
+                    <field name="project_id" groups="analytic.group_analytic_accounting"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_shop_form" model="ir.actions.act_window">
+            <field name="name">Hotel</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.shop</field>
+            <!--<field name="view_type">form</field>-->
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_shop_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new sale shop.
+              </p><p>
+                Each quotation or sales order must be linked to a shop. The
+                shop also defines the warehouse from which the products will be
+                delivered for each particular sales.
+              </p>
+            </field>
+        </record>
+        
+        <!-- <menuitem action="action_shop_form" id="menu_action_shop_form" parent="sales_team.menu_sale_config" sequence="35"/> -->
+        <menuitem name="Hotel" id="menu_action_shop_form"
+			action="action_shop_form" sequence="2"
+			parent="hotel.hotel_configuration_menu"/>
+        
+        <record id="view_order_form_inherit_sale" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                
+                <field name="date_order" position="after">
+                	<field name="shop_id" groups="base.group_no_one" widget="selection"/>
+                </field>
+                
+            </field>
+        </record>
+        
+    </data>
+</odoo>

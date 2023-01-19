@@ -1,0 +1,271 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hotel_restaurant_pos
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-13 03:51+0000\n"
+"PO-Revision-Date: 2020-08-13 03:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_pos_details_credit
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields.selection,name:hotel_restaurant_pos.selection__pos_order__state__cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_restaurant_pos__create_uid
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_restaurant_pos__create_date
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model,name:hotel_restaurant_pos.model_pos_credit_details
+msgid "Credit Details"
+msgstr "Detalhes de Crédito"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields.selection,name:hotel_restaurant_pos.selection__pos_order__state__credit
+msgid "Credit Sale"
+msgstr "Vendas de Crédito"
+
+#. module: hotel_restaurant_pos
+#: model:ir.ui.menu,name:hotel_restaurant_pos.credit_sale_configuration_wiz
+msgid "Credit Sales"
+msgstr "Vendas de Crédito"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__date_end
+msgid "Date End"
+msgstr "Data final"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__date_start
+msgid "Date Start"
+msgstr "Data de início"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_pos_details_credit
+msgid "Dates"
+msgstr "Datas"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_restaurant_pos__display_name
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields.selection,name:hotel_restaurant_pos.selection__pos_order__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model,name:hotel_restaurant_pos.model_hotel_folio
+msgid "Hotel Folio Inherit for Electricity Meter Reading"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model,name:hotel_restaurant_pos.model_hotel_menucard
+msgid "Hotel menucard Inherit "
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_restaurant_pos__id
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__id
+msgid "ID"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model,name:hotel_restaurant_pos.model_hotel_reservation_order
+msgid "Includes Hotel Reservation Order"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_hotel_form_inherit1
+msgid "Invoice"
+msgstr "Fatura"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields.selection,name:hotel_restaurant_pos.selection__pos_order__state__invoiced
+msgid "Invoiced"
+msgstr "Faturado"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_restaurant_pos____last_update
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_restaurant_pos__write_uid
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_restaurant_pos__write_date
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_order__folio_ids
+msgid "Link to Folio"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_order__folio_line_id
+msgid "Link to Room"
+msgstr "Link para quarto"
+
+#. module: hotel_restaurant_pos
+#: model:ir.actions.act_window,name:hotel_restaurant_pos.action_report_pos_details_credit
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_pos_details_credit
+msgid "POS Credit Details"
+msgstr "Detalhes de crédito POS"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_hotel_folio_pos_form_id
+msgid "POS ORDERS"
+msgstr "ORDENS DE POS"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_hotel_folio_pos_form_id
+msgid "POS Order Entries"
+msgstr "POS ordem entrada"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_folio__pos_order_ids
+msgid "POS Orders"
+msgstr "ORDENS DE POS"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_reservation_order__pos_ref
+msgid "POS Ref."
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields.selection,name:hotel_restaurant_pos.selection__pos_order__state__paid
+msgid "Paid"
+msgstr "Pago"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_hotel_form_inherit1
+msgid "Payment"
+msgstr "Pagamento"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_hotel_menucard__pos_category
+msgid "Point of Sale Category"
+msgstr "Categoria de ponto de venda"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model,name:hotel_restaurant_pos.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Configuração do ponto de venda"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model,name:hotel_restaurant_pos.model_pos_order
+msgid "Point of Sale Orders"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields.selection,name:hotel_restaurant_pos.selection__pos_order__state__done
+msgid "Posted"
+msgstr "Lançado"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_pos_details_credit
+msgid "Print Report"
+msgstr "Imprimir Relatório"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model,name:hotel_restaurant_pos.model_hotel_restaurant_pos
+msgid "Restaurant POS related Back end"
+msgstr "Restaurante POS relacionados com Back-end"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_hotel_form_inherit1
+msgid "Return Products"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_credit_details__user_ids
+msgid "Salespeople"
+msgstr "Vendedores"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_config__shop_id
+msgid "Shop"
+msgstr "Shop"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_pos_config_form_inherit
+msgid "Shop Name"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_pos_config_form_inherit
+msgid "Shop id"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_order__state
+msgid "Status"
+msgstr "Situação"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_order__table_ids
+msgid "Table number"
+msgstr "Número da tabela"
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_hotel_form_inherit1
+msgid "Tables"
+msgstr "Tabelas"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,help:hotel_restaurant_pos.field_hotel_menucard__pos_category
+msgid ""
+"The Point of Sale Category this products belongs to. Those categories are "
+"used to group similar products and are specific to the Point of Sale."
+msgstr "O ponto de venda categoria a que este produtos pertence. Essas categorias são usadas para agrupar produtos semelhantes e são específicas para o ponto de venda."
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_order__waiter_name
+msgid "Waiter Name"
+msgstr "Nome de garçom"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model.fields,field_description:hotel_restaurant_pos.field_pos_order__credit_sales
+msgid "creditsales"
+msgstr "Vendas de Crédito"
+
+#. module: hotel_restaurant_pos
+#: model:ir.model,name:hotel_restaurant_pos.model_pos_session
+msgid "inherited pos.session class"
+msgstr ""
+
+#. module: hotel_restaurant_pos
+#: model_terms:ir.ui.view,arch_db:hotel_restaurant_pos.view_pos_details_credit
+msgid "or"
+msgstr "ou"

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="room_guestwise_report_format" model="report.paperformat">
+            <field name="name">European A4 low margin</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <record id="roomwise_guestwise_qweb" model="ir.actions.report">
+            <field name="name">Room wise and Guest wise</field>
+            <field name="model">room.guestwise.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hotel_management.roomwise_guestwise_report_view</field>
+            <field name="report_file">hotel_management.roomwise_guestwise_report_view</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="paperformat_id" ref="hotel_management.room_guestwise_report_format"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,562 @@
+.room_dashboard{
+    padding: 0;
+    margin: 0;
+/*     background-color:white; */
+/* 	background-image : url("../img/url.jpeg"); */
+    font-family: "Lato","Lucida Grande", Helvetica, Verdana, Arial;
+    color: #555555;
+    font-size: 12px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-shadow: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+     overflow: auto;
+     
+background: #cedce7; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #cedce7 0%, #596a72 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#cedce7), color-stop(100%,#596a72)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #cedce7 0%,#596a72 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #cedce7 0%,#596a72 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #cedce7 0%,#596a72 100%); /* IE10+ */
+background: linear-gradient(135deg,  #cedce7 0%,#596a72 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#596a72',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.header_lbl{
+	font-family:  sans-serif;
+	font-size: 16pt;
+	text-shadow: 1px 1px 1px #FFFCF2;;
+	color: aliceblue;
+	position: relative;
+}
+
+.header{
+	width: 100%;
+	  height: 35px;
+	 padding-top: 10px;
+	 text-align: center;
+	color: whitesmoke;
+}
+
+.close_button{
+	height: 100%;
+	float: right;
+}
+
+.room_booked{
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.extra_div{
+	width: 155px;
+	height: 100%;
+}
+
+.draft{
+	color : #FFDA2F;
+	background-color: #FFDA2F;
+}
+
+.done{
+	background-color: #FF0000;
+	color: #FF0000;
+}
+
+.confirm{
+	background-color: #A6A6A6;
+	color: #A6A6A6;
+}
+
+.booking_start{
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+}
+
+.booking_end{
+	border-top-right-radius: 100px;
+	border-bottom-right-radius: 100px;
+}
+
+.highlight_booked{
+	-moz-box-shadow: 0px 0px 5px 2px rgb(255, 15, 44);
+	-webkit-box-shadow: 0px 0px 9px 0px rgb(255, 15, 44); 
+	box-shadow: 0px 0px 9px 0px rgb(255, 15, 44); 
+	transform:scale(1.3); -ms-transform:scale(1.3); transform:scale(1.3); transform:scale(1.3); transform:scale(1.3);
+}
+
+.room_available{
+	width: 100%;
+	height: 100%;
+	background-color: #32CD32;
+	color: #32CD32;
+	top: 0;
+	left: 0;
+}
+
+.room_dirty{
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	color: black;
+	top: 0;
+	left: 0;
+}
+
+.room_booked_and_dirty{
+	width: 100%;
+	height: 100%;
+	background-color: #61380B;
+	color: #61380B;
+	top: 0;
+	left: 0;
+}
+
+.avail{
+	color:#32CD32;
+}
+
+.CSSTableGenerator {
+margin-right : 20px;
+margin-top:25px;
+margin-bottom:25px;
+padding:0px;
+width:100%;	box-shadow: 10px 10px 5px #888888;
+border:1px solid #000000;
+
+-moz-border-radius-bottomleft:0px;
+-webkit-border-bottom-left-radius:0px;
+border-bottom-left-radius:0px;
+
+-moz-border-radius-bottomright:0px;
+-webkit-border-bottom-right-radius:0px;
+border-bottom-right-radius:0px;
+
+-moz-border-radius-topright:0px;
+-webkit-border-top-right-radius:0px;
+border-top-right-radius:0px;
+
+-moz-border-radius-topleft:0px;
+-webkit-border-top-left-radius:0px;
+border-top-left-radius:0px;
+}.CSSTableGenerator table{
+width:100%;
+height:100%;
+margin:0px;padding:0px;
+}.CSSTableGenerator tr:last-child td:last-child {
+-moz-border-radius-bottomright:0px;
+-webkit-border-bottom-right-radius:0px;
+border-bottom-right-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:first-child {
+-moz-border-radius-topleft:0px;
+-webkit-border-top-left-radius:0px;
+border-top-left-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:last-child {
+-moz-border-radius-topright:0px;
+-webkit-border-top-right-radius:0px;
+border-top-right-radius:0px;
+}.CSSTableGenerator tr:last-child td:first-child{
+-moz-border-radius-bottomleft:0px;
+-webkit-border-bottom-left-radius:0px;
+border-bottom-left-radius:0px;
+}
+.CSSTableGenerator td:hover{
+background-color:#d3e9ff;
+}
+
+.CSSTableGenerator th{
+vertical-align:middle;
+background-color:#ffffff;
+border:1px solid #000000;
+border-width:0px 1px 1px 0px;
+text-align:center;
+border-width:0px 0px 1px 1px;
+font-size:12px;
+font-family:Arial;
+font-weight:bold;
+color:navy;
+padding:5px;
+
+background: #f5f6f6;
+background: -moz-linear-gradient(top,  #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(80%,#dddfe3), color-stop(100%,#f5f6f6));
+background: -webkit-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -o-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -ms-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: linear-gradient(to bottom,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+
+}
+
+.CSSTableGenerator th:FIRST-CHILD{
+color: red;
+font-weight:bold;
+background: #fcfff4;
+background: -moz-linear-gradient(left,  #fcfff4 0%, #e9e9ce 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#fcfff4), color-stop(100%,#e9e9ce));
+background: -webkit-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%);
+background: -o-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%);
+background: -ms-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%);
+background: linear-gradient(to right,  #fcfff4 0%,#e9e9ce 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#e9e9ce',GradientType=1 );
+position: absolute;
+width: 166px;
+height: 45px;
+}
+
+.CSSTableGenerator td{
+vertical-align:middle;
+background-color:#ffffff;
+border:1px solid #000000;
+border-width:0px 1px 1px 0px;
+text-align:left;
+padding:3px;
+font-size:10px;
+font-family:Arial;
+font-weight:normal;
+color:red;
+}
+.CSSTableGenerator td:FIRST-CHILD{
+	width:166px;
+	position:absolute;
+	background: #fcfff4;
+	background: -moz-linear-gradient(left,  #fcfff4 0%, #e9e9ce 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#fcfff4), color-stop(100%,#e9e9ce));
+	background: -webkit-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%);
+	background: -o-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%);
+	background: -ms-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%);
+	background: linear-gradient(to right,  #fcfff4 0%,#e9e9ce 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#e9e9ce',GradientType=1 );
+}
+	
+.CSSTableGenerator tr:last-child td{
+border-width:0px 1px 0px 0px;
+}.CSSTableGenerator tr td:last-child{
+border-width:0px 0px 1px 0px;
+}.CSSTableGenerator tr:last-child td:last-child{
+border-width:0px 0px 0px 0px;
+}
+.CSSTableGenerator tr:first-child td{
+	background: #f5f6f6;
+background: -moz-linear-gradient(top,  #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(80%,#dddfe3), color-stop(100%,#f5f6f6));
+background: -webkit-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -o-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -ms-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: linear-gradient(to bottom,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+border:0px solid #000000;
+text-align:center;
+border-width:0px 0px 1px 1px;
+font-size:14px;
+font-family:Arial;
+font-weight:bold;
+color:navy;
+}
+.CSSTableGenerator tr:first-child:hover td{
+	background: #f5f6f6;
+background: -moz-linear-gradient(top,  #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(80%,#dddfe3), color-stop(100%,#f5f6f6));
+background: -webkit-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -o-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -ms-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: linear-gradient(to bottom,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+}
+.CSSTableGenerator tr:first-child td:first-child{
+border-width:0px 0px 1px 0px;
+}
+.CSSTableGenerator tr:first-child td:last-child{
+border-width:0px 0px 1px 1px;
+}
+
+.topbar{
+	width:100%;
+	border-style: outset;
+	border-width: medium;
+	border-radius : 15px;
+	margin-left:25px;
+	margin-top:25px;
+	margin-right:25px;
+	margin-bottom:25px;
+	text-align: left;
+	font-size: 14px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 50px;
+/* 	background-color:white; */
+	color:maroon;
+	-moz-box-shadow: inset 0px 0px 31px 14px white;
+	-webkit-box-shadow: inset 0px 0px 31px 14px white;
+	box-shadow: inset 0px 0px 31px 14px white;
+	background: #f5f6f6;
+background: -moz-linear-gradient(top,  #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(80%,#dddfe3), color-stop(100%,#f5f6f6));
+background: -webkit-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -o-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -ms-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: linear-gradient(to bottom,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=0 );
+	
+}
+
+
+.bottom_div{
+	border-style: outset;
+	border-width: medium;
+	border-radius : 15px;
+	margin-left:25px;
+	margin-top:25px;
+	margin-right:25px;
+	margin-bottom:25px;
+	text-align: left;
+	font-size: 14px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 0px;
+	background-color:white;
+	color:maroon;
+	overflow: auto;
+	-moz-box-shadow: inset 0px 0px 31px 14px white;
+	-webkit-box-shadow: inset 0px 0px 31px 14px white;
+	box-shadow: inset 0px 0px 31px 14px white;
+	background: #f5f6f6;
+background: -moz-linear-gradient(top,  #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f6f6), color-stop(21%,#dbdce2), color-stop(49%,#b8bac6), color-stop(80%,#dddfe3), color-stop(100%,#f5f6f6));
+background: -webkit-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -o-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: -ms-linear-gradient(top,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+background: linear-gradient(to bottom,  #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=0 );
+}
+
+.tbl_data{
+	padding: 5px 5px 5px 5px; 
+	
+}
+
+.tbl_data td{
+	padding:3px;
+}
+
+ .ui-tooltip {
+	border :groove 2px;
+	padding: 10px 20px;
+	border-radius: 10px;
+	font: 13px "Trebuchet MS", Sans-Serif;
+	-moz-box-shadow:10px 10px 5px #000000;
+	-webkit-box-shadow:10px 10px 5px #000000;
+	text-shadow:1px 1px 1px #000000;
+    background-color: rgba(69, 44, 44, 0.8);
+    background: rgba(69, 44, 44, 0.8);
+	color: white;
+}
+
+
+.tooltip_table{
+	
+	
+}
+
+.tooltip_table td:FIRST-CHILD{
+	text-align: right;
+	
+	
+}
+
+.tooltip_table th {
+    background-color: #FFFFFF;
+    color: white;
+}
+.tbl_guest_details {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	border-width: 1px;
+	border-color: white;
+	border-collapse: collapse;
+	text-align: center;
+}
+.tbl_guest_details th {
+	border-width: 1px;
+	padding: 5px;
+	border-style: solid;
+	border-color: white;
+}
+.tbl_guest_details td {
+	border-width: 1px;
+	padding: 5px;
+	border-style: solid;
+	border-color:white;
+}
+
+.tbl_guest_details td:FIRST-CHILD {
+	text-align: center;
+	}
+
+.powered_by_img{
+	color : graytext;
+	font-size: medium;
+	text-align: center;
+	text-shadow:1px 1px 1px #000000;
+}
+
+.powered_by_img label {
+	
+	font-size: 78pt;
+	text-shadow:5px 5px 5px #000000;
+}
+
+.powered_by_img img {
+	width: 900px;
+	height: 200px;
+}
+
+
+
+.custom_oe_application{
+	 position: initial !important;
+  	 height: auto !important;
+}
+.fc-time-area
+{
+background-color: #32CD32 !important;
+}
+
+.fc-cell-content
+{
+background-color: white !important;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+section,
+footer {
+    margin: 0;
+    padding: 1px; /* tweaked from 0 to 1px */
+}
+
+
+
+
+
+
+
+
+
+
+/*
+.ui-datepicker {
+    background: #EEE;
+    border: 1px solid #555;
+    color: #EEE;
+}
+.ui-datepicker-header {
+    background: black;
+    color: #e0e0e0;
+    font-weight: bold;
+    -webkit-box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, 2);
+    -moz-box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, .2);
+    box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, .2);
+    text-shadow: 1px -1px 0px #000;
+    filter: dropshadow(color=#000, offx=1, offy=-1);
+    line-height: 30px;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color: #111;
+}
+.ui-datepicker-title {
+    text-align: center;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+  
+}
+
+.ui-datepicker-prev {
+    float: left;
+    background-position: center -30px;
+}
+
+.ui-datepicker thead {
+    background-color: #f7f7f7;
+    background-image: -moz-linear-gradient(top,  #f7f7f7 0%, #f1f1f1 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f1f1f1));
+    background-image: -webkit-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+    background-image: -o-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+    background-image: -ms-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+    background-image: linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f1f1f1',GradientType=0 );
+    border-bottom: 1px solid #bbb;
+}
+
+.ui-datepicker th {
+    text-transform: uppercase;
+    font-size: 10pt;
+    padding: 5px 0;
+    color: #000000;
+    text-shadow: 1px 0px 0px #fff;
+    filter: dropshadow(color=#fff, offx=1, offy=0);
+}
+.ui-datepicker-next {
+    float: right;
+    background-position: center 0px;
+}
+
+.ui-datepicker tbody td {
+    padding: 0;
+    border-right: 1px solid #bbb;
+}
+
+.ui-datepicker tbody td:last-child {
+    border-right: 0px;
+}
+.ui-datepicker tbody tr {
+    border-bottom: 1px solid #bbb;
+}
+.ui-datepicker tbody tr:last-child {
+    border-bottom: 0px;
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    height: 20px;
+    line-height: 15px;
+    color: #666666;
+}
+.ui-datepicker-calendar .ui-state-default {
+    background: #666666;
+    background: -moz-linear-gradient(top,  #ededed 0%, #dedede 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#dedede));
+    background: -webkit-linear-gradient(top,  #ededed 0%,#dedede 100%);
+    background: -o-linear-gradient(top,  #ededed 0%,#dedede 100%);
+    background: -ms-linear-gradient(top,  #ededed 0%,#dedede 100%);
+    background: linear-gradient(top,  #ededed 0%,#dedede 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dedede',GradientType=0 );
+    -webkit-box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
+    -moz-box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
+    box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
+}
+.ui-datepicker-unselectable .ui-state-default {
+    background: #f4f4f4;
+    color: #b4b3b3;
+}
+
+.ui-datepicker-calendar .ui-state-hover {
+    background: #f7f7f7;
+}*/
+

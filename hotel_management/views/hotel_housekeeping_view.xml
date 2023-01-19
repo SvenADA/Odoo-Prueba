@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!--============================================================ Replacement
+        or Repair Housekeeping Form ============================================================ -->
+
+
+    <record model="ir.ui.view" id="view_rr_housekeeping_form">
+        <field name="name">rr.housekeeping.form</field>
+        <field name="model">rr.housekeeping</field>
+        <field name="arch" type="xml">
+            <form string="Repair Housekeeping">
+                <header>
+                    <button colspan="1" string="Assign" name="assign_request"
+                            type="object" states="confirmed"/>
+                    <button colspan="1" string="Confirm" name="confirm_request"
+                            type="object" states="draft"/>
+                    <button colspan="1" string="Cancel" name="cancel_request"
+                            type="object" states="draft"/>
+                    <button colspan="1" string="Done" name="done_task" type="object"
+                            states="assign"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assign,done"
+                           statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                </header>
+                <sheet string="Repair Housekeeping">
+                    <notebook>
+                        <page string="Repair Housekeeping">
+                            <group>
+                                <group colspan="4" col="4">
+                                    <field name="name" readonly="1"/>
+                                    <field name="date"/>
+                                </group>
+                                <group colspan="4" col="4">
+                                    <field name="shop_id"/>
+                                    <field name="source"/>
+                                </group>
+                                <group colspan="4" col="4">
+                                    <field name="room_no" domain="[('shop_id','=',shop_id)]"/>
+                                    <field name="requested_by"
+                                           attrs="{'invisible': [('source','=','guest')], 'required':[('source','=','intern')]}"/>
+                                    <field name="company_id"/>
+                                </group>
+
+
+                                <group colspan="4" col="4">
+                                    <field name="requested_by_partner"
+                                           attrs="{'invisible': [('source','=','intern')],'required':[('source','=','guest')]}"/>
+                                    <field name="activity"/>
+
+                                </group>
+                                <group colspan="4" col="4">
+                                    <field name="approved_by" readonly="1"/>
+
+                                    <field name="complaint"/>
+                                </group>
+                                <field name="company_id" invisible="1"/>
+                                <group>
+                                    <field name="assign_to" attrs="{'invisible': [('state','=','draft')]}"/>
+                                </group>
+                                <group colspan="3" col="3">
+                                    <group>
+                                        <field name="assigned_internal"
+                                               attrs="{'invisible': ['|','|',('state','=','draft'),('assign_to','=','b'),('assign_to','=','third_party')],'readonly':['|','|','|',('state','=','assign'),('state','=','issue_material'),('state','=','work_in_progress'),('state','=','done')]}"/>
+                                        <!--										<field name="assigned_third_party"-->
+                                        <!--											attrs="{'invisible': ['|','|',('state','=','draft'),('assign_to','=','b'),('assign_to','=','intern')],'readonly':['|','|','|',('state','=','assign'),('state','=','issue_material'),('state','=','work_in_progress'),('state','=','done')]}"-->
+                                        <!--											domain="[('supplier','=','TRUE')]" />-->
+                                    </group>
+                                </group>
+                            </group>
+                            <field name="rr_line_ids" colspan="4" nolabel="1">
+                                <form string="Repair / Repalcement Info">
+                                    <group col="4">
+                                        <field name="product_id"/>
+                                        <field name="qty"/>
+                                        <field name="uom"/>
+                                        <field name="product_line_ids" colspan="4" nolabel="1">
+                                            <form string="Product Requirement">
+                                                <group col="4">
+                                                    <field name="product_product_id"/>
+                                                    <field name="qty"/>
+                                                    <field name="uom"/>
+                                                </group>
+                                            </form>
+                                            <tree string="Product Requirement">
+                                                <field name="product_product_id"/>
+                                                <field name="qty"/>
+                                                <field name="uom"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </form>
+                                <tree string="Repair / Repalcement Info">
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                    <field name="uom"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    ============================================================
+    Replacement or Repair Housekeeping Tree
+    ============================================================
+
+    <record model="ir.ui.view" id="view_rr_housekeeping_tree">
+        <field name="name">rr.housekeeping.tree</field>
+        <field name="model">rr.housekeeping</field>
+        <field name="arch" type="xml">
+            <tree string="Repair Housekeeping">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="activity"/>
+                <field name="requested_by"/>
+                <field name="source"/>
+                <field name="approved_by"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    ================ Replacement or Repair HouseKeeping Menu =================
+
+
+    <record model="ir.actions.act_window" id="open_rr_housekeeping_form_tree_new1">
+        <field name="name">Request for Repair / Replacement</field>
+        <field name="res_model">rr.housekeeping</field>
+        <!--<field name="view_type">form</field>-->
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem name="Request for Repair / Replacement" id="menu_open_rr_housekeeping_form_tree_new1"
+              action="open_rr_housekeeping_form_tree_new1" parent="hotel_housekeeping.hotel_housekeeping_menu"/>
+
+    <record model="ir.ui.view" id="view_issue_material_details_form">
+        <field name="name">issue.material.details.form</field>
+        <field name="model">issue.material.details</field>
+        <field name="arch" type="xml">
+            <form string="Issue Material">
+                <header>
+                    <button colspan="1" string="Confirm" name="confirm_task"
+                            type="object" states="draft"/>
+                    <button colspan="1" string="Done" name="done_task" type="object"
+                            states="confirm"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"
+                           statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                </header>
+                <sheet string="Issue Material">
+                    <notebook>
+                        <page string="Issue Material">
+                            <group colspan="4" col="4">
+                                <field name="name" readonly="1"/>
+                                <field name="request_id"/>
+                                <field name="shop_id"/>
+                                <field name="company_id"/>
+                                <newline/>
+                                <field name="complaint" colspan="4"/>
+                            </group>
+                            <field name="repair_ids" colspan="4" nolabel="1">
+                                <form string="Repair / Repalcement Info">
+                                    <group col="4">
+                                        <field name="product_id"/>
+                                        <field name="qty"/>
+                                        <field name="uom"/>
+                                        <field name="source_locatiion" required="1"/>
+                                        <field name="dest_locatiion" required="1"/>
+                                        <field name="product_line_ids" colspan="4" nolabel="1">
+                                            <form string="Product Requirement">
+                                                <group col="4">
+                                                    <field name="product_product_id"/>
+                                                    <field name="qty"/>
+                                                    <field name="uom"/>
+                                                </group>
+                                            </form>
+                                            <tree string="Product Requirement">
+                                                <field name="product_product_id"/>
+                                                <field name="qty"/>
+                                                <field name="uom"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </form>
+                                <tree string="Repair / Repalcement Info">
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                    <field name="uom"/>
+                                    <field name="source_locatiion"/>
+                                    <field name="dest_locatiion"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_issue_material_details_tree">
+        <field name="name">issue.material.details.tree</field>
+        <field name="model">issue.material.details</field>
+        <field name="arch" type="xml">
+            <tree string="Issue Material">
+                <field name="request_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="open_issue_material_details_tree_new1">
+        <field name="name">Issue Material</field>
+        <field name="res_model">issue.material.details</field>
+        <!--<field name="view_type">form</field>-->
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem name="Issue Material" id="menu_open_issue_material_details_new1"
+              action="open_issue_material_details_tree_new1" parent="hotel_housekeeping.hotel_housekeeping_menu"/>
+
+</odoo>

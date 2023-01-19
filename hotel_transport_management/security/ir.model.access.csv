@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_transport_partner_user,transport.partner,model_transport_partner,group_transport_user,1,1,0,0
+access_transport_partner_manager,transport.partner,model_transport_partner,group_transport_manager,1,1,1,0
+access_location_master_user,location.master,model_location_master,group_transport_user,1,1,0,0
+access_location_master_manager,location.master,model_location_master,group_transport_manager,1,1,1,0
+access_transport_information_user,transport.information,model_transport_information,group_transport_user,1,1,0,0
+access_transport_information_manager,transport.information,model_transport_information,group_transport_manager,1,1,1,0
+access_transport_mode_user,transport.mode,model_transport_mode,group_transport_user,1,1,0,0
+access_transport_mode_manager,transport.mode,model_transport_mode,group_transport_manager,1,1,1,0
+access_transport_task_user,transport.task,model_transport_task,group_transport_user,1,1,0,0
+access_transport_task_manager,transport.task,model_transport_task,group_transport_manager,1,1,1,0
+access_project_task_user,project.task,model_project_task,group_transport_user,1,1,0,0
+access_project_task_manager,project.task,model_project_task,group_transport_manager,1,1,1,0
+access_hotel_transport_line_mng1,hotel_folio_transport.line,hotel_management.model_hotel_folio_transport_line,group_transport_manager,1,1,1,1
+access_hotel_transport_line_usr,hotel_folio_transport.line,hotel_management.model_hotel_folio_transport_line,group_transport_user,1,1,1,1

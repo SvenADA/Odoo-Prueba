@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<!-- CRM Lead Inherited Fields	-->
+	
+	<record model="ir.ui.view" id="crm_case_form_view_leads_inherit_tour">
+			<field name="name">crm_case_form_view_leads.inherit.tour</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_lead_view_form" />
+			<field name="arch" type="xml">
+				<field name="name" position="before">
+					<field name="lead_sequence"/>
+				</field >
+				<field name="type" invisible="1" position="after">
+					<newline />
+						<field name="via"/>
+						<field name="agent_id" domain="[('agent','=',True)]" attrs="{'invisible': [('via','!=','agent')]}"/>
+						<field name="shop_id" />
+				</field >	
+				<page name="extra" position="after">
+					<page name="banquet" string="Banquet History">
+						<field name="banquets_ids" readonly="1" nolabel="1"/>
+					</page >
+				</page >
+			</field>
+	</record>
+	
+	
+	<record model="ir.ui.view" id="crm_case_form_view_oppor_inherit_tour">
+			<field name="name">crm.case.form.view.oppor.inherit.tour</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_lead_view_form" />
+			<field name="arch" type="xml">
+				<field name="priority" position="after">
+					<field name="via"/>
+					<field name="agent_id" domain="[('agent','=',True)]" attrs="{'invisible': [('via','!=','agent')]}"/>
+					<field name="shop_id"/>
+				</field>	
+				<page name="lead" position="after">
+					<page name="banquet" string="Banquet History">
+						<field name="banquets_ids" readonly="1" nolabel="1"/>
+					</page >
+				</page >
+			</field>
+	</record>	
+		
+		<record model="ir.ui.view" id="view_deposit_payment_policy_tree">
+			<field name="name">deposit.payment.policy.tree</field>
+			<field name="model">deposit.payment.policy</field>
+			<field name="arch" type="xml">
+				<tree string="Deposit Policy" editable="top">
+					<field name="shop_id" />
+					<field name="start_date" />
+					<field name="name" />
+					<field name="percentage" />
+					<field name="min_amount" />
+					<field name="company_id" invisible="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_deposit_policy_tree">
+			<field name="name">Deposit Payment Policy</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">deposit.payment.policy</field>
+			<field name="view_mode">tree</field>
+		</record> 
+		
+		<menuitem name="Deposit Payment Policy" id="menu_deposit_policy" sequence="13" parent="hotel.hotel_configuration_menu"/>
+		
+		<menuitem name="Deposit Policy"
+		          id="menu_deposit_policy_tree" 
+		          action="action_deposit_policy_tree"
+				  sequence="1"
+				  parent="menu_deposit_policy"/>
+		
+		<menuitem name="Banquet Configuration" id="menu_banquet_config" sequence="14" parent="hotel.hotel_configuration_menu"/>
+		
+		<record model="ir.ui.view" id="view_theme_plan_tree">
+			<field name="name">theme.plan.tree</field>
+			<field name="model">theme.plan</field>
+			<field name="arch" type="xml">
+				<tree string="Theme Plan" editable="top">
+					<field name="name" />
+					<field name="code" />
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_theme_plan_tree">
+			<field name="name">Theme Plan</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">theme.plan</field>
+			<field name="view_mode">tree</field>
+		</record> 
+		
+		<menuitem name="Banquet Theme" id="menu_theme_plan_tree" action="action_theme_plan_tree"
+		          sequence="1" parent="menu_banquet_config"/>
+		
+		<record model="ir.ui.view" id="view_seating_plan_tree">
+			<field name="name">seating.plan.tree</field>
+			<field name="model">seating.plan</field>
+			<field name="arch" type="xml">
+				<tree string="seating Plan" editable="top">
+					<field name="name" />
+					<field name="code" />
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_seating_plan_tree">
+			<field name="name">Seating Plan</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">seating.plan</field>
+			<field name="view_mode">tree</field>
+		</record> 
+		
+		<menuitem name="Seating Plan" id="menu_seating_plan_tree" action="action_seating_plan_tree"
+		          sequence="2" parent="menu_banquet_config"/>
+		
+		<menuitem name="Banquet Booking" sequence="85" groups="banquet_managment.group_banquet_manager,banquet_managment.group_banquet_user" 
+				  id="main_menu_banquet_booking" parent="hotel.hotel_management_menu"/>
+		
+		<!-- quataion -->
+		
+		<record id="banquet_quotation_form_view" model="ir.ui.view">
+            <field name="name">banquet.quotation.form</field>
+            <field name="model">banquet.quotation</field>
+            <field name="arch" type="xml">
+           		<form string="Banquet Quotation" version="7.0">
+					<header>
+						<button string="Confirm" name="action_confirm" states="draft" type="object" groups="banquet_managment.group_banquet_manager" />
+						<button string="Send To Customer" name="action_sent" states="confirm" type="object"  />
+						<button string="Approved" name="action_approve" states="send_to" type="object"  />
+						<button string="Refuse" name="action_refuse" states="send_to" type="object"  />
+						<button string="Create Banquet Booking" name="action_create_tour" states="approve" type="object"  />
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm,send_to,done" />
+					</header>
+					<sheet string="Basic Info">
+						<group colspan="4" col="6">
+							<field name="name" select="1"/>
+							<field name="shop_id" />
+							<field name="lead" domain="[('shop_id','=',shop_id)]" />
+							<field name="current_date" />
+							<field name="contact_name" />
+							<field name="address" />
+							<field name="email_id" />
+							<field name="mobile" />
+							<field name="pricelist_id" />
+							<field name="adult" />
+							<field name="child" />
+							<field name="via"/>
+							<field name="agent_id" domain="[('agent','=',True)]" attrs="{'invisible': [('via','!=','agent')],'required':[('via','=','agent')]}"/>
+							<field name="invoiced" invisible="1"/>
+							<field name="company_id" invisible="1"/>
+					   </group>
+						<separator colspan="6" string="Banquet Information"/>
+					   <group col="6" colspan="4">
+						   <field name="in_date" required="True"/>
+						   <field name="out_date" required="True"/>
+						   <!-- <field name="number_of_days" /> -->
+						   <field name="number_of_rooms" />
+						   <field name="deposit_policy" />
+						   <field name="percentage" />
+						   <field name="min_dep_amount" invisible="1"/>
+					   </group>
+					   <separator colspan="6" string="Event Information"/>
+							<group col="6" colspan="4">
+								<field name="theme_id" />
+								<field name="board_toread" />
+								<field name="seating_id"/>
+						   </group>
+					<notebook colspan="6">
+						<page string="Room Details">
+            				<group col="6" colspan="4">
+            					<field name="room_ids" nolabel="1" context="{'shop_id':shop_id,'default_shop_id':shop_id}">
+									<form string="Reservation Line">
+										<separator colspan="4" string="Room Type"/>
+										<group colspan="4">
+											<!-- <field name="line_id"/> -->
+											<field name="checkin" readonly = "0"/>
+											<field name="checkout"/>
+											<field name="number_of_days"/>
+											<field name="categ_id" string="Banquet Type" domain="[('isroomtype','=',True)]" select="1"/>
+											<field name="room_number" string="Banquet Hall" 
+												domain="[('shop_id','=',parent.shop_id),('isroom','=',True),('categ_id','=',categ_id)]" />
+											<field name="cost_price_unit"/>
+											<field name="cost_price_subtotal"/>
+											<field name="price"/>
+											<field name="sub_total1"/>
+											<field name="discount"/>
+<!-- 											<field name="purches_bol" on_change="on_change_purchase_bool(purches_bol,room_number)"/> -->
+										</group>
+										<separator string="Tax On Product"/>
+										<group colspan="4">
+											<field name="taxes_id" colspan="2" nolabel="1"/>
+											<field name="pur_tax_ids" colspan="2" nolabel="1"/>
+										</group> 
+								</form>
+								<tree string="Reservation Line">
+									<field name="categ_id"/>
+									<field name="room_number"/>
+									<field name="cost_price_unit"/>
+									<field name="cost_price_subtotal"/>
+									<field name="discount"/>
+									<field name="price"/>
+<!--									<field name="sub_total1"/>-->
+									<field name="sub_total"/>
+							   </tree>
+								</field>
+            				</group>
+            			</page>
+						<page string="Food Details">
+            				<group col="6" colspan="4">
+							<field name="food_items_ids" colspan="4" nolabel="1">
+                            <form string="Food List">
+                            	<group col="4" colspan="4">
+                                <field name="product_id" domain="[('ismenucard','=',True),('shop_id','in',[parent.shop_id,False])]" context="{'shop_id': parent.shop_id,'food_search':True}" />
+								<field name="name" />
+
+								<field name="product_uom"/>
+								<field name="product_uom_qty" />
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+								<field name="cost_price_unit"/>
+                                <field name="cost_price_subtotal"/>
+                                <field name="discount"/>
+<!-- 								<field name="purches_bol" on_change="on_change_purchase_bool(purches_bol,product_id)"/> -->
+								<field name="category_id" invisible="True"/>
+								</group>
+                                <newline/>
+                                <group col="4" colspan="4">
+                                <field name="tax_id" widget="many2many_tags" colspan="2" nolabel="1"/>
+								<field name="pur_tax_ids" colspan="2" nolabel="1"/>
+								</group>
+                            </form>
+                            <tree string="Order List">
+                                <field name="name" />
+                                <field name="product_id" domain="[('shop_id','in',[parent.shop_id,False])]"/>
+                                <field name="product_uom"/>
+                                <field name="product_uom_qty" />
+								<field name="cost_price_unit"/>
+                                <field name="cost_price_subtotal"/>
+								<field name="discount"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+                            </tree>
+                            </field>
+            				</group>
+            			</page>
+						<page string="Other Services">
+            				<group col="6" colspan="4">
+							<field name="other_items_ids" colspan="4" nolabel="1">
+                            <form string="Other Services">
+                            	<group col="4" colspan="4">
+									<field name="product_id" domain="[('shop_id','in',[parent.shop_id,False]),
+																		('detailed_type', '=', 'service')]" />
+									<field name="name" />
+									<field name="product_uom"/>
+									<field name="product_uom_qty" />
+									<field name="price_unit"/>
+									<field name="price_subtotal"/>
+									<field name="cost_price_unit"/>
+									<field name="cost_price_subtotal"/>
+									<field name="discount"/>
+	<!-- 								<field name="purches_bol" on_change="on_change_purchase_bool(purches_bol,product_id)"/> -->
+									</group>
+									<newline/>
+									<group col="4" colspan="4">
+									<field name="tax_id" widget="many2many_tags" colspan="2"/>
+									<field name="pur_tax_ids" colspan="2" nolabel="1"/>
+								</group>
+                            </form>
+                            <tree string="Order List">
+								<field name="product_id"/>
+                                <field name="name" />
+                                
+                                <field name="product_uom"/>
+                                <field name="product_uom_qty"/>
+								<field name="cost_price_unit"/>
+                                <field name="cost_price_subtotal"/>
+								<field name="discount"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+								<field name="tax_id" widget="many2many_tags"/>
+                            </tree>
+                            </field>
+            				</group>
+            			</page>
+					</notebook>
+					   <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                            <field name="sale_untax_amt" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+						    <field name="sale_tax_amt" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+							   <div class="oe_subtotal_footer_separator oe_inline">
+									<label for="sale_total_amt" />
+									<button name="compute" states="draft" string="(Compute)" type="object" class="oe_edit_only oe_link"/>
+								</div>
+						    <field name="sale_total_amt" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+					   </group>
+					   <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+							<field name="pur_untax_amt" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+						    <field name="pur_tax_amt" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+							   <div class="oe_subtotal_footer_separator oe_inline">
+									<label for="pur_total_amt" />
+								</div>
+						    <field name="pur_total_amt" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+					   </group>
+			    </sheet>
+				</form>
+			</field>
+		</record>
+
+        <record id="banquet_quotation_tree_view" model="ir.ui.view">
+			<field name="name">banquet.quotation.tree</field>
+			<field name="model">banquet.quotation</field>
+			<field name="arch" type="xml">
+				<tree string="Banquet Quotation">
+						<field name="name" select="1"/>
+						<field name="lead" select="1"/>				
+						<field name="current_date" select="1"/>
+						<field name="adult" />
+						<field name="child" />
+						<field name="email_id" />
+						<field name="mobile"/>
+						<field name="state" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+        <record model="ir.actions.act_window" id="action_banquet_quotation_view">
+			<field name="name">Banquet Quotation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">banquet.quotation</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+   
+      <menuitem name="Banquet Quotation"  action="action_banquet_quotation_view" sequence="1"
+			id="menu_banquet_quotation_form"  parent="main_menu_banquet_booking" />
+		
+		
+		<record model="ir.ui.view" id="view_banquet_form">
+			<field name="name">hotel.reservation.form</field>
+			<field name="model">hotel.reservation</field>
+			<field name="arch" type="xml">
+				<form string=" Reservation">
+					<header>
+						<button name="confirmed_reservation" string="Confirm" states="draft" type="object" />
+						<button name="done" string="Check-in" states="confirm" type="object"/>
+						<button name="cancel_reservation" string="Cancel Reservation" states="draft,confirm" type="object"/>
+						<button name="advance_payment" string="Advance Payment"
+						type="object" class="oe_highlight" states="draft,confirm" />
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
+					</header>
+					
+					<sheet string="Basic Info">
+						<div name="button_box" class="oe_button_box">
+							<button name="action_view_folio"
+								type="object"
+								class="oe_stat_button"
+								icon="fa-pencil-square-o">
+								<field name="folio_count" widget="statinfo" string="Folio"/>
+							</button>
+						</div>
+						<div class="oe_title">
+	                        <h1>
+	                            <field name="reservation_no" readonly="1"/>
+	                        </h1>
+                    	</div>
+						<group colspan="4" col="4">
+							<field name="partner_id" select="1"/>
+							<field name="date_order" select="1" widget="date"/>
+							<field name="adults"/>
+							<field name="shop_id" select="2"/>
+							<field name="childs"/>
+							<field name="show_update_pricelist" invisible="1"/>
+							<label for="pricelist_id"/>
+							<div>
+								<field name="pricelist_id"/>
+								<button name="update_prices" 
+								type="object" 
+								string=" Update Prices" 
+								class="btn-link mb-1 px-0"
+								help="Recompute all prices based on this pricelist"
+								confirm="This will update all unit prices based on the currently set pricelist."
+								attrs="{'invisible': ['|', ('show_update_pricelist', '=', False),('state', 'in', ['confirm', 'done','cancel'])]}"/>
+								<field name="company_id" invisible="True"/>
+							</div>
+							<field name="via"/>
+							<field name="agent_id" domain="[('agent','=',True)]" attrs="{'invisible': [('via','!=','agent')],'required':[('via','=','agent')]}"/>
+							<field name="source" required="1"/>
+							<field name="gds_id" attrs="{'invisible': [('source','!=','through_gds')], 'required':[('source','=','through_gds')]}"/>
+							<field name="dummy" invisible="True"/>
+							<field name="invoiced" invisible="1"/>
+							<field name="banq_bool" invisible="1"/>
+						</group>
+						<group name="note_group" col="6">
+							<group colspan="4">
+								<field name="note"/>
+							</group>
+						</group>
+						<notebook colspan="6">
+							<page string="Booking Details">
+								<group colspan="4" col="4">
+
+									<!--<field name="checkin" colspan="1" />
+									 <field name="checkout" />
+									<field name="number_of_days"/>-->
+									<group colspan="4" col="4">
+									<field name="number_of_rooms"/> 
+									<field name="deposit_policy" />
+									<field name="percentage" string="Percentage/Deposit Amt" attrs="{'readonly':[('deposit_policy','=','no_deposit')],'required':[('deposit_policy','!=','no_deposit')]}"/>
+									<field name="deposit_recv_acc" attrs="{'readonly':[('deposit_policy','=','no_deposit')],'required':[('deposit_policy','!=','no_deposit')]}"/>
+									<field name="banquet_id"/>
+									<field name="min_dep_amount" invisible="1"/>
+									</group>
+									<field name="reservation_line" nolabel="1" colspan="4" context="{'shop_id':shop_id,'default_shop_id':shop_id}"/>
+									<group class="oe_subtotal_footer oe_right" colspan="4" name="sale_total">
+                                		<field name="untaxed_amt" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+										<field name="total_tax" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+										<div class="oe_subtotal_footer_separator oe_inline">
+											<label for="total_cost1" />
+											<button name="compute" states="draft,confirm" string="(Compute)" type="object" class="oe_edit_only oe_link"/>
+											<button name="update_history" states="confirm" string="(Update History)" type="object" class="oe_edit_only oe_link"/>
+										</div>
+										<field name="total_cost1" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+										<field name="deposit_cost"  readonly="1"  widget='monetary' options="{'currency_field': 'currency_id'}"/>
+										<field name="agent_comm" invisible="1"/>
+										<field name="total_advance" />
+										<field name="remaining_amt" />
+									</group>
+								</group>
+							</page>
+							<page string="Advance Payment">
+								<group col="4" colspan="4">
+									<field name="account_move_ids" colspan="4" nolabel="1"
+										readonly="1" />
+								</group>
+							</page>
+							<page string="Item Details" attrs="{'invisible': [('banq_bool','!=',True)]}">
+                        <field name="food_items_ids" colspan="4" nolabel="1">
+                            <form string="Food List">
+                            	<group colspan="4" col="4">
+	                                <field name="product_id" domain="[('ismenucard','=',True),('shop_id','in',[parent.shop_id,False])]" />
+									<field name="name" />
+									<field name="product_uom"/>
+									<field name="product_uom_qty" />
+	                                <field name="price_unit"/>
+	                                <field name="price_subtotal"/>
+	                                <field name="discount"/> 
+	                                <field name="category_id" invisible="True"/>
+	                                <newline/>
+	                                <field name="tax_id" widget="many2many_tags" colspan="4"/>
+	                            </group>
+                            </form>
+                            <tree string="Order List">
+                                <field name="name" />
+                                <field name="product_id"/>
+                                <field name="product_uom"/>
+                                <field name="product_uom_qty"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+                            </tree>
+                            </field>
+                           </page>
+                        <page string="Other Services">
+							<field name="other_items_ids" colspan="4" nolabel="1">
+                            <form string="Other Item List">
+                            	<group colspan="4" col="4">
+	                                <field name="product_id" domain="[('shop_id','in',[parent.shop_id,False])]" />
+									<field name="name" />
+									<!-- <field name="isservice"/> -->
+									
+									<field name="product_uom"/>
+									<field name="product_uom_qty" />
+	                                <field name="price_unit"/>
+	                                <field name="price_subtotal"/>
+	                                <field name="discount"/>
+	                                <newline/>
+	                                <field name="tax_id" widget="many2many_tags" colspan="4"/>
+	                            </group>
+                            </form>
+                            <tree string="Order List" editable="bottom">
+                                <field name="product_id"/>
+								<field name="name" />
+                                <field name="product_uom"/>
+                                <field name="product_uom_qty"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+								<field name="tax_id" widget="many2many_tags"/>
+                            </tree>
+                            </field>
+                        </page>
+						<page string="ID Details">
+            				<group col="4" colspan="4">
+								<field name="id_line_ids" colspan="4" nolabel="1" />
+							</group>
+						</page>
+						</notebook>
+					</sheet>
+					<div class="oe_chatter">
+	                    <field name="message_follower_ids" widget="mail_followers"/>
+	                    <field name="activity_ids" widget="mail_activity"/>
+	                    <field name="message_ids" widget="mail_thread"/>
+                	</div>
+				</form>
+			</field>
+		</record>
+			
+		<record model="ir.ui.view" id="view_banquet_reservation_tree">
+			<field name="name">hotel.reservation.tree</field>
+			<field name="model">hotel.reservation</field>
+			<field name="arch" type="xml">
+				<tree string="Reservation">
+					<field name="reservation_no"/>
+					<field name="partner_id" />
+					<!-- <field name="checkin"/>
+					<field name="checkout"/> -->
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_banquet_reservation_graph">
+			<field name="name">banquet.reservation.graph</field>
+			<field name="model">hotel.reservation</field>
+			<field name="arch" type="xml">
+				<graph string="Reservation" type="bar">		
+					<field name="state"/>
+					<field name="reservation_no"/>
+				</graph>
+			</field>
+		</record>
+		
+		<!-- <record id="view_banquet_reservation_gantt" model="ir.ui.view">
+            <field name="name">banquet.reservation.gantt</field>
+            <field name="model">hotel.reservation</field>
+            <field name="arch" type="xml">
+                <gantt date_start="checkin" date_stop="checkout" string="Reservation">
+                </gantt>
+            </field>
+        </record> -->
+		
+		<!-- <record model="ir.ui.view" id="banquet_reservation_calendar_view">
+			<field name="name">Banquet Reservation</field>
+			<field name="model">hotel.reservation</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+			   <calendar string="Current Reservation"  date_stop= "dummy" color="state" >
+				    <field name="partner_id"/>
+			   </calendar>
+			</field>
+		</record> -->
+		
+		
+		<record model="ir.actions.act_window" id="open_banquet_reservation_form_tree">
+			<field name="name">Banquet Reservation</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">form,tree,graph,gantt</field>
+			<field name="view_id" ref="view_banquet_form"/>
+			<field name="context">{"default_banq_bool":1,"search_default_banq_bool":1}</field>
+			<field name="domain">[('banq_bool','=',True)]</field>
+		</record> 
+		
+				  
+		<record model="ir.actions.act_window" id="action_banquet_reservation_tree_all">
+			<field name="name">All Banquet Reservation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form,gantt</field>
+			<field name="view_id" ref="view_banquet_form"/>
+			<field name="context">{"search_default_banq_bool":1}</field>
+			<field name="domain">[('banq_bool','=',True)]</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_banquet_reservation_tree_draft">
+			<field name="name">All Draft Banquet Reservation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"default_banq_bool":1,"search_default_banq_bool":1,"banq_bool":1}</field>
+			<field name="domain">[('state','=','draft'),('banq_bool','=',True)]</field>
+		</record>
+		<record id="action_banquet_reservation_tree_draft_view" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banquet_reservation_tree"/>
+            <field name="act_window_id" ref="action_banquet_reservation_tree_draft"/>
+        </record>
+		
+        <record id="action_banquet_reservation_form_draft_view" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banquet_form"/>
+            <field name="act_window_id" ref="action_banquet_reservation_tree_draft"/>
+        </record>
+		
+		<menuitem name="All Draft Banquet Reservation" 
+				    id="menu_action_banquet_reservation_tree_draft" 
+				    action="action_banquet_reservation_tree_draft"
+				    parent = "main_menu_banquet_booking"
+				    sequence="17"/>
+				  
+		<record model="ir.actions.act_window" id="action_banquet_reservation_tree_confirm">
+			<field name="name">All Confirm Banquet Reservation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"default_banq_bool":1,"search_default_banq_bool":1,"banq_bool":1}</field>
+			<field name="domain">[('state','=','confirm'),('banq_bool','=',True)]</field>
+		</record>
+		<record id="action_banquet_reservation_tree_confirm_view" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banquet_reservation_tree"/>
+            <field name="act_window_id" ref="action_banquet_reservation_tree_confirm"/>
+        </record>
+		
+        <record id="action_banquet_reservation_form_confirm_view" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banquet_form"/>
+            <field name="act_window_id" ref="action_banquet_reservation_tree_confirm"/>
+        </record>
+		
+		<menuitem name="All Confirm Banquet Reservation" 
+				  id="menu_action_banquet_reservation_tree_confirm" 
+				  action="action_banquet_reservation_tree_confirm"
+				  parent = "main_menu_banquet_booking"
+				  sequence="18"/>
+					
+		<record model="ir.actions.act_window" id="action_banquet_reservation_tree_done">
+			<field name="name">All Done Banquet Reservation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"default_banq_bool":1,"search_default_banq_bool":1,"banq_bool":1}</field>
+			<field name="domain">[('state','=','done'),('banq_bool','=',True)]</field>
+		</record>
+		
+		<record id="action_banquet_reservation_tree_done_view" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banquet_reservation_tree"/>
+            <field name="act_window_id" ref="action_banquet_reservation_tree_done"/>
+        </record>
+		
+        <record id="action_banquet_reservation_form_done_view" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banquet_form"/>
+            <field name="act_window_id" ref="action_banquet_reservation_tree_done"/>
+        </record>
+		
+		<menuitem name="All Done Banquet Reservation" 
+				  id="menu_action_banquet_reservation_tree_done" 
+				  action="action_banquet_reservation_tree_done"
+				  parent = "main_menu_banquet_booking"
+				  sequence="19"/>
+				  
+		<record model="ir.actions.act_window" id="action_banquet_reservation_tree_cancel">
+			<field name="name">All Cancelled Banquet Reservation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"default_banq_bool":1,"search_default_banq_bool":1,"banq_bool":1}</field>
+			<field name="domain">[('state','=','cancel'),('banq_bool','=',True)]</field>
+		</record>
+		
+		<record id="action_banquet_reservation_tree_cancel_view" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banquet_reservation_tree"/>
+            <field name="act_window_id" ref="action_banquet_reservation_tree_cancel"/>
+        </record>
+		
+        <record id="action_banquet_reservation_form_cancel_view" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banquet_form"/>
+            <field name="act_window_id" ref="action_banquet_reservation_tree_cancel"/>
+        </record>
+		
+		<menuitem name="All Cancelled Banquet Reservation" 
+				  id="menu_action_banquet_reservation_tree_cancel" 
+				  action="action_banquet_reservation_tree_cancel"
+				  parent = "main_menu_banquet_booking"
+				  sequence="20"/>
+
+		<record model="ir.actions.act_window" id="hotel_management_open_hotel_reservation_form_tree11">
+			<field name="name">Reservation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_id" ref="hotel_management.view_hotel_reservation_tree1"/>
+			<field name="view_mode">form,tree,graph</field>
+			<field name="domain">[('state','=','draft'),('banq_bool','=',False)]</field>
+		</record> 
+
+		<record model="ir.actions.act_window.view" id="hotel_management.action_open_hotel_reservation_form_draft1">
+		       <field name="sequence" eval="2"/>
+		       <field name="view_mode">form</field>
+		       <field name="view_id" ref="hotel_management.view_hotel_reservation_form1"/>
+		       <field name="act_window_id" ref="hotel_management.open_hotel_reservation_form_tree11"/>
+		 </record>
+		 
+		 <record model="ir.actions.act_window.view" id="hotel_management.action_open_hotel_reservation_tree_draft1">
+		       <field name="sequence" eval="1"/>
+		       <field name="view_mode">tree</field>
+		       <field name="view_id" ref="hotel_management.view_hotel_reservation_tree1"/>
+		       <field name="act_window_id" ref="hotel_management.open_hotel_reservation_form_tree11"/>
+		 </record>
+		
+		<record model="ir.actions.act_window" id="hotel_management_open_hotel_reservation_form_tree">
+			<field name="name">Reservation</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">form,tree,graph,gantt</field>
+			<field name="domain">[('banq_bool','=',False)]</field>
+		</record> 
+		
+        <record id="action_open_hotel_reservation_form_view" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="hotel_management.view_hotel_reservation_form1"/>
+            <field name="act_window_id" ref="hotel_management_open_hotel_reservation_form_tree"/>
+        </record>
+				  
+<!--		<record model="ir.actions.act_window" id="hotel_management_action_hotel_reservation_tree_all">-->
+<!--			<field name="name">All Reservation</field>-->
+<!--			<field name="type">ir.actions.act_window</field>-->
+<!--			<field name="res_model">hotel.reservation</field>-->
+<!--			&lt;!&ndash;<field name="view_type">form</field>&ndash;&gt;-->
+<!--			<field name="view_mode">tree,form,gantt</field>-->
+<!--			<field name="domain">[('banq_bool','=',False)]</field>-->
+<!--		</record>-->
+<!--		-->
+<!--		<menuitem name="All Draft Reservation"-->
+<!--				    id="hotel_management.menu_action_hotel_reservation_tree_draft"-->
+<!--				    action="hotel_management_open_hotel_reservation_form_tree11"-->
+<!--				    parent = "hotel_management.main_menu_hotel_reservation_tree_all"-->
+<!--				    sequence="17"/>-->
+		
+		
+<!-- 		<record model="ir.actions.act_window" id="hotel_management.action_hotel_reservation_tree_draft11"> -->
+<!-- 			<field name="name">All Draft Reservation</field> -->
+<!-- 			<field name="type">ir.actions.act_window</field> -->
+<!-- 			<field name="res_model">hotel.reservation</field> -->
+<!-- 			<field name="view_type">form</field> -->
+<!-- 			<field name="view_mode">tree,form,gantt</field> -->
+<!-- 			<field name="domain">[('state','=','draft'),('banq_bool','=',False)]</field> -->
+<!-- 		</record> -->
+		
+<!-- 		<record id="action_hotel_reservation_tree_draft_view" model="ir.actions.act_window.view"> -->
+<!--             <field eval="10" name="sequence"/> -->
+<!--             <field name="view_mode">tree</field> -->
+<!--             <field name="view_id" ref="hotel_management.view_hotel_reservation_tree1"/> -->
+<!--             <field name="act_window_id" ref="hotel_management.action_hotel_reservation_tree_draft11"/> -->
+<!--         </record> -->
+		
+<!--         <record id="action_hotel_reservation_form_draft_view" model="ir.actions.act_window.view"> -->
+<!--             <field eval="20" name="sequence"/> -->
+<!--             <field name="view_mode">form</field> -->
+<!--             <field name="view_id" ref="hotel_management.view_hotel_reservation_form1"/> -->
+<!--             <field name="act_window_id" ref="hotel_management.action_hotel_reservation_tree_draft11"/> -->
+<!--         </record> -->
+		
+				  
+		<record model="ir.actions.act_window" id="hotel_management_action_hotel_reservation_tree_confirm">
+			<field name="name">All Confirm Reservation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('state','=','confirm'),('banq_bool','=',False)]</field>
+		</record>
+		
+		<record id="action_hotel_reservation_tree_confirm_view" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="hotel_management.view_hotel_reservation_tree1"/>
+            <field name="act_window_id" ref="hotel_management.action_hotel_reservation_tree_confirm"/>
+        </record>
+		
+        <record id="action_hotel_reservation_form_confirm_view" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="banquet_managment.view_banquet_form"/>
+            <field name="act_window_id" ref="hotel_management.action_hotel_reservation_tree_confirm"/>
+        </record>
+					
+<!--		<record model="ir.actions.act_window" id="hotel_management.action_hotel_reservation_tree_done">-->
+<!--			<field name="name">All Done Reservation</field>-->
+<!--			<field name="type">ir.actions.act_window</field>-->
+<!--			<field name="res_model">hotel.reservation</field>-->
+<!--			&lt;!&ndash;<field name="view_type">form</field>&ndash;&gt;-->
+<!--			<field name="view_mode">tree,form</field>-->
+<!--			<field name="domain">[('state','=','done'),('banq_bool','=',False)]</field>-->
+<!--		</record>-->
+		
+		<record id="action_hotel_reservation_tree_done_view" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="hotel_management.view_hotel_reservation_tree1"/>
+            <field name="act_window_id" ref="hotel_management.action_hotel_reservation_tree_done"/>
+        </record>
+		
+        <record id="action_hotel_reservation_form_done_view" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <!-- <field name="view_id" ref="hotel_management.view_hotel_reservation_form1"/> -->
+			<field name="view_id" ref="banquet_managment.view_banquet_form"/>
+            <field name="act_window_id" ref="hotel_management.action_hotel_reservation_tree_done"/>
+        </record>
+        
+        <record model="ir.actions.act_window" id="hotel_management_action_hotel_reservation_tree_cancel">
+			<field name="name">All Cancelled Reservation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('state','=','cancel'),('banq_bool','=',False)]</field>
+		</record>
+		
+		<record id="action_hotel_reservation_tree_cancel_view" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="hotel_management.view_hotel_reservation_tree1"/>
+            <field name="act_window_id" ref="hotel_management.action_hotel_reservation_tree_cancel"/>
+        </record>
+		
+        <record id="action_hotel_reservation_form_cancel_view" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="banquet_managment.view_banquet_form"/>
+            <field name="act_window_id" ref="hotel_management.action_hotel_reservation_tree_cancel"/>
+        </record>
+			  
+		<record model="ir.ui.view" id="room_form_inherit_rental">
+			<field name="name">hotel.room.inherit.rental</field>
+			<field name="model">hotel.room</field>
+			<field name="inherit_id" ref="hotel.view_hotel_room_form" />
+			<field name="arch" type="xml">
+				<field name="active" position="after">
+					<field name="deposit_bool" />
+				</field>	
+			</field>
+		</record>
+
+		<record id="itinerary_lead_history_tree_view" model="ir.ui.view">
+            <field name="name">banquet.quotation.lead.history.tree</field>
+            <field name="model">banquet.quotation.lead.history</field>
+            <field name="arch" type="xml">
+           		<tree string="History" editable="top">
+					<field name="name"/>
+					<field name="current_date" />
+					<field name="contact_name" />
+					<field name="update_date" />
+					<field name="state" />
+				</tree>
+				</field>
+			</record>
+			
+			
+		
+	</data>
+</odoo>

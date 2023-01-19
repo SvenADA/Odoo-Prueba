@@ -1,0 +1,956 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* banquet_managment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-21 05:06+0000\n"
+"PO-Revision-Date: 2020-05-21 05:06+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "(Compute)"
+msgstr "Вычисление"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "(Update History)"
+msgstr "История обновления"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__address
+msgid "Address"
+msgstr "Адрес"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__adult
+msgid "Adult Persons"
+msgstr "Взрослые"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,via:0
+#: selection:crm.lead,via:0
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__agent_id
+#: model:ir.model.fields,field_description:banquet_managment.field_crm_lead__agent_id
+msgid "Agent"
+msgstr "Агент"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_banquet_reservation_tree_all
+msgid "All Banquet Reservation"
+msgstr "Банкетные Бронирования"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_banquet_reservation_tree_cancel
+#: model:ir.ui.menu,name:banquet_managment.menu_action_banquet_reservation_tree_cancel
+msgid "All Cancelled Banquet Reservation"
+msgstr "Отмененные Банкетные Бронирования"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.hotel_management_action_hotel_reservation_tree_cancel
+msgid "All Cancelled Reservation"
+msgstr "Отмененные Бронирования"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_banquet_reservation_tree_confirm
+#: model:ir.ui.menu,name:banquet_managment.menu_action_banquet_reservation_tree_confirm
+msgid "All Confirm Banquet Reservation"
+msgstr "Подтвержденные Банкетные Бронирования"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.hotel_management_action_hotel_reservation_tree_confirm
+msgid "All Confirm Reservation"
+msgstr "Подтвержденные Бронирования"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_banquet_reservation_tree_done
+#: model:ir.ui.menu,name:banquet_managment.menu_action_banquet_reservation_tree_done
+msgid "All Done Banquet Reservation"
+msgstr "Выполненные Банкетные Бронирования"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_banquet_reservation_tree_draft
+#: model:ir.ui.menu,name:banquet_managment.menu_action_banquet_reservation_tree_draft
+msgid "All Draft Banquet Reservation"
+msgstr "Неподтвержденные Банкетные Бронирования"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.hotel_management_action_hotel_reservation_tree_all
+msgid "All Reservation"
+msgstr "Бронирования"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,state:0
+#: selection:banquet.quotation.lead.history,state:0
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Approved"
+msgstr "Утвержденный"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__banquet_id
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__banquet_id
+msgid "Banquet"
+msgstr "Банкет"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__banq_bool
+#: model:ir.ui.menu,name:banquet_managment.main_menu_banquet_booking
+msgid "Banquet Booking"
+msgstr "Бронирование Банкетов"
+
+#. module: banquet_managment
+#: model:ir.ui.menu,name:banquet_managment.menu_banquet_config
+msgid "Banquet Configuration"
+msgstr "Свойства Банкета"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Banquet Hall"
+msgstr "Банкетный Зал"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.crm_case_form_view_leads_inherit_tour
+#: model_terms:ir.ui.view,arch_db:banquet_managment.crm_case_form_view_oppor_inherit_tour
+msgid "Banquet History"
+msgstr "История Банкетов"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation_line__banquet_id
+msgid "Banquet Id"
+msgstr "Номер Банкета"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Banquet Information"
+msgstr "Информация О Банкете"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_banquet_quotation_view
+#: model:ir.model,name:banquet_managment.model_banquet_quotation
+#: model:ir.ui.menu,name:banquet_managment.menu_banquet_quotation_form
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_tree_view
+msgid "Banquet Quotation"
+msgstr "Заказ Банкета"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_crm_lead__banquets_ids
+msgid "Banquet Quotation History"
+msgstr "История Заказов Банкетов"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__name
+msgid "Banquet Quotation No."
+msgstr "Номер банкета"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.open_banquet_reservation_form_tree
+msgid "Banquet Reservation"
+msgstr "Бронирование Банкета"
+
+#. module: banquet_managment
+#: model:ir.ui.menu,name:banquet_managment.menu_theme_plan_tree
+msgid "Banquet Theme"
+msgstr "Стилистика Банкета"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Banquet Type"
+msgstr "Тип Банкета"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Basic Info"
+msgstr "Основная Информация"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__board_toread
+msgid "Board to Read"
+msgstr "Заметки"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Booking Details"
+msgstr "Детали Бронирования"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__booking_id
+msgid "Booking Ref"
+msgstr ""
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__banquet_id
+msgid "Booking Ref."
+msgstr ""
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.deposit_journal_entry_wizard
+msgid "Cancel"
+msgstr "Отменить"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Cancel Reservation"
+msgstr "Отменить Бронирование"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__category_id
+msgid "Category"
+msgstr "Категория"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__child
+msgid "Child"
+msgstr "Ребенок"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan__code
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan__code
+msgid "Code"
+msgstr "Код"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__agent_comm
+msgid "Commision"
+msgstr "Комиссия"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__company_id
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__company_id
+msgid "Company"
+msgstr "Компания"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,state:0
+#: selection:banquet.quotation.lead.history,state:0
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__contact_name
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__contact_name
+msgid "Contact Name"
+msgstr "Имя контакта"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__cost_price_unit
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation_line__cost_price_unit
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__cost_price_unit
+msgid "Cost Price"
+msgstr "Стоимость"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__cost_price_subtotal
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation_line__cost_price_subtotal
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__cost_price_subtotal
+msgid "Cost Subtotal"
+msgstr "Общая Стоимость"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Create Banquet Booking"
+msgstr "Создать Банкетное Бронирование"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Create Folio"
+msgstr "Создать Счет"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.deposit_journal_entry_wizard
+msgid "Create Journal Entry"
+msgstr "Создание Записи В Журнале"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__create_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__create_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__create_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__create_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__create_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__create_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan__create_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan__create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__create_date
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__create_date
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__create_date
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__create_date
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__create_date
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__create_date
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan__create_date
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan__create_date
+msgid "Created on"
+msgstr "Создан"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__current_date
+msgid "Creation Date"
+msgstr "Дата создания"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation_line__currency_id
+msgid "Currency"
+msgstr "Валюта"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__partner_id
+msgid "Customer"
+msgstr "Заказчик"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__deposit_recv_acc
+msgid "Deposit Account"
+msgstr "Депозитный Счет"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__deposit_cost
+msgid "Deposit Cost"
+msgstr "Стоимость Депозита"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.act_deposit_journal_entry
+msgid "Deposit Journal Entry"
+msgstr "Запись В Журнале Депозитов"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_deposit_policy_tree
+#: model:ir.ui.menu,name:banquet_managment.menu_deposit_policy
+msgid "Deposit Payment Policy"
+msgstr "Политика Оплаты Депозита"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,deposit_policy:0
+#: selection:hotel.reservation,deposit_policy:0
+msgid "Deposit Percentage"
+msgstr "Процент Депозита"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__deposit_policy
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__deposit_policy
+#: model:ir.ui.menu,name:banquet_managment.menu_deposit_policy_tree
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_deposit_payment_policy_tree
+msgid "Deposit Policy"
+msgstr "Политика Депозита"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_deposit_journal_entry_wizard
+msgid "Deposit_journal_entry Detail Wizard"
+msgstr "Мастер детализации записей в журнале депозитов"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__name
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__name
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__name
+msgid "Description"
+msgstr "Описание"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,via:0
+#: selection:crm.lead,via:0
+msgid "Direct"
+msgstr "Прямой"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__discount
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__discount
+msgid "Discount (%)"
+msgstr "Скидка (%)"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__display_name
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__display_name
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__display_name
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__display_name
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__display_name
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__display_name
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan__display_name
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan__display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,state:0
+msgid "Done"
+msgstr "Сделано"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,state:0
+#: selection:banquet.quotation.lead.history,state:0
+msgid "Draft"
+msgstr "Проект"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__email_id
+msgid "Email Id"
+msgstr "Электронная Почта"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__current_date
+msgid "Enquiry Date"
+msgstr "Дата Запроса"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Event Information"
+msgstr "Информация о Событиях"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Food Details"
+msgstr "Детали"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__food_items_ids
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__food_items_id
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__food_items_ids
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__other_items_ids
+msgid "Food Items"
+msgstr "Продовольственные Товары"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_food_items
+msgid "Food Items Details"
+msgstr "Детали Продуктов Питания"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Food List"
+msgstr "Список Продуктов"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__start_date
+msgid "From Date"
+msgstr "С сегодняшнего дня"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__ref_id
+#: model_terms:ir.ui.view,arch_db:banquet_managment.itinerary_lead_history_tree_view
+msgid "History"
+msgstr "История"
+
+#. module: banquet_managment
+#: model:res.groups,name:banquet_managment.group_banquet_user
+msgid "Hotel Management / Banquet User"
+msgstr "Управление Гостиницей / Банкетный Пользователь"
+
+#. module: banquet_managment
+#: model:res.groups,name:banquet_managment.group_banquet_manager
+msgid "Hotel Management/ Banquet Manager"
+msgstr "Управление Гостиницей/ Банкетный Менеджер"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_hotel_room
+msgid "Hotel Room"
+msgstr "Гостиничный Номер"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__id
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__id
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__id
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__id
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__id
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__id
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan__id
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan__id
+msgid "ID"
+msgstr "Номер"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "ID Details"
+msgstr ""
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__invoiced
+msgid "Invoiced"
+msgstr "Счёт выставлен"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_room__deposit_bool
+msgid "Is Deposit Applicable"
+msgstr "Применим Ли Депозит"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Item Deatails"
+msgstr "Детали Товара"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__journal_id
+msgid "Journal"
+msgstr "Журнал"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation____last_update
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history____last_update
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard____last_update
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy____last_update
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items____last_update
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items____last_update
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan____last_update
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan____last_update
+msgid "Last Modified on"
+msgstr "Последнее Изменение"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__update_date
+msgid "Last Updated Date"
+msgstr "Дата Последнего Обновления"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__write_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__write_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__write_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__write_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__write_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__write_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan__write_uid
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan__write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__write_date
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__write_date
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__write_date
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__write_date
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__write_date
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__write_date
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan__write_date
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan__write_date
+msgid "Last Updated on"
+msgstr "Последнее обновление"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__lead
+msgid "Lead"
+msgstr "Инициатива"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_crm_lead__lead_sequence
+msgid "Lead Number"
+msgstr "Номер"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_crm_lead2opportunity_partner
+msgid "Lead To Opportunity Partner"
+msgstr ""
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__min_dep_amount
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__min_amount
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__min_dep_amount
+msgid "Minimum Deposit Amount"
+msgstr "Минимальная Сумма Депозита"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__mobile
+msgid "Mobile Number"
+msgstr "Мобильный Номер"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_seating_plan__name
+msgid "Name"
+msgstr "Название"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,deposit_policy:0
+#: selection:hotel.reservation,deposit_policy:0
+msgid "No Deposit"
+msgstr "Без Депозита"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__number_of_days
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation_line__number_of_days
+msgid "Number Of Days"
+msgstr "Количество Дней"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__number_of_rooms
+msgid "Number Of Rooms"
+msgstr "Количество Комнат"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Order List"
+msgstr "Список Заказов"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Other Item List"
+msgstr "Список Других Товаров"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__other_items_ids
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__other_items_id
+msgid "Other Items"
+msgstr "Другие Товары"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_other_items
+msgid "Other Items Details"
+msgstr "Детали Других Товаров"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Other Services"
+msgstr "Прочие Услуги"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__payment_date
+msgid "Payment Date"
+msgstr "Дата Платежа"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__percentage
+msgid "Percentage"
+msgstr "Процент"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__percentage
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__percentage
+msgid "Percentage/Deposit Amount"
+msgstr "Процент / Сумма Депозита"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+msgid "Percentage/Deposit Amt"
+msgstr "Процент / Сумма Депозита"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__name
+msgid "Policy Name"
+msgstr "Название Политики"
+
+#. module: banquet_managment
+#: sql_constraint:deposit.payment.policy:0
+msgid "Policy Name must be unique for selected shop !"
+msgstr "Название политики должно быть уникальным для выбранного магазина !"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__checkout_date
+msgid "Prefer End Date"
+msgstr "Конечная Дата"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__checkin_date
+msgid "Prefer start Date"
+msgstr "Начальная Дата"
+
+#. module: banquet_managment
+#: sql_constraint:banquet.quotation:0
+msgid "Prefer start Date Should be lesser than the Prefer End Date!"
+msgstr "Начальная дата должна быть меньше конечной даты!"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__pricelist_id
+msgid "Pricelist"
+msgstr "Прайс-лист"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__product_id
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__product_id
+msgid "Product"
+msgstr "Продукт"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__pur_tax_ids
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation_line__pur_tax_ids
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__pur_tax_ids
+msgid "Purchase Taxes"
+msgstr "Налоги"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__pur_tax_amt
+msgid "Purchase Taxes "
+msgstr "Налоги"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__pur_total_amt
+msgid "Purchase Total Amount"
+msgstr "Общая Сумма Покупки"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__pur_untax_amt
+msgid "Purchase Untaxed Amount"
+msgstr "Покупка Необлагаемой Налогом Суммы"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__product_uom_qty
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__product_uom_qty
+msgid "Quantity (UoM)"
+msgstr "Количество (Кол-во)"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__name
+msgid "Quotation No."
+msgstr "Заказ №"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Refuse"
+msgstr "Отказываться"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,state:0
+#: selection:banquet.quotation.lead.history,state:0
+msgid "Refused"
+msgstr "Отказался"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.hotel_management_open_hotel_reservation_form_tree
+#: model:ir.actions.act_window,name:banquet_managment.hotel_management_open_hotel_reservation_form_tree11
+#: model:ir.model,name:banquet_managment.model_hotel_reservation
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_form
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_reservation_graph
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_banquet_reservation_tree
+msgid "Reservation"
+msgstr "Резервирование"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_hotel_reservation_line
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Reservation Line"
+msgstr "Линия Бронирования"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__total_tax
+msgid "Reservation Tax"
+msgstr "Налог На Бронирование"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__room_ids
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Room Details"
+msgstr "Детали Номера"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Room Type"
+msgstr "Тип номера"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__sale_tax_amt
+msgid "Sale Taxes "
+msgstr "Налог с продаж"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__sale_total_amt
+msgid "Sale Total Amount"
+msgstr "Общая Сумма Продажи"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__sale_untax_amt
+msgid "Sale Untaxed Amount"
+msgstr "Продажа Необлагаемая Налогом Сумма"
+
+#. module: banquet_managment
+#: sql_constraint:seating.plan:0
+msgid "Seating Name must be unique !"
+msgstr "Название места должно быть уникальным !"
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_seating_plan_tree
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__seating_id
+#: model:ir.ui.menu,name:banquet_managment.menu_seating_plan_tree
+msgid "Seating Plan"
+msgstr "План Рассадки"
+
+#. module: banquet_managment
+#: selection:banquet.quotation.lead.history,state:0
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Send To Customer"
+msgstr "Отправить Клиенту"
+
+#. module: banquet_managment
+#: selection:banquet.quotation,state:0
+msgid "Sent To Customer"
+msgstr "Отправлено Клиенту"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_journal_entry_wizard__service_cost
+msgid "Service Cost"
+msgstr "Стоимость услуги"
+
+#. module: banquet_managment
+#: model:ir.model.fields,help:banquet_managment.field_banquet_quotation__number_of_days
+msgid "Shall be computed based on check out policy configured for selected shop."
+msgstr "Должен быть рассчитан на основе политики выезда, настроенной для выбранного магазина."
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__shop_id
+#: model:ir.model.fields,field_description:banquet_managment.field_crm_lead__shop_id
+#: model:ir.model.fields,field_description:banquet_managment.field_deposit_payment_policy__shop_id
+msgid "Shop"
+msgstr "Магазин"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__purches_bol
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation_line__purches_bol
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__purches_bol
+msgid "Show Purchase Tax"
+msgstr "Показать Налог На Покупку"
+
+#. module: banquet_managment
+#: sql_constraint:deposit.payment.policy:0
+msgid "Start Date must be unique for selected shop !"
+msgstr "Начальная Дата должна быть уникальной для выбранного магазина !"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__state
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation_lead_history__state
+msgid "Status"
+msgstr "Статус"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation_line__sub_total
+msgid "Sub Total"
+msgstr "Итого"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__price_subtotal
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__price_subtotal
+msgid "Subtotal"
+msgstr "Подытог"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.banquet_quotation_form_view
+msgid "Tax On Product"
+msgstr "Налог На Продукцию"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__tax_id
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__tax_id
+msgid "Taxes"
+msgstr "Налоги"
+
+#. module: banquet_managment
+#: model:ir.model.fields,help:banquet_managment.field_hotel_reservation__total_tax
+msgid "The amount without tax."
+msgstr "Сумма без учета налога."
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__theme_id
+msgid "Theme"
+msgstr "Тема"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_theme_plan__name
+msgid "Theme Name"
+msgstr "Название Темы"
+
+#. module: banquet_managment
+#: sql_constraint:theme.plan:0
+msgid "Theme Name must be unique !"
+msgstr "Название Темы должно быть уникальным! "
+
+#. module: banquet_managment
+#: model:ir.actions.act_window,name:banquet_managment.action_theme_plan_tree
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_theme_plan_tree
+msgid "Theme Plan"
+msgstr "Тематический План"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__total_cost1
+msgid "Total Reservation cost"
+msgstr "Общая стоимость бронирования"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__price_unit
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__price_unit
+msgid "Unit Price"
+msgstr "Цена за ед."
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_hotel_reservation__untaxed_amt
+msgid "Untaxed Amount"
+msgstr "Сумма без налога"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_food_items__product_uom
+#: model:ir.model.fields,field_description:banquet_managment.field_other_items__product_uom
+msgid "UoM"
+msgstr "Единица измерения"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_crm_lead
+msgid "User Modification"
+msgstr "Модификация Пользователя"
+
+#. module: banquet_managment
+#: model:ir.model.fields,field_description:banquet_managment.field_banquet_quotation__via
+#: model:ir.model.fields,field_description:banquet_managment.field_crm_lead__via
+msgid "Via"
+msgstr "Посредством"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.deposit_journal_entry_wizard
+msgid "Visa Journal Entry"
+msgstr "Запись В Визовом Журнале"
+
+#. module: banquet_managment
+#: model:ir.model.fields,help:banquet_managment.field_food_items__product_id
+msgid "Will list out all food items that belong to company of selected shop. \n"
+" It also shows global product as well."
+msgstr "Перечислит все продукты питания, которые принадлежат компании выбранного магазина."
+
+#. module: banquet_managment
+#: model:ir.model.fields,help:banquet_managment.field_banquet_quotation__shop_id
+msgid "Will show list of shop that belongs to allowed companies of logged-in user."
+msgstr "Отобразится список магазинов, принадлежащих разрешенным компаниям вошедшего пользователя."
+
+#. module: banquet_managment
+#: model:ir.model.fields,help:banquet_managment.field_deposit_payment_policy__shop_id
+msgid "Will show list of shop that belongs to allowed companies of logged-in user. \n"
+" -Assign a shop to configure shop-wise deposit  policy."
+msgstr "Отобразится список магазинов, принадлежащих разрешенным компаниям вошедшего пользователя." 
+"Назначьте магазин для настройки магазинной политики депозита."
+
+#. module: banquet_managment
+#: model:ir.model.fields,help:banquet_managment.field_crm_lead__shop_id
+msgid "Will show only open leads for the selected shop."
+msgstr "Будут показаны только открытые лиды для выбранного магазина."
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_deposit_payment_policy
+msgid "deposit.payment.policy"
+msgstr "политика оплаты депозитов"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_banquet_quotation_lead_history
+msgid "itinerary lead history"
+msgstr "История"
+
+#. module: banquet_managment
+#: model_terms:ir.ui.view,arch_db:banquet_managment.view_seating_plan_tree
+msgid "seating Plan"
+msgstr "План рассадки гостей"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_seating_plan
+msgid "seating.plan"
+msgstr "План рассадки гостей"
+
+#. module: banquet_managment
+#: model:ir.model,name:banquet_managment.model_theme_plan
+msgid "theme.plan"
+msgstr "Тематический план"
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="reservation_report_format" model="report.paperformat">
+            <field name="name">European A4 low margin</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">30</field>
+            <field name="dpi">80</field>
+        </record>
+        <record id="hotel_reservation_details_report" model="ir.actions.report">
+            <field name="name">Reservation Detail</field>
+            <field name="model">hotel.reservation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hotel_management.hotel_reservation_report</field>
+            <field name="report_file">hotel_management.hotel_reservation_report</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="paperformat_id" ref="hotel_management.reservation_report_format"/>
+		</record>
+		<record id="hotel_checkin_details_report" model="ir.actions.report">
+			<field name="name">CheckIn Detail</field>
+			<field name="model">hotel.reservation</field>
+			<field name="report_type">qweb-pdf</field>
+			<field name="report_name">hotel_management.hotel_reservation_checkin_report</field>
+			<field name="report_file">hotel_management.hotel_reservation_checkin_report</field>
+			<field name="print_report_name">(object._get_report_base_filename())</field>
+			<field name="paperformat_id" ref="hotel_management.reservation_report_format"/>
+		</record>
+		<record id="hotel_checkout_details_report" model="ir.actions.report">
+			<field name="name">CheckOut Detail</field>
+			<field name="model">hotel.reservation</field>
+			<field name="report_type">qweb-pdf</field>
+			<field name="report_name">hotel_management.hotel_reservation_checkout_report</field>
+			<field name="report_file">hotel_management.hotel_reservation_checkout_report</field>
+			<field name="print_report_name">(object._get_report_base_filename())</field>
+			<field name="paperformat_id" ref="hotel_management.reservation_report_format"/>
+		</record>
+		<record id="max_hotel_room_report" model="ir.actions.report">
+			<field name="name">Max Room Detail</field>
+			<field name="model">hotel.reservation</field>
+			<field name="report_type">qweb-pdf</field>
+			<field name="report_name">hotel_management.hotel_reservation_room_report</field>
+			<field name="report_file">hotel_management.hotel_reservation_room_report</field>
+			<field name="print_report_name">(object._get_report_base_filename())</field>
+			<field name="paperformat_id" ref="hotel_management.reservation_report_format"/>
+		</record>
+		<record id="hotel_res_order_kot" model="ir.actions.report">
+			<field name="name">Kitchen Order Tickets</field>
+			<field name="model">hotel.restaurant.order</field>
+			<field name="report_type">qweb-pdf</field>
+			<field name="report_name">hotel_management.hotel_restaurant_order_kot_report111</field>
+			<field name="report_file">hotel_management.hotel_restaurant_order_kot_report111</field>
+			<field name="print_report_name">(object._get_report_base_filename())</field>
+		</record>
+		<record id="hotel_reservation_order_kot" model="ir.actions.report">
+			<field name="name">Kitchen Order Ticket</field>
+			<field name="model">hotel.reservation.order</field>
+			<field name="report_type">qweb-pdf</field>
+			<field name="report_name">hotel_management.hotel_reservation_order_kot_report111</field>
+			<field name="report_file">hotel_management.hotel_reservation_order_kot_report111</field>
+			<field name="print_report_name">(object._get_report_base_filename())</field>
+		</record>
+	</data>
+</odoo>

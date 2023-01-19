@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	<template id="hotel_restaurant_reservation_report123">
+			<!-- <t t-call="report.html_container"> -->
+			<t t-call="web.external_layout">
+				<t t-foreach="docs" t-as="o">
+					<div class="page">
+						<div class="row">
+							<br/>
+							<br/>
+							<br/>
+							<div class="col-xs-12 text-center">
+								<h2>Reservation List</h2>
+							</div>
+						</div>
+						<div class="row">
+						</div>
+						<table width="100%">
+							<tr height="30">
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>Reservation No</strong>
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>Customer Name</strong>
+								</td>
+
+
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>Start Date</strong>
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>End Date</strong>
+								</td>
+							</tr>
+							<tr height="30" t-foreach="get_res_data(o)" t-as="l">
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-esc="l.name" />
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-field="l.cname.name" />
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-field="l.start_date" />
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-field="l.end_date" />
+								</td>
+							</tr>
+
+						</table>
+					</div>
+				</t>
+			</t>
+		</template>
+
+	</data>
+</odoo>
+	

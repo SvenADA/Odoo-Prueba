@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<odoo>
+	<data>
+
+		<!--Hotel Reservation wizard form view -->
+		<record model="ir.ui.view" id="hotel_reservation_wizard_view">
+			<field name="name">hotel.reservation.wizard.form</field>
+			<field name="model">hotel.reservation.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Hotel Reservation Report">
+					<group colspan="4" col="4">
+						<field name="date_start" />
+						<field name="date_end" />
+					</group>
+					<group colspan="4" col="4">
+						<separator string="" colspan="6" />
+						<button name="print_report" string="Reservation List" type="object"
+							icon="fa-arrow-right text-success" />
+						<button name="print_checkin" string="CheckIn List" type="object"
+							icon="fa-arrow-right text-success" />
+						<button name="print_checkout" string="CheckOut List" type="object"
+							icon="fa-arrow-right text-success" />
+						<button name="print_room_used" string="Room Used Maximum"
+							icon="fa-arrow-right text-success" type="object" />
+						<button special="cancel" string="Cancel" icon="fa-times-circle text-danger" />
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_hotel_reservation_wizard">
+			<field name="name">Hotel Reservation Report</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hotel.reservation.wizard</field>
+			<field name="binding_model_id" ref="model_hotel_reservation"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+	</data>
+</odoo>

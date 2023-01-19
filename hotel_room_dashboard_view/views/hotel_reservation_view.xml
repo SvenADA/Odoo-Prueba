@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="view_hotel_reservation_dashbord_view">
+			<field name="name">hotel.reservation.dashboard.view.inherit</field>
+			<field name="model">hotel.reservation</field>
+			<field name="inherit_id"
+				ref="hotel_management.view_hotel_reservation_form1" />
+			<field name="arch" type="xml">
+				<xpath expr="//header" position="inside">
+					<button name="action_folio_confirm" invisible="context.get('state') not in  ['draft']"  string="Confirm Folio"
+							 type="object" class="oe_highlight"/>
+					<button name="%(hotel_management.action_folio_invoice_transfer_wizard)d"
+						invisible="context.get('state') not in ['sale']" context="{'by_dashbord':True}" string="Create Invoice" type="action" />
+					<button name="action_folio_checkout" invisible="context.get('state') not in ['progress']"  string="Checkout"
+						type="object" />
+					<button name="action_folio_done" invisible="context.get('state') not in ['check_out']"  string="Done"
+						type="object" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

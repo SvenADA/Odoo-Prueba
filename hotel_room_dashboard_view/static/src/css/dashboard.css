@@ -1,0 +1,123 @@
+.ibox-tools {
+	cursor: pointer !important;
+	float: right !important;
+	position: relative !important;
+	height: 20px !important;
+	width: 15px !important;
+	z-index: 1000 !important;
+	border: 1px solid #AEAEAE !important;
+	border-radius: 16px !important;
+	background: #605F61 !important;
+	font-size: 16px !important;
+	font-weight: bold !important;
+	display: inline-block !important;
+	line-height: 0px !important;
+	padding: 0px 0px !important;
+	margin-top: -13px !important;
+	margin-right: -2px !important;
+	text-align: center !important;
+}
+
+.fc-event span.fc-time {
+	display: none;
+}
+.fc-state-active {
+	border-color: #7C7BAD;
+}
+
+.fc-header-toolbar {
+	margin: 10px;
+}
+
+button:focus {
+	outline: 0;
+}
+
+
+
+.prev {
+	background: #7C7BAD;
+	color: white;
+	border-color: #7C7BAD;
+	outline: none;
+	border: none;
+}
+
+.next {
+	background: #7C7BAD;
+	color: white;
+	border-color: #7C7BAD;
+	outline: none;
+	border: none;
+}
+
+.title-display {
+	font-size: 17px;
+	font-weight: 800;
+}
+
+#shops{
+width:80px
+}
+
+
+.done {
+    background-color: #FF0000;
+    color: #FF0000;
+}
+
+.room_available {
+    width: 100%;
+    height: 100%;
+    background-color: #32CD32;
+    color: #32CD32;
+    top: 0;
+    left: 0;
+    }
+
+
+.draft {
+    color: #FFDA2F;
+    background-color: #FFDA2F;
+}
+
+.room_booked_and_dirty {
+    width: 100%;
+    height: 100%;
+    background-color: #61380B;
+    color: #61380B;
+    top: 0;
+    left: 0;
+    }
+
+
+.room_dirty {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: black;
+    top: 0;
+    left: 0;
+}
+
+
+.confirm {
+    background-color: #A6A6A6;
+    color: #A6A6A6;
+}
+
+.popper {
+	width: 130px;
+	padding: 5px;
+	text-align: center;
+}
+
+.popover-header {
+	font-size: 15px;
+	text-align: center;
+}
+
+.popover-body {
+	font-size: 13px;
+}
+

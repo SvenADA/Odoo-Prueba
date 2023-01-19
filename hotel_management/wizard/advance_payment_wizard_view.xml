@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<!--Visa Journal Entry Wizard form view  -->
+		<record model="ir.ui.view" id="advance_payment_wizard1">
+			<field name="name">advance_payment_wizard_form</field>
+			<field name="model">advance.payment.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Advance Payment" version="7.0">
+					<group colspan="4" col="4">
+					<field name="amt"/>
+					<field name="deposit_recv_acc" />
+					<field name="journal_id"/>
+					<field name="reservation_id" readonly ="1"/>
+					<field name="payment_date" />
+					</group>
+					<footer>
+                        <button icon="fa-times" special="cancel" string="Cancel" />
+						<button string="Payment" name="payment_process" type="object"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="act_advance_payment_entry1" model="ir.actions.act_window">
+			<field name="name">Advance Payment Entry</field>
+			<field name="res_model">advance.payment.wizard</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="context">{'ids':active_id}</field>
+		</record>
+	</data>
+</odoo>

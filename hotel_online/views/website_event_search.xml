@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+	<template id="show_sign_in11" inherit_id="website.navbar_nav">
+		<xpath expr="//ul[@id='top_menu']" position="inside">
+			<li>
+				<a t-attf-href="/product_screen/">
+					<b style="font-size: 24px;">Booking</b>
+				</a>
+			</li>
+		</xpath>
+	</template>
+
+	<template id="product_show" name="Product show">
+		<t t-call="website.layout">
+			<div id="wrap" class="pattern_bg">
+				<div class="oe_structure" />
+					<div class="container">
+						<form action="/product_search/" type="post">
+							<div style="background:#114052; margin:10px 0px; padding:10px; height:54px; color:#000;">
+								<span class="h4" style="margin-right:5px;color:#fff;">Fecha de ingreso</span>
+								<input id="" type="date" class="" t-att-data-date-format="date_format" size="16" name="from_date"/>
+								<span class="h4" style="margin-right:5px;margin-left:20px;color:#fff;">Fecha de salida</span>
+								<input id="" type="date" t-att-data-date-format="date_format" class="" name="to_date"/>
+								<input type="submit" value="Buscar" style="border:none; background:#428bca; padding:5px; width:90px; color:#fff; margin-left:5px; border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px; font-weight:bold;"/>
+							</div>
+						</form>
+						<div class='row booking_info row'>
+							<t t-if="room_res">
+								<t>
+									<div class="col-md-3"
+									style="background:#114052; width:25%; padding:10px; font-weight:bold; color:#fff;">
+										<span style="color:#114052">Image</span>
+									</div>
+									<div class="col-md-5"
+									style="background:#114052;width:55%; padding:10px; font-weight:bold; color:#fff; text-align:left">Room Type</div>
+									<div class="col-md-4"
+									style="background:#114052; width:20%; padding:10px; font-weight:bold; color:#fff; text-align:center">No of Rooms</div>
+								</t>
+								<form action="/product/reserv/" id="room_form" style="width: 100%;">
+									<t t-foreach="room_res" t-as="td_product1">
+										<t t-if = "website.get_type(td_product1)">
+											<div class="roomspercoloumn row">
+												<div class="col-md-3" style="margin-top:50px;">
+													<div class="imagescoloumn">
+														<div class="image-row">
+															<div class="demo">
+																<div class="item">
+																	<div class="clearfix" style="max-width:200px;">
+																		<ul class="gallery list-unstyled cS-hidden image-gallery-cls" style="height:200px;">
+																			<t t-if = "website.check_next_image(td_product1,0)">
+																				<li t-att-data-thumb="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[0]" style="width:100px !important;">
+																					<a class="example-image-link" t-att-href="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[0]" data-lightbox="example-1">
+																						<img class="example-image" t-att-src="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[0]" width="200"/>
+																					</a>
+																				</li>
+																			</t>
+																			<t t-if = "website.check_next_image(td_product1,1)">
+																				<li t-att-data-thumb="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[1]" style="width:100px !important;">
+																					<a class="example-image-link" t-att-href="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[1]" data-lightbox="example-1">
+																						<img class="example-image" t-att-src="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[1]" width="200"/>
+																					</a>
+																				</li>
+																			</t>
+																			<t t-if = "website.check_next_image(td_product1,2)">
+																				<li t-att-data-thumb="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[2]" style="width:100px !important;">
+																					<a class="example-image-link" t-att-href="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[2]" data-lightbox="example-1">
+																						<img class="example-image" t-att-src="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[2]" width="200"/>
+																					</a>
+																				</li>
+																			</t>
+																			<t t-if = "website.check_next_image(td_product1,0)">
+																				<li t-att-data-thumb="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[0]" style="width:100px !important;">
+																					<a class="example-image-link" t-att-href="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[0]" data-lightbox="example-1">
+																						<img class="example-image" t-att-src="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[0]" width="200"/>
+																					</a>
+																				</li>
+																			</t>
+																			<t t-if = "website.check_next_image(td_product1,1)">
+																				<li t-att-data-thumb="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[1]" style="width:100px !important;">
+																					<a class="example-image-link" t-att-href="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[1]" data-lightbox="example-1">
+																						<img class="example-image" t-att-src="website.image_url_new(td_product1['image'], 'img', None if product_image_big else '512x512')[1]" width="200"/>
+																					</a>
+																				</li>
+																			</t>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6"
+												style="width:49%; padding:10px; margin-top:5px;">
+													<strong>
+														<span t-esc="td_product1['type'][0]" />
+													</strong>
+													<br />
+													<br />
+													<div
+													style="height:190px; overflow-y:auto; padding:10px 10px 0 0; text-align:justify; ">
+														<span t-raw="td_product1['description']" />
+													</div>
+												</div>
+												<div class="col-md-3"
+												style="width:20%; padding:10px;  margin-top:5px; float:right;">
+													<div style="background:#114052; text-align:center;">
+														<span style="font-weight:bold; font-size:20px; color:#fff">
+															<span t-esc="td_product1['currency']" />
+														</span>
+														<span style="font-weight:bold; color:#fff; font-size:20px;">
+															<span t-esc="td_product1.get('price', 0.0)" />
+														</span>
+													</div>
+													<br />
+													<span style="line-height:50px;">No Of Rooms</span>
+													<select  t-att-name = "'no_room_%s' % str(td_product1['room_type_id'])"  class="form-control"
+													style="float:right; clear:right; width:55%; ">
+														<t t-if="td_product1['count']">
+															<option>0</option>
+															<t t-foreach="td_product1['count']" t-as="room">
+																<t t-foreach="room" t-as="room1">
+																	<option t-att-value="room1">
+																		<t t-esc="room1" />
+																	</option>
+																</t>
+															</t>
+														</t>
+													</select>
+													<span style="line-height:50px;margin-left:52px;">Adult</span>
+													<select t-att-name = "'adult_%s' % str(td_product1['room_type_id'])" class="form-control adult"
+													style="float:right; clear:right; width:55%; " required="required">
+														<t t-if="td_product1['adult']">
+															<option>0</option>
+															<t t-foreach="td_product1['adult']" t-as="room1111">
+																<t t-foreach="room1111" t-as="roommmm11">
+																	<option t-att-value="roommmm11">
+																		<t t-esc="roommmm11" />
+																	</option>
+																</t>
+															</t>
+														</t>
+													</select>
+													<span style="line-height:50px;margin-left:32px;">Children</span>
+													<select  t-att-name = "'child_%s' % str(td_product1['room_type_id'])" class="form-control"
+													style="float:right; clear:right; width:55%; ">
+														<t t-if="td_product1['child']">
+															<option>0</option>
+															<t t-foreach="td_product1['child']" t-as="rchild">
+																<t t-foreach="rchild" t-as="rc">
+																	<option t-att-value="rc">
+																		<t t-esc="rc" />
+																	</option>
+																</t>
+															</t>
+														</t>
+													</select>
+													Select A Room :
+													<check >
+														<input t-att-name = "'sel_%s' % str(td_product1['room_type_id'])" t-att-id="td_product1['room_type_id']" type="Checkbox" class="test" name=""/>
+													</check>
+													<input type="hidden" t-att-name = "'type_%s' % str(td_product1['room_type_id'])" t-att-value="td_product1['room_type_id']"/>
+													<input type="hidden" name="len" t-att-value="length"/>
+													<t t-if="td_product1['chkin']">
+														<t t-if="td_product1['chkout']">
+															<input type="hidden" name="chkin_id" t-att-value="td_product1['chkin']"/>
+															<input type="hidden" name="chkout_id" t-att-value="td_product1['chkout']"/>
+														</t>
+													</t>
+												</div>
+											</div>
+										</t>
+										<div class="clearfix"></div>
+									</t>
+									<div class="col-md-11" style="text-align:right;">
+									<input type="submit" value="Proceed" class="confirm_button" />
+									</div>
+								</form>
+							</t>
+							<t t-else="">
+								<t t-if="not home">
+									No Room found for this date range ...!
+								</t>
+							</t>
+						</div>
+
+					</div>
+				<div class="oe_structure" />
+			</div>
+		</t>
+	</template>
+</odoo>

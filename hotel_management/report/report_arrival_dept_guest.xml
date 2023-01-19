@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="arrival_dept_guest">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page">
+                            <h2 class="text-center">Arrival Departure Report</h2>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">SN</th>
+                                        <th>Guest Name</th>
+                                        <th>Booking Ref.</th>
+                                        <th>Adults</th>
+                                        <th>Children</th>
+                                        <th>Room No</th>
+                                        <t t-if="o.arrival_dept == 'arrival'">
+                                            <th>Arrival Time</th>
+                                        </t>
+                                        <t t-if="o.arrival_dept == 'depart'">
+                                            <th>Departure Time</th>
+                                        </t>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="get_guest_arrival_dept_information(o)" t-as="line">
+                                        <td class="text-center">
+                                            <t t-esc="line['sn']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line['guest_name']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line['booking_ref']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line['adults']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line['children']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line['room_name']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line['checkin']" t-options='{"widget": "datetime"}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

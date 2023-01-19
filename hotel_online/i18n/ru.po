@@ -1,0 +1,405 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hotel_online
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-21 05:15+0000\n"
+"PO-Revision-Date: 2020-05-21 05:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "/shop/payment"
+msgstr "/Магазин/Платеж"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.show_sign_in11
+msgid "<b style=\"font-size: 24px;\">Booking</b>"
+msgstr "<b style=\"font-size: 24px;\">Booking</b>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "<br/>\n"
+"													<span style=\"line-height:50px;\">No Of Rooms</span>"
+msgstr "<br/>\n"
+"													<span style=\"line-height:50px;\">№ Комнат </span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "<br/>\n"
+"											<br/>\n"
+"											<strong>Grand Total:</strong>"
+msgstr ""
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "<br/>\n"
+"											<br/>\n"
+"											<strong>Taxes:</strong>"
+msgstr "<br/>\n"
+"											<br/>\n"
+"											<strong>Налоги:</strong>"
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "<i class=\"fa fa-arrow-right\"/> Add payment acquirers"
+msgstr "<i class=\"fa fa-arrow-right\"/> Добавить платежные реквизиты"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.total123
+msgid "<span class=\"col-xs-6 text-right h4 mt0\">Total:</span>"
+msgstr "<span class=\"col-xs-6 text-right h4 mt0\">Итого:</span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.total123
+msgid "<span class=\"col-xs-6 text-right text-muted\" title=\"Taxes may be updated after providing shipping address\"> Taxes:</span>"
+msgstr "<span class=\"col-xs-6 text-right text-muted\" title=\"Налоги могут быть обновлены после предоставления адреса доставки\"> Налоги:</span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.total123
+msgid "<span class=\"col-xs-6 text-right text-muted\">Subtotal:</span>"
+msgstr "<span class=\"col-xs-6 text-right text-muted\">Промежуточный итог:</span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "<span class=\"fa fa-long-arrow-left\"/>\n"
+"											Back to Booking"
+msgstr ""<span class=\"fa fa-long-arrow-left\"/>\n"
+"											Назад к бронированию""
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "<span class=\"h4\" style=\"margin-right:5px;color:#fff;\">Checkin Date</span>"
+msgstr "<span class=\"h4\" style=\"margin-right:5px;color:#fff;\">Дата заезда</span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "<span class=\"h4\" style=\"margin-right:5px;margin-left:20px;color:#fff;\">Checkout Date</span>"
+msgstr "<span class=\"h4\" style=\"margin-right:5px;margin-left:20px;color:#fff;\">Дата выезда</span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "<span style=\"color:#114052\">Image</span>"
+msgstr "<span style=\"color:#114052\">Изображение</span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "<span style=\"line-height:50px;margin-left:32px;\">Children</span>"
+msgstr "<span style=\"line-height:50px;margin-left:32px;\">Дети</span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "<span style=\"line-height:50px;margin-left:52px;\">Adult</span>"
+msgstr "<span style=\"line-height:50px;margin-left:52px;\">Взрослые</span>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "<strong>Total :</strong>"
+msgstr "<strong>Итог :</strong>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "<strong>Total Amout:</strong>"
+msgstr "<strong>Общая стоимость:</strong>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Adult :-"
+msgstr "Взрослый :-"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Arrival Date :-"
+msgstr "Дата прибытия :-"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Bill To:"
+msgstr "Счет"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Billing Information"
+msgstr "Платежная информация"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Children :-"
+msgstr "Дети"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "City"
+msgstr "Город"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Company\n"
+"												Name"
+msgstr "Название компании"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "Confirm Order <span class=\"fa fa-chevron-right\"/>"
+msgstr "Подтвердить заказ <span class=\"fa fa-chevron-right\"/>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Confirmation\n"
+"								<span class=\"chevron\"/>"
+msgstr "Подтверждение\n"
+"								<span class=\"chevron\"/>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Confirmed"
+msgstr "Подтверждено"
+
+#. module: hotel_online
+#: model:ir.model,name:hotel_online.model_res_country
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Country"
+msgstr "Страна"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Country..."
+msgstr "Страна..."
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Departure Date :-"
+msgstr "Дата отъезда :-"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Email"
+msgstr ""
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "No of Days"
+msgstr "Количество дней"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "No of Rooms"
+msgstr "Количество комнат"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "No. of nights :-"
+msgstr "Количество ночей"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Order"
+msgstr "Заказ"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "Pay Now"
+msgstr "Оплатить сейчас"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "Pay Now <span class=\"fa fa-chevron-right\"/>"
+msgstr "Оплатить сейчас <span class=\"fa fa-chevron-right\"/>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "Pay with"
+msgstr "Оплатить"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Payment\n"
+"								<span class=\"chevron\"/>"
+msgstr "Платеж\n"
+"								<span class=\"chevron\"/>"
+
+#. module: hotel_online
+#: model:ir.model.fields,field_description:hotel_online.field_hotel_reservation__payment_acquirer_id
+msgid "Payment Acquirer"
+msgstr "Платежные реквизиты"
+
+#. module: hotel_online
+#: model:ir.model,name:hotel_online.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "Платеж"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Phone"
+msgstr "Телефон"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Plants: image 1 0f 4 thumb"
+msgstr ""
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "Price"
+msgstr "Цена"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Proceed to Payment\n"
+"											<span class=\"fa fa-long-arrow-right\"/>"
+msgstr "Переходим к оплате\n"
+"											<span class=\"fa fa-long-arrow-right\"/>"
+
+#. module: hotel_online
+#: model:ir.model,name:hotel_online.model_hotel_reservation
+msgid "Reservation"
+msgstr "Бронирование"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Reservation - Confirmed"
+msgstr "Бронирование-Подтверждено"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "Return to Cart"
+msgstr "Возвращение в корзину"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Review Order\n"
+"								<span class=\"chevron\"/>"
+msgstr "Повторить Заказ\n"
+"								<span class=\"chevron\"/>"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Review Your Booking"
+msgstr "Просмотрите Свое Бронирование"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "Room Type"
+msgstr "Тип номера"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Room Type :-"
+msgstr "Тип номера :-"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.booking_show
+msgid "Room-1"
+msgstr "Номер-1"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "Rooms"
+msgstr "Номера"
+
+#. module: hotel_online
+#: model:ir.model.fields,field_description:hotel_online.field_payment_transaction__sale_order_id
+msgid "Sale Order"
+msgstr "Заказ"
+
+#. module: hotel_online
+#: model:ir.model.fields,field_description:hotel_online.field_hotel_reservation__access_token
+msgid "Security Token"
+msgstr "Токен безопасности"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.product_show
+msgid "Select A Room :"
+msgstr "Выберите Номер :"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Ship To:"
+msgstr "Доставить к:"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Ship to the same address"
+msgstr "Отправить по тому же адресу"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Shipping\n"
+"								&amp; Billing\n"
+"								<span class=\"chevron\"/>"
+msgstr ""
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.payment123
+msgid "Shop - Select Payment Acquirer"
+msgstr "Магазин-Выберите Платежного Эквайера"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Sign in"
+msgstr "Регистрироваться"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "State / Province"
+msgstr "Штат / Провинция"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "State / Province..."
+msgstr "Штат / Провинция..."
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Street"
+msgstr "Улица"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.confirmation1
+msgid "Thank you for your order."
+msgstr "Спасибо вам за ваш заказ."
+
+#. module: hotel_online
+#: model:ir.model.fields,field_description:hotel_online.field_hotel_reservation__payment_tx_id
+msgid "Transaction"
+msgstr "Операция"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "VAT\n"
+"												Number"
+msgstr ""
+
+#. module: hotel_online
+#: model:ir.model,name:hotel_online.model_website
+msgid "Website"
+msgstr "Вебсайт"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Your Address"
+msgstr "Ваш адресс"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Your Name"
+msgstr "Ваше Имя"
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "Zip /\n"
+"												Postal Code"
+msgstr ""
+
+#. module: hotel_online
+#: model_terms:ir.ui.view,arch_db:hotel_online.res_partner_show
+msgid "or"
+msgstr "или"
+

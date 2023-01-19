@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="open_hotel_room_dashboard" model="ir.ui.view">
+			<field name="name">hotel.room.dashboard.form</field>
+			<field name="model">hotel.room.dashboard</field>
+			<field name="arch" type="xml">
+				<form string="Open Room Dashboard" version="7.0">
+					<button name="open_dashboard" type="object" string="Open Room Dashboard" class="oe_highlight"></button>
+				</form>
+			</field>
+		</record>
+		
+		<record id="action_open_hotel_room_dashboard" model="ir.actions.act_window">
+            <field name="name">Open Room Dashboard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hotel.room.dashboard</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+        <!-- <menuitem id="room_dashboard_parent" name="Room Dashboard" groups="hotel_management.group_hotel_reservation_manager,hotel_management.group_hotel_reservation_user,hotel.group_hotel_manager,hotel.group_hotel_user"></menuitem>
+        <menuitem id="room_dashboard_child" name="Room Dashboard" parent="room_dashboard_parent" groups="hotel_management.group_hotel_reservation_manager,hotel_management.group_hotel_reservation_user,hotel.group_hotel_manager,hotel.group_hotel_user"></menuitem>
+        <menuitem id="room_dashboard_menu" name="Open Dashboard" parent="room_dashboard_child" action="action_open_hotel_room_dashboard" groups="hotel_management.group_hotel_reservation_manager,hotel_management.group_hotel_reservation_user,hotel.group_hotel_manager,hotel.group_hotel_user"></menuitem> -->
+
+
+
+	</data>
+</odoo>

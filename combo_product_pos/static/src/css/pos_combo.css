@@ -1,0 +1,145 @@
+.pos-supplement{
+    position: absolute;
+    bottom:auto;
+    top:0;
+    left: 2px;
+    line-height: 13px;
+    border-radius: 2px;
+    z-index:1000;
+}
+.pos-reduction {
+    position: absolute;
+    bottom:auto;
+    top:0;
+    left: 20px;
+    line-height: 13px;
+    border-radius: 2px;
+    z-index:1000;
+}
+.pos-supplement-icon{
+    font-size: 15px;
+    color: green;
+    width: 15px;
+}
+.pos-reduction-icon{
+    font-size: 15px;
+    color: red;
+    width: 15px;
+}
+.supplement-line{
+    color: red;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+
+}
+
+.pos .combo-tag{
+    position: absolute;
+    top: 52px;
+    left: 0px;
+    vertical-align: top;
+    color: white;
+    line-height: 13px;
+    background: #6ec89b;
+    padding: 2px 5px;
+    border-radius: 2px;
+    font-weight: bold;
+    display: none;
+    width: 100%;
+}
+.popup-combo{
+    width: 600px !important;
+    height: 510px !important;
+}
+.popup-combo .combo-selection{
+    height: 400px;
+}
+.popup-combo .combo-type{
+    height: 50% !important;
+}
+.combo-required, .combo-optional{
+    overflow-y: auto;
+    height: 85% !important;
+}
+.popup-combo .title{
+    background: #6EC89B !important;
+    color: #FFFFFF;
+    padding: 10px !important;
+}
+.popup-combo .combo-type-head{
+    background: #FFFFFF !important;
+    color: #6EC89B !important;
+    height: 15% !important;
+
+}
+.popup-combo .combo-category{
+    border: 1px solid #6ec89b;
+    padding-bottom: 10px;
+}
+.popup-combo .combo-category-head {
+    background: #b1c6b9 !important;
+    color: #FFFFFF;
+}
+
+.combo-product-list .product-img{
+    position: relative;
+    width: 120px;
+    height: 100px;
+    background: white;
+    text-align: center;
+}
+.combo-product-list .product-name{
+    position: absolute;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    bottom: 0;
+    top: auto;
+    line-height: 14px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: -webkit-linear-gradient(-90deg,rgba(255,255,255,0),rgba(255,255,255,1), rgba(255,255,255,1));
+    background: -moz-linear-gradient(-90deg,rgba(255,255,255,0),rgba(255,255,255,1), rgba(255,255,255,1));
+    background: -ms-linear-gradient(-90deg,rgba(255,255,255,0),rgba(255,255,255,1), rgba(255,255,255,1));
+    padding: 3px;
+    padding-top: 3px;
+    padding-top: 15px;
+}
+
+.pos .combo-selected-tag{
+    position: absolute;
+    top: 52px;
+    left: 0px;
+    vertical-align: top;
+    color: white;
+    line-height: 13px;
+    background: #6ec89b;
+    padding: 2px 5px;
+    border-radius: 2px;
+    display:none;
+    font-weight: bold;
+    width: 100%;
+}
+.pos .combo-items{
+    padding-left :25px !important;
+    color: #888;
+}
+.pos .combo-item{
+    font-size: 15px !important;
+    font-style: italic !important;
+}
+
+.pos .receipt-combo{
+    font-size: 13px;
+    font-style: italic;
+}
+
+@media print {
+    .pos .receipt-combo{
+        font-size: 11px !important;
+        font-style: italic;
+    }
+}

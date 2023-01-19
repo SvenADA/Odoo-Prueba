@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	<template id="hotel_reservation_checkin_report">
+		<t t-call="web.html_container">
+			<t t-call="web.external_layout">
+				<t t-foreach="docs" t-as="o">
+					<div class="page">
+						<div class="row">
+							<br/>
+							<br/>
+							<br/>
+							<div class="col-xs-12 text-center">
+								<h2>CheckIn Guest List</h2>
+							</div>
+						</div>
+						<div class="row">
+						</div>
+						<table width="100%">
+							<tr height="30">
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>#No</strong>
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>Guest Name</strong>
+								</td>
+
+
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>Check-In-Date</strong>
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>Room Type</strong>
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<strong>Room No</strong>
+								</td>
+							</tr>
+							<tr height="30" t-foreach="get_checkin(o)" t-as="l">
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-esc="l.line_id.reservation_no" />
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-field="l.line_id.partner_id.name" />
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-field="l.checkin" />
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-field="l.categ_id.name" />
+								</td>
+								<td class="text-center" style="border: 1px solid black;">
+									<span t-field="l.room_number.name" />
+								</td>
+							</tr>
+
+						</table>
+					</div>
+				</t>
+			</t>
+			 </t>
+		</template>
+
+	</data>
+</odoo>
+	

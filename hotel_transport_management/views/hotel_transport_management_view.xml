@@ -1,0 +1,422 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+
+<!-- View Creation for location master  -->
+		
+		<record model="ir.ui.view" id="location_master_form">
+			<field name="name">location.master.form</field>
+			<field name="model">location.master</field>
+			<field name="arch" type="xml">
+				<form string="Location Master">
+					<sheet>
+                    <group col="4">
+						<field name="name"/>
+						<field name="location_code"/>
+					</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="location_master_tree">
+			<field name="name">location.master.tree</field>
+			<field name="model">location.master</field>
+			<field name="arch" type="xml">
+				<tree string="Location Master">
+					<field name="name"/>
+					<field name="location_code"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="location_master_action">
+			<field name="name">Location Master</field>
+			<field name="res_model">location.master</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem name="Transport Master" 
+				  id="transport_master_menu" 
+				  parent="hotel.hotel_configuration_menu"/>
+		
+		<menuitem name="Location Master" 
+				  id="location_master_submenu" 
+				  action="location_master_action"
+				  parent="transport_master_menu"/>
+		
+		<!-- View Creation for Transport partner  --> 
+		
+		<record model="ir.ui.view" id="transport_partner_form">
+			<field name="name">transport.partner.form</field>
+			<field name="model">transport.partner</field>
+			<field name="arch" type="xml">
+				<form string="Transport Partner">
+					<header>
+						<button name="confirm_state" string="Confirm" type="object" states="draft"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+					</header>
+					<sheet string="Transport Partner">
+					<group colspan="4">
+						<field name="partner_id"  context="{'res_partner_search_mode': 'supplier'}"/>
+						<field name="date_of_authorization" attrs="{'invisible': [('state','=','draft')]}"/>
+						<field name="name" invisible="1"/>
+					</group>
+					<separator colspan="4" string="Other Information"/>
+					<notebook colspan="4">
+						<page string ="Transport Type Information">
+							<field name="transport_info_ids" nolabel="1"/>	
+						</page>
+					</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="transport_partner_tree">
+			<field name="name">transport.partner.tree</field>
+			<field name="model">transport.partner</field>
+			<field name="arch" type="xml">
+				<tree string="Transport Partner">
+					<field name="partner_id"/>
+					<field name="date_of_authorization"/>
+					<field name="state"/>
+					
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="transport_partner_action">
+			<field name="name">Transport Partner</field>
+			<field name="res_model">transport.partner</field>
+			<!--<field name="view_type">form</field>-->
+			<field name="view_mode">tree,form</field>
+		</record>
+		<menuitem name="Transport Partner"
+				  id="transport_master_submenu"
+				  action="transport_partner_action"
+ 				  parent="transport_master_menu"/>
+		
+		<!-- View Creation for Transport Mode  -->
+		<record model="ir.ui.view" id="transport_mode_form">
+			<field name="name">transport.mode.form</field>
+			<field name="model">transport.mode</field>
+			<field name="arch" type="xml">
+				<form string="Transport Mode">
+					<field name="name"/>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="transport_mode_tree">
+			<field name="name">transport.mode.tree</field>
+			<field name="model">transport.mode</field>
+			<field name="arch" type="xml">
+				<tree string="Transport Mode">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		
+		<!-- View Creation for Transport type Information  -->
+		<record model="ir.ui.view" id="transport_information_form">
+			<field name="name">transport.information.form</field>
+			<field name="model">transport.information</field>
+			<field name="arch" type="xml">
+				<form string="Transport Type Information">
+					<sheet>
+                    <group col="4">
+						<field name="name"/>
+						<field name="from_location"/>
+						<field name="to_location" domain="[('id','!=',from_location)]"/>
+						<field name="cost_price"/>
+						<field name="sale_price"/>
+                    </group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="transport_information_tree">
+			<field name="name">transport.information.tree</field>
+			<field name="model">transport.information</field>
+			<field name="arch" type="xml">
+				<tree string="Transport Type Information">
+					<field name="name"/>
+					<field name="from_location"/>
+					<field name="to_location"/>
+					<field name="cost_price"/>
+					<field name="sale_price"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_hotel_reservation_form_inherit1">
+			<field name="name">hotel.reservation.form.inherit</field>
+			<field name="model">hotel.reservation</field>
+            <field name="inherit_id" ref="hotel_management.view_hotel_reservation_form1"/>
+            <field name="arch" type="xml">
+                <page name="booking" position="after">
+					<page name="pickup" string="PickUp Details">
+            				<group col="4" colspan="4">
+								<field name="pick_up" colspan="2"/>
+								<label for="service_type" string="" colspan="2"/>
+								<newline/>
+								<field name="service_type" attrs="{'invisible': [('pick_up','=','no')],'required':[('pick_up','=','yes')]}"/>
+								<field name="chargeable" attrs="{'invisible': [('pick_up','=','no')]}"/>
+								<field name="trans_partner_id" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}"/>
+								<field name="trans_mode_id" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}"/>
+								<field name="pickup_time" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}"/>
+								<field name="source_id" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}"/>
+								<field name="destination_id" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}" />
+            				</group>
+            			</page>
+               </page>
+            </field>
+        </record>	
+        
+        <record model="ir.ui.view" id="view_banquet_form_inherit_in_transport">
+			<field name="name">hotel.reservation.form.banquet.inherit</field>
+			<field name="model">hotel.reservation</field>
+            <field name="inherit_id" ref="banquet_managment.view_banquet_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[1]" position="after">
+					<page name="pickup" string="PickUp Details">
+            				<group col="4" colspan="4">
+								<field name="pick_up" colspan="2"/>
+								<label for="service_type" string="" colspan="2"/>
+								<newline/>
+								<field name="service_type" attrs="{'invisible': [('pick_up','=','no')],'required':[('pick_up','=','yes')]}"/>
+								<field name="chargeable" attrs="{'invisible': [('pick_up','=','no')]}"/>
+								<field name="trans_partner_id" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}"/>
+								<field name="trans_mode_id" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}"/>
+								<field name="pickup_time" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}"/>
+								<field name="source_id" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}"/>
+								<field name="destination_id" attrs="{'invisible': [('pick_up','=','no')], 'required':[('pick_up','=','yes')]}" />
+            				</group>
+            			</page>
+               </xpath>
+            </field>
+        </record>	
+        
+        <record model="ir.ui.view" id="view_hotel_folio_form_inherit_transport">
+			<field name="name">hotel.folio.inherit transport</field>
+			<field name="model">hotel.folio</field>
+            <field name="inherit_id" ref="hotel_management.hotel_folio_form_inherit_state"/>
+            <field name="arch" type="xml">
+                <field name="food_lines" position="after">
+                <separator string="Transport Lines"/>
+                <field name="transport_line_ids"  colspan="4" string = "Transport Line" nolabel="1" readonly="1">
+						<form name="transport" string="Transport Line" >
+									<notebook>
+										<page name="tline" string="Transport Line">
+											<separator string="Automatic Declaration" colspan="4"/>
+											<group colspan="4" col="6">
+											<field name="product_uom_category_id" invisible="1"/>
+											<field name="product_uom_qty"
+                                        		context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id,  'uom':product_uom}"
+												/>
+											<field name="product_uom" options='{"no_open": True}'/>
+											<field name="product_id"
+                                        		context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id,  'uom':product_uom}"
+												groups="base.group_user"  domain="[('isservice','=',True)]"
+												/>
+											</group>
+											<separator string="Manual Description"
+												colspan="4"/>
+											<field name="name" colspan="4" />
+											<field name="price_unit" />
+											<field name="discount"/>
+											<newline/>
+											<field name="tax_id" widget="many2many_tags" colspan="4"/>
+											<separator string="States" colspan="4"/>
+											<field name="state" />
+<!-- 											<field name="invoiced" /> -->
+										</page>
+<!-- 										<page name="extra" string="Extra Info"> -->
+<!-- 											<field name="product_uos_qty" on_change="uos_change(product_uos, product_uos_qty, product_id)"/> -->
+<!-- 											<field name="product_uos"  /> -->
+<!-- 											<field name="address_allotment_id" /> -->
+<!-- 									   	</page> -->
+										<page name="history" string="History">
+											<separator string="Invoice Lines" colspan="4"/>
+											<field name="invoice_lines" colspan="4" nolabel="1"/>
+										</page>
+									</notebook>
+								</form>
+								<tree string="Service Line">
+									<field name="name"/>
+									<field name="state" invisible="1"/>
+									<field name="product_id" />
+									<field name="product_uom_category_id" invisible="1"/>
+									<field name="product_uom_qty"/>
+									<field name="price_unit"/>
+									<field name="price_subtotal"/>
+								</tree>
+				 			</field>
+				 </field>
+            </field>
+        </record>
+
+
+<!-- task -->
+
+		<record id="view_task_form_transport" model="ir.ui.view">
+            <field name="name">transport.task.form</field>
+            <field name="model">transport.task</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Task Edition">
+                    <header>
+                    	<button name="do_open" string="Start Task" type="object"
+                                states="draft" class="oe_highlight"/>
+                        <button name="action_close" string="Done" type="object" 
+                                 states="open" groups="base.group_user"/> 
+                         <button name="do_cancel" string="Cancel Task" type="object" 
+                                 states="draft,open" groups="base.group_user"/> 
+                        <field name="stage_id" widget="statusbar" clickable="True"
+                            options="{'fold_field': 'fold'}"/>
+                    </header>
+                    <sheet string="Task">
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" groups="base.group_user"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <field name="kanban_state" widget="kanban_state_selection"/>
+                    <div class="oe_title">
+                        <h1 class="o_row">
+                            <field name="priority" widget="priority"/>
+                            <field name="name" placeholder="Task Title..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id" context="{'default_use_tasks':1}"/>
+                            <field name="user_ids"
+                                options='{"no_open": True}'
+                                context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_user']}"/>
+                            <field name="planned_hours" widget="float_time"/>
+                           <!--  <field name="planned_hours" widget="float_time"
+                                    groups="project.group_time_work_estimation_tasks"/> -->
+                            <field name="state" readonly="1"/>
+                            <field name="legend_blocked" invisible="1"/>
+                            <field name="legend_normal" invisible="1"/>
+                            <field name="legend_done" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="date_deadline"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+							<field name="is_chargeable"/>
+							<field name="is_pickup"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description_page" string="Description">
+                        	<group col="4">
+                        		<field name="service_type" required="1"/>
+								<field name="trans_partner_id" required="1"/>
+								<field name="trans_mode_id" required="1"/>
+								<field name="pickup_time" required="1"/>
+								<field name="source_id" required="1"/>
+								<field name="destination_id" required="1"/>
+								<field name="reservation_id" required="1"/>
+								<field name="guest_id" required="1"/>
+							</group>
+                            <field name="description" type="html"/>
+                            <div class="oe_clear"/>
+                        </page>
+                        <page string="Extra Info">
+                            <group col="4">
+                                <group col="2">
+                                    <field name="sequence" groups="base.group_no_one"/>
+                                    <field name="partner_id"/>
+                                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                                    <field name="displayed_image_id" groups="base.group_no_one"/>
+                                </group>
+                                <group col="2">
+                                    <field name="date_assign" groups="base.group_no_one"/>
+                                    <field name="date_last_stage_update" groups="base.group_no_one"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+		
+		
+		<record id="view_task_tree2_transport" model="ir.ui.view">
+            <field name="name">transport.task.tree</field>
+            <field name="model">transport.task</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <tree  string="Tasks">
+                    <field name="sequence" invisible="not context.get('seq_visible', False)"/>
+                    <field name="reservation_id"/>
+                    <field name="guest_id" />
+                    <field name="trans_partner_id" />
+                    <field name="source_id" />
+                    <field name="pickup_time" />
+					<field name="destination_id" />
+                </tree>
+            </field>
+        </record>
+		
+		<record id="view_task_search_form_transport" model="ir.ui.view">
+            <field name="name">transport.task.search.form</field>
+            <field name="model">transport.task</field>
+            <field name="arch" type="xml">
+               <search string="Tasks">
+                    <group>
+                        <field name="reservation_id"/>
+						<field name="guest_id" />
+						<field name="trans_partner_id" />
+						<field name="source_id" />
+						<field name="destination_id" />
+                    </group>
+                </search>
+            </field>
+        </record>
+		
+		<record id="action_view_task_transport" model="ir.actions.act_window">
+            <field name="name">Transport Tasks</field>
+            <field name="res_model">transport.task</field>
+            <!--<field name="view_type">form</field>-->
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="False"/>
+			<field name="context">{"default_transport":1}</field>
+			<field name="domain">[('transport', '=', 1)]</field>
+			<field name="search_view_id" ref="view_task_search_form_transport"/>
+        </record>
+		
+		<menuitem action="action_view_task_transport" id="menu_action_view_task_transport" parent="project.menu_project_management" sequence="3"/>
+		
+		<record id="action_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+			<field name="context">{"default_transport":0}</field>
+            <field name="domain">[('transport', '=', 0)]</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new task.
+              </p><p>
+                OpenERP's project management allows you to manage the pipeline
+                of tasks in order to get things done efficiently. You can
+                track progress, discuss on tasks, attach documents, etc.
+              </p>
+            </field>
+        </record>
+		
+		<!-- task end-->
+
+</data>
+</odoo>

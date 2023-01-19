@@ -1,0 +1,80 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hotel_room_dashboard_view
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-21 05:20+0000\n"
+"PO-Revision-Date: 2020-05-21 05:20+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__create_date
+msgid "Created on"
+msgstr "Создан"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__id
+msgid "ID"
+msgstr "Номер"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard____last_update
+msgid "Last Modified on"
+msgstr "Последнее изменение"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__write_date
+msgid "Last Updated on"
+msgstr "Последнее обновление"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__name
+msgid "Name"
+msgstr "Название"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.ui.menu,name:hotel_room_dashboard_view.room_dashboard_menu
+msgid "Open Dashboard"
+msgstr "Открыть Шахматку"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.actions.act_window,name:hotel_room_dashboard_view.action_open_hotel_room_dashboard
+#: model_terms:ir.ui.view,arch_db:hotel_room_dashboard_view.open_hotel_room_dashboard
+msgid "Open Room Dashboard"
+msgstr "Открыть Шахматку"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model,name:hotel_room_dashboard_view.model_hotel_reservation
+msgid "Reservation"
+msgstr "Бронирование"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model,name:hotel_room_dashboard_view.model_hotel_room_dashboard
+#: model:ir.ui.menu,name:hotel_room_dashboard_view.room_dashboard_child
+#: model:ir.ui.menu,name:hotel_room_dashboard_view.room_dashboard_parent
+msgid "Room Dashboard"
+msgstr "Шахматка"
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<odoo>
+    <data>
+    <record id="pos_credit_sales_report" model="ir.actions.report">
+			<field name="name">Invoice</field>
+			<field name="model">pos.order</field>
+			<field name="report_type">qweb-html</field>
+			<field name="report_name">hotel_restaurant_pos.pos_credit_sale</field>
+			<field name="report_file">hotel_restaurant_pos.pos_credit_sale</field>
+			<field name="print_report_name">(object._get_report_base_filename())</field>
+		</record>
+    </data>
+</odoo>

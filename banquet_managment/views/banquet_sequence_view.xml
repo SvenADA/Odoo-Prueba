@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for tour.preference -->
+<!--         <record id="seq_type_banquet_quotation" model="ir.sequence.type"> -->
+<!--             <field name="name">Banquet Quotation</field> -->
+<!--             <field name="code">banquet.quotation</field> -->
+<!--         </record> -->
+
+        <record id="seq_banquet_quotation" model="ir.sequence">
+            <field name="name">Banquet Quotation</field>
+            <field name="code">banquet.quotation</field>
+            <field name="prefix">QT</field>
+            <field name="padding">6</field>
+			<!-- <field name="company_id" eval="False"/> -->
+        </record>
+		
+<!-- 		<record id="seq_type_crm_lead_1" model="ir.sequence.type"> -->
+<!--             <field name="name">Crm Lead</field> -->
+<!--             <field name="code">crm.lead</field> -->
+<!--         </record> -->
+
+        <record id="seq_crm_lead_1" model="ir.sequence">
+            <field name="name">Crm Lead</field>
+            <field name="code">crm.lead</field>
+            <field name="prefix">LD</field>
+            <field name="padding">6</field>
+			<!-- <field name="company_id" eval="False"/> -->
+        </record>
+		
+    </data>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="laundry_category_id" model="product.category">
+            <field name="name">Laundry Services</field>
+        </record>
+        
+        <record id="cat3333" model="product.category">
+            <field name="name">Clothes</field>
+        </record>
+        
+        
+<!--        <record id="laundry_services_id" model="product.product">-->
+<!--            <field name="list_price">75.0</field>-->
+<!--            <field name="standard_price">30.0</field>-->
+<!--            <field name="uom_id" ref="uom.product_uom_unit"/>-->
+<!--            &lt;!&ndash;<field name="shop_id" >1    </field>&ndash;&gt;-->
+<!--            <field name="uom_po_id" ref="uom.product_uom_unit"/>-->
+<!--            <field name="name">Washing Clothes</field>-->
+<!--            <field name="categ_id" ref="laundry_category_id"/>-->
+<!--            <field name="type">service</field>-->
+<!--            <field eval="False" name="purchase_ok"/>-->
+<!--        </record>-->
+        
+<!--         <record id="laundry_services2" model="product.product"> -->
+<!--             <field name="list_price">75.0</field> -->
+<!--             <field name="standard_price">30.0</field> -->
+<!--             <field name="uom_id" ref="product.product_uom_unit"/> -->
+<!--             <field name="uom_po_id" ref="product.product_uom_unit"/> -->
+<!--             <field name="name">All Clothes</field> -->
+<!--             <field name="categ_id" ref="cat3333"/> -->
+<!--             <field name="type">service</field> -->
+<!--             <field eval="False" name="purchase_ok"/> -->
+<!--         </record> -->
+        
+     </data>
+</openerp>

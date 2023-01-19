@@ -1,0 +1,32 @@
+
+<odoo>
+  <data>
+  
+  <!--Activities-->
+  
+    <record model="workflow.activity" id="act_credit">
+      <field name="wkf_id" ref="point_of_sale.wkf_pos"/>
+      <field name="name">credit</field>
+      <field name="action">action_credit()</field>
+      <field name="kind">function</field>
+    </record>
+    
+    
+   
+  <!--Transitions-->
+  
+   <record model="workflow.transition" id="trans_credit_paid">
+      <field name="act_from" ref="act_credit"/>
+      <field name="act_to" ref="point_of_sale.act_paid"/>
+      <field name="condition">test_paid()</field>
+      <field name="signal">paid</field>
+    </record>
+  
+  	<record model="workflow.transition" id="trans_paid_credit">
+      <field name="act_from" ref="point_of_sale.act_draft"/>
+      <field name="act_to" ref="act_credit"/>
+      <field name="signal">credit</field>
+    </record>
+    
+  </data>
+</odoo>

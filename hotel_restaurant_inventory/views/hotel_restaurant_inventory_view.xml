@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_hotel_restaurant_kitchen_order_tickets_inherits_form">
+            <field name="name">hotel_restaurant_kitchen_order_tickets_inherits.form</field>
+            <field name="model">hotel.restaurant.kitchen.order.tickets</field>
+            <field name="inherit_id" ref="hotel_restaurant.view_hotel_restaurant_kitchen_order_tickets_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='orderno']" position="before">
+                    <header colspan="4" col="8">
+                        <button name="process_kot1" string="Process" type="object" icon="fa-check" states="draft"/>
+                        <button name="cancel_kot1" string="Cancel" type="object" icon="fa-times-circle text-danger"
+                                states="draft"/>
+                        <button name="done_kot1" string="Done" type="object" states="in_process"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,in_process,done"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_hotel_restaurant_kitchen_order_tickets_inherits_form">
+            <field name="name">hotel_restaurant_kitchen_order_tickets_inherits.form</field>
+            <field name="model">hotel.restaurant.kitchen.order.tickets</field>
+            <field name="inherit_id"
+                   ref="hotel_management.view_hotel_restaurant_kitchen_order_tickets_form_inheritance"/>
+            <field name="arch" type="xml">
+                <field name="price_subtotal" position="after">
+                    <button name="process_kot" string="Process" type="object" icon="fa-arrow-right text-success"
+                            states="draft"/>
+                    <button name="done_kot" string="Done" type="object" icon="fa-check" states="in_process"/>
+                    <field name="state" widget="statusbar" sctions.actatusbar_visible="draft,in_process,done"/>
+                </field>
+
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hotel_restaurant_kitchen_order_tickets_inherit_tree">
+            <field name="name">view_hotel_restaurant_kitchen_order_tickets_inherti.tree</field>
+            <field name="model">hotel.restaurant.kitchen.order.tickets</field>
+            <field name="inherit_id" ref="hotel_management.view_hotel_restaurant_kitchen_order_tickets_tree"/>
+            <field name="arch" type="xml">
+                <field name="kot_list" position="after">
+                    <field name="state"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_hotel_restaurant_kitchen_order_tickets_inherit_tree12">
+            <field name="name">view_hotel_restaurant_kitchen_order_tickets_inherti.tree12</field>
+            <field name="model">hotel.restaurant.kitchen.order.tickets</field>
+            <field name="inherit_id" ref="hotel_management.view_hotel_restaurant_kitchen_order_tickets_tree_bot"/>
+            <field name="arch" type="xml">
+                <field name="kot_list" position="after">
+                    <field name="state"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- 	<record model="ir.ui.view" id="view_hotel_menucard_form_inherit"> -->
+        <!-- 			<field name="name">hotel.menucard.form</field> -->
+        <!-- 			<field name="model">hotel.menucard</field> -->
+        <!--             <field name="inherit_id" ref="hotel_restaurant.view_hotel_menucard_form"/> -->
+        <!--             <field name="arch" type="xml"> -->
+        <!--                 <xpath expr="//field[@name='active']" position="before"> -->
+        <!--                     <field name="route_ids"/> -->
+        <!--                     <field name="supply_method"/> -->
+        <!--                 </xpath> -->
+        <!--             </field> -->
+        <!--     </record> -->
+
+        <record model="ir.ui.view" id="view_hotel_restaurant_order_list_form">
+            <field name="name">hotel.restaurant.order.list.form</field>
+            <field name="model">hotel.restaurant.order.list</field>
+            <field name="arch" type="xml">
+                <form string="Order List"  version="7.0">
+                    <header colspan="4" col="8">
+                        <button name="process_kot" string="Process" type="object" states="draft"/>
+                        <button name="done_kot" string="Done" type="object" states="in_process"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,in_process,done"/>
+                        <!-- <field name="flag"  invisible="1" /> -->
+                    </header>
+                    <sheet string="Basic Info">
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object" name="action_view_kot_delivery" class="oe_stat_button" icon="fa-truck"
+                                    string="Delivery" attrs="{'invisible': [('picking_id', '=', False)]}">
+                            </button>
+                        </div>
+                        <group colspan="4" col="4">
+                            <field name="product_id"/>
+                            <field name="item_qty"/>
+                            <field name="item_rate"/>
+                            <field name="price_subtotal"/>
+                            <field name="picking_id" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_hotel_restaurant_order_list_tree_kot">
+            <field name="name">hotel.restaurant.order.list.tree</field>
+            <field name="model">hotel.restaurant.order.list</field>
+            <field name="arch" type="xml">
+                <tree string="Kot Details" decoration-danger="state == 'in_process'"
+                      decoration-primary="state == 'draft'">
+                    <field name="order_no"/>
+                    <field name="shop_id"/>
+                    <field name="resno"/>
+                    <field name="product_id"/>
+                    <field name="item_qty"/>
+                    <field name="date"/>
+                    <field name="waiter_name"/>
+                    <field name="tableno"/>
+                    <field name="room_no"/>
+                    <field name="state"/>
+                    <field name="product_nature" invisible="1"/>
+                    <button name="process_kot" string="Process" type="object" icon="fa-forward" states="draft"/>
+                    <button name="done_kot" string="Done" type="object" icon="fa-check" states="in_process"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hotel_restaurant_order_list_tree_bot">
+            <field name="name">hotel.restaurant.order.list.bot.tree</field>
+            <field name="model">hotel.restaurant.order.list</field>
+            <field name="arch" type="xml">
+                <tree string="Bot Details" decoration-danger="state == 'in_process'"
+                      decoration-primary="state == 'draft'">
+                    <field name="ordernobot"/>
+                    <field name="shop_id"/>
+                    <field name="resno"/>
+                    <field name="product_id"/>
+                    <field name="item_qty"/>
+                    <field name="date"/>
+                    <field name="waiter_name"/>
+                    <field name="tableno"/>
+                    <field name="room_no"/>
+                    <field name="state"/>
+                    <field name="product_nature" invisible="1"/>
+                    <button name="process_kot" string="Process" type="object" icon="fa-arrow-right text-success"
+                            states="draft"/>
+                    <button name="done_kot" string="Done" type="object" icon="fa-check" states="in_process"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_hotel_restaurant_order_list_filter">
+            <field name="name">hotel.restaurant.order.list.search</field>
+            <field name="model">hotel.restaurant.order.list</field>
+            <field name="arch" type="xml">
+                <search string="Order Details">
+                    <filter string="State" name="state" domain="[('state','in',['draft','in_process'])]"/>
+
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="open_view_hotel_restaurant_order_form_tree_kot">
+            <field name="name">KOT Details</field>
+            <field name="res_model">hotel.restaurant.order.list</field>
+            <field eval="view_hotel_restaurant_order_list_tree_kot" name="view_id"/>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_state":1}</field>
+            <field name="search_view_id" ref="view_hotel_restaurant_order_list_filter"/>
+            <field name="domain">[('product_nature','=','kot')]</field>
+
+        </record>
+        <menuitem name="KOT Products" id="menu_open_view_hotel_restaurant_tables_form_tree" sequence="14"
+                  action="open_view_hotel_restaurant_order_form_tree_kot"
+                  parent="hotel_restaurant.hotel_restaurant_menu"/>
+
+        <record model="ir.actions.act_window" id="open_view_hotel_restaurant_order_form_tree_bot">
+            <field name="name">BOT Details</field>
+            <field name="res_model">hotel.restaurant.order.list</field>
+            <field eval="view_hotel_restaurant_order_list_tree_bot" name="view_id"/>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_state":1}</field>
+            <field name="search_view_id" ref="view_hotel_restaurant_order_list_filter"/>
+            <field name="domain">[('product_nature','=','bot')]</field>
+        </record>
+        <menuitem name="BOT Products" id="bot_menu_open_view_hotel_restaurant_tables_form_tree" sequence="15"
+                  action="open_view_hotel_restaurant_order_form_tree_bot"
+                  parent="hotel_restaurant.hotel_restaurant_menu"/>
+
+    </data>
+
+    <data noupdate="1">
+        <!--  This is the sequence file for the BOM Order    -->
+        <!-- 		<record id="mrp.sequence_mrp_prod_type" model="ir.sequence.type"> -->
+        <!--             <field name="name">Production order</field> -->
+        <!--             <field name="code">mrp.production</field> -->
+        <!--         </record> -->
+
+        <record id="mrp_sequence_mrp_prod" model="ir.sequence">
+            <field name="name">Production order</field>
+            <field name="code">mrp.production</field>
+            <field name="prefix">MO/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+    </data>
+</odoo>

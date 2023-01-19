@@ -1,0 +1,89 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hotel_room_dashboard_view
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-12 09:15+0000\n"
+"PO-Revision-Date: 2020-08-12 09:15+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hotel_room_dashboard_view
+#: model:ir.actions.client,name:hotel_room_dashboard_view.hotel_compare_widget_client_actn
+msgid "Dashboard"
+msgstr "Tableau de Bord"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: hotel_room_dashboard_view
+#: model:ir.ui.menu,name:hotel_room_dashboard_view.mnu_my_widget_main_hotel
+msgid "Hotel Dashboard"
+msgstr "Hotel Tableau de Bord"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model.fields,field_description:hotel_room_dashboard_view.field_hotel_room_dashboard__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.ui.menu,name:hotel_room_dashboard_view.room_dashboard_menu
+msgid "Open Dashboard"
+msgstr "Ouvrir Tableau de Bord"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.actions.act_window,name:hotel_room_dashboard_view.action_open_hotel_room_dashboard
+#: model_terms:ir.ui.view,arch_db:hotel_room_dashboard_view.open_hotel_room_dashboard
+msgid "Open Room Dashboard"
+msgstr "Ouvrir Tableau de Bord"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model,name:hotel_room_dashboard_view.model_hotel_reservation
+msgid "Reservation"
+msgstr "Réservation"
+
+#. module: hotel_room_dashboard_view
+#: model:ir.model,name:hotel_room_dashboard_view.model_hotel_room_dashboard
+#: model:ir.ui.menu,name:hotel_room_dashboard_view.room_dashboard_child
+#: model:ir.ui.menu,name:hotel_room_dashboard_view.room_dashboard_parent
+msgid "Room Dashboard"
+msgstr "Tableau de bord Chambre"

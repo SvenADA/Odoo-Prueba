@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data noupdate="0">
+	
+	<!-- Floor	-->
+	
+		<record id="hotel_floor_ground0" model="hotel.floor">
+			<field name="name">Ground</field>
+		</record>
+		<record id="hotel_floor_first0" model="hotel.floor">
+			<field name="name">First</field>
+			<field name="sequence">1</field>
+		</record>
+		<record id="hotel_floor_second0" model="hotel.floor">
+			<field name="name">Second</field>
+			<field name="sequence">2</field>
+		</record>
+		
+		<record id="hotel_floor_third0" model="hotel.floor">
+			<field name="name">Third</field>
+			<field name="sequence">3</field>
+		</record>
+		
+	<!-- hotel_room_amenities_type	-->
+		
+
+		<record id="hotel_room_amenities_type_0" model="hotel.room_amenities_type">
+<!-- 			<field name="parent_id"  ref="null" /> -->
+			<field name="name">All Aminities</field>
+		</record>
+		
+		<!-- hotel_service_type	-->
+		
+		<record id="hotel_service_type_0" model="hotel.service_type">
+<!-- 			<field name="parent_id" ref="null" /> -->
+			<field name="name">All Services</field>
+			<field name="isservicetype">True</field>
+		</record>
+		
+		<record id="hotel_service_type_1" model="hotel.service_type">
+			<field name="parent_id" ref="hotel_service_type_0"/>
+			<field name="name">Fixed</field>
+			<field name="isservicetype">True</field>
+		</record>
+		<record id="hotel_service_type_2" model="hotel.service_type">
+			<field name="parent_id" ref="hotel_service_type_0"/>
+			<field name="name">Variable</field>
+			<field name="isservicetype">True</field>
+		</record>
+		
+
+			
+		<!-- hotel_services	-->
+
+	
+		<record id="hotel_service_6" model="hotel.services">
+			<field name="name">Internet</field>
+			<field name="categ_id" ref="hotel_service_type_1"/> 
+			<field name="list_price">200.00</field>
+			<field name="type">service</field>
+			<field name="isservicetype">True</field>
+		</record>
+		<record id="hotel_service_0" model="hotel.services">
+			<field name="name">Taxi</field>
+			<field name="categ_id" ref="hotel_service_type_2"/> 
+			<field name="list_price">500.00</field>
+			<field name="type">service</field>
+			<field name="isservicetype">True</field>
+		</record>
+		
+	
+	</data>
+</odoo>

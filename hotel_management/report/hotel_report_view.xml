@@ -1,0 +1,381 @@
+<odoo>
+	<data>
+		<template id="hotel_report_view">
+			<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+					<t t-call="web.external_layout">
+				<div class="page" style="padding-top:1px !important;">
+					<table width="100%">
+						<tr>
+							<td class="text-center"
+								style="font-size: 25px; color: rgb(255, 0, 0); background-color: rgb(255, 255, 255); ">
+								<strong>Room Accommodation Invoice</strong>
+							</td>
+						</tr>
+					</table>
+					<div class="row mt32">
+						<div class="col-xs-3">
+							<strong />
+						</div>
+					</div>
+					<div class="row mt32">
+						<div class="col-xs-3">
+							<strong />
+						</div>
+					</div>
+					<table width="100%">
+						<tr height="30"><!-- <td width="50%" style="border: 1px solid black;">&#160;<strong> 
+								Bill No : </strong><span t-esc="get_invoice_reference(docs)"/></td> -->
+							<td width="50%" style="border: 1px solid black;">
+								<strong> Date : </strong>
+								<span t-field="docs.invoice_ids[0].invoice_date" />
+							</td>
+							<td width="50%" style="border: 1px solid black;">
+								<strong> Invoice : </strong>
+								<span t-field="docs.invoice_ids[0].name" />
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr height="30">
+							<td style="border: 1px solid black;">
+								<strong> Invoice Address : </strong>
+								<span t-field="docs.partner_invoice_id.display_name" />
+								<br/>
+								<span t-field="docs.partner_invoice_id.street" />
+								<span t-field="docs.partner_invoice_id.street2" />
+								<span t-field="docs.partner_invoice_id.city" />
+								<span t-field="docs.partner_invoice_id.state_id" />
+								<span t-field="docs.partner_invoice_id.country_id" />
+								<span t-field="docs.partner_invoice_id.zip" />
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr height="30">
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>Room No</strong>
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>Guest Name</strong>
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>
+									Room Rate(
+									<span t-esc="docs.pricelist_id.currency_id.symbol" />
+									)
+								</strong>
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>Pax</strong>
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>Room Type</strong>
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>Check In</strong>
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>Check Out</strong>
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>Days</strong>
+							</td>
+						</tr>
+						<tr height="30" t-foreach="docs.room_lines" t-as="l">
+							<td class="text-center" style="border: 1px solid black;">
+								<span t-field="l.product_id" />
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<span t-field="docs.partner_id" />
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<span t-field="l.order_line_id.price_unit" />
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<span t-esc="docs.reservation_id.adults + docs.reservation_id.childs" />
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<span t-field="l.categ_id" />
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<span t-field="l.checkin_date" />
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<span t-field="l.checkout_date" />
+							</td>
+							<td class="text-center" style="border: 1px solid black;">
+								<span t-esc="get_total_days(l.checkin_date,l.checkout_date)" />
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr height="30">
+							<td width="10%" class="text-center" style="border: 1px solid black;">
+								<strong>SN</strong>
+							</td>
+							<td width="42%" class="text-center" style="border: 1px solid black;">
+								<strong>Particulers</strong>
+							</td>
+							<td width="10%" class="text-center" style="border: 1px solid black;">
+								<strong>Qty</strong>
+							</td>
+							<td width="23%" class="text-center" style="border: 1px solid black;">
+								<strong>
+									Rate(
+									<span t-esc="docs.pricelist_id.currency_id.symbol" />
+									)
+								</strong>
+							</td>
+							<td width="15%" class="text-center" style="border: 1px solid black;">
+								<strong>
+									Total Amt(
+									<span t-esc="docs.pricelist_id.currency_id.symbol" />
+									)
+								</strong>
+							</td>
+						</tr>
+						<tr height="30">
+							<td width="10%" class="text-center" style="border: 1px solid black;">1</td>
+							<td width="42%" class="text-center" style="border: 1px solid black;">Tariff</td>
+							<td width="10%" class="text-center" style="border: 1px solid black;">1.00</td>
+							<td width="23%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="get_total(docs)" />
+							</td>
+							<td width="15%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="get_total(docs)" />
+							</td>
+						</tr>
+						<t t-set="count" t-value="1"/>
+						<t t-if="docs.service_lines">
+							<tr height="30" t-foreach="docs.service_lines" t-as="l">
+								<td width="10%" class="text-center" style="border: 1px solid black;">
+									<t t-set="count" t-value="count+1"/>
+									<span t-esc="count" />
+								</td>
+								<td width="42%" class="text-center" style="border: 1px solid black;">
+									<span t-field="l.product_id.name" />
+								</td>
+								<td width="10%" class="text-center" style="border: 1px solid black;">
+									<span t-esc="get_quantity(l.product_uom_qty)" />
+								</td>
+								<td width="23%" class="text-right" style="border: 1px solid black;">
+									<span t-field="l.price_unit" />
+								</td>
+								<td width="15%" class="text-right" style="border: 1px solid black;">
+									<span t-field="l.price_subtotal" />
+								</td>
+							</tr>
+						</t>
+						<tr height="30">
+							<td width="10%" class="text-center" style="border: 1px solid black;">
+								<t t-set="count" t-value="count+1"/>
+								<span t-esc="count" />
+							</td>
+							<td width="42%" class="text-center" style="border: 1px solid black;">Restaurant</td>
+							<td width="10%" class="text-center" style="border: 1px solid black;">1.00</td>
+							<td width="23%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="get_total_restaurant(docs)" />
+							</td>
+							<td width="15%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="get_total_restaurant(docs)" />
+							</td>
+						</tr>
+						<tr height="30">
+							<td width="10%" class="text-center" style="border: 1px solid black;">
+								<t t-set="count" t-value="count+1"/>
+								<span t-esc="count" />
+							</td>
+							<td width="42%" class="text-center" style="border: 1px solid black;">Transport</td>
+							<td width="10%" class="text-center" style="border: 1px solid black;">1.00</td>
+							<td width="23%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="get_total_transport(docs)" />
+							</td>
+							<td width="15%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="get_total_transport(docs)" />
+							</td>
+						</tr>
+						<tr height="30">
+							<td width="10%" class="text-center" style="border: 1px solid black;">
+								<t t-set="count" t-value="count+1"/>
+								<span t-esc="count" />
+							</td>
+							<td width="42%" class="text-center" style="border: 1px solid black;">Laundry</td>
+							<td width="10%" class="text-center" style="border: 1px solid black;">1.00</td>
+							<td width="23%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="get_total_laundry(docs)" />
+							</td>
+							<td width="15%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="get_total_laundry(docs)" />
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr height="30">
+							<td width="62%" style="border: 1px solid black;" />
+							<td width="23%" class="text-left" style="border: 1px solid black;">
+								<strong>Total Charges :</strong>
+							</td>
+							<td width="15%" class="text-right" style="border: 1px solid black;">
+								<span t-field="docs.amount_untaxed" />
+							</td>
+						</tr>
+						 	<t t-set="tax_totals" t-value="json.loads(docs.invoice_ids[0].tax_totals_json)"/>
+							<t t-call="hotel_management.template_tax_totals"/>
+<!--						<tr height="30">-->
+<!--							<td width="62%" style="border: 1px solid black;" />-->
+<!--							<td width="23%" class="text-left" style="border: 1px solid black;">-->
+<!--								<strong>Tax :</strong>-->
+<!--							</td>-->
+<!--							<td width="15%" class="text-right" style="border: 1px solid black;">-->
+<!--								<span t-field="docs.amount_tax" />-->
+<!--							</td>-->
+<!--						</tr>-->
+					</table>
+					<table width="100%">
+						<tr height="30">
+							<td width="62%" style="border: 1px solid black;" />
+							<td width="23%" class="text-left" style="border: 1px solid black;">
+								<strong>
+									Net Amt(
+									<span t-esc="docs.pricelist_id.currency_id.symbol" />
+									) :
+								</strong>
+							</td>
+							<td width="15%" class="text-right" style="border: 1px solid black;">
+								<span t-esc="docs.amount_total" />
+							</td>
+						</tr>
+<!--						<tr height="30">-->
+<!--							<td width="62%" style="border: 1px solid black;" />-->
+<!--							<td width="23%" class="text-left" style="border: 1px solid black;">-->
+<!--								<strong>-->
+<!--									Base Currency Amt(-->
+<!--									<span t-esc="get_base_currency_symbol(docs)" />-->
+<!--									) :-->
+<!--								</strong>-->
+<!--								currency exchange rate :-->
+<!--								<span t-esc="round(docs.pricelist_id.currency_id.rate)" />-->
+<!--							</td>-->
+<!--							<td width="15%" class="text-right" style="border: 1px solid black;">-->
+<!--								<span t-esc="get_base_currency_amt(docs)" />-->
+<!--							</td>-->
+<!--						</tr>-->
+					</table>
+					<table width="100%">
+						<tr height="60">
+							<td class="text-center" style="border: 1px solid black;">
+								<strong>PLEASE RETURN YOUR KEY ON DEPARTURE.</strong>
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr>
+							<td style="border: 1px solid black;" />
+						</tr>
+					</table>
+					<div class="row mt32">
+						<div class="col-xs-3">
+							<strong />
+						</div>
+					</div>
+					<div class="row mt32">
+						<div class="col-xs-3">
+							<strong />
+						</div>
+					</div>
+					<div class="row mt32">
+						<div class="col-xs-3">
+							<strong />
+						</div>
+					</div>
+					<table width="100%">
+						<tr>
+							<td class="text-left">
+								<strong>Cashier : </strong>
+								<span t-esc="get_user()" />
+							</td>
+						</tr>
+					</table>
+					<div class="row mt32">
+						<div class="col-xs-3">
+							<strong />
+						</div>
+					</div>
+					<table width="100%">
+						<tr>
+							<td width="50%" class="text-left">
+								<strong>Authorized Signatory</strong>
+							</td>
+							<td width="50%" class="text-right">
+								<strong>Guest's Signature</strong>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</t>
+			</t>
+			</t>
+		</template>
+
+		 <template id="template_tax_totals">
+            <!--
+                Generic template to display tax totals in pdf reports.
+                Used by invoices, SO and PO.
+
+                ARGUMENTS:
+                - tax_totals: dict in the form generated by account.move's _get_tax_totals.
+            -->
+            <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
+                <tr height="30">
+                    <td width="62%" style="border: 1px solid black;" />
+					<td width="23%" class="text-left" style="border: 1px solid black;"><strong t-esc="subtotal['name']"/></td>
+
+                    <td width="15%" class="text-right" style="border: 1px solid black;">
+                        <span
+                            t-att-class="oe_subtotal_footer_separator"
+                            t-esc="subtotal['formatted_amount']"
+                        />
+                    </td>
+                </tr>
+
+                <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
+                <t t-call="hotel_management.template_tax_groups_totals"/>
+            </t>
+        </template>
+		<template id="template_tax_groups_totals">
+            <!--
+                Generic template to display a list of tax groups with the related amounts.
+
+                ARGUMENTS:
+                - tax_totals: dict in the form generated by account.move's _get_tax_totals.
+                - subtotal_to_show: The subtotal we need to render the groups from
+            -->
+            <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
+                <tr>
+                    <t t-if="len(tax_totals['groups_by_subtotal'][subtotal_to_show]) > 1">
+						<td width="62%" style="border: 1px solid black;" />
+                        <td width="23%" class="text-left" style="border: 1px solid black;">
+                            <span t-esc="amount_by_group['tax_group_name']"/>
+                            <span class="text-nowrap"> on
+                                <t t-esc="amount_by_group['formatted_tax_group_base_amount']"/>
+                            </span>
+                        </td>
+                        <td width="15%" class="text-right" style="border: 1px solid black;">
+                            <span class="text-nowrap" t-esc="amount_by_group['formatted_tax_group_amount']"/>
+                        </td>
+                    </t>
+                    <t t-else="">
+						<td width="62%" style="border: 1px solid black;" />
+                        <td width="23%" class="text-left" style="border: 1px solid black;">
+							<span class="text-nowrap" t-esc="amount_by_group['tax_group_name']"/>
+						</td>
+                        <td width="15%" class="text-right" style="border: 1px solid black;">
+                            <span class="text-nowrap" t-esc="amount_by_group['formatted_tax_group_amount']" />
+                        </td>
+                    </t>
+                </tr>
+            </t>
+        </template>
+	</data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hotel_restaurant_pos_user,hotel.restaurant.pos,model_hotel_restaurant_pos,hotel.group_hotel_user,1,1,1,1
+access_hotel_restaurant_pos_mng,hotel.restaurant.pos,model_hotel_restaurant_pos,hotel.group_hotel_manager,1,1,1,1
+
+access_pos_credit_details,hotel.pos.credit.details,model_pos_credit_details,hotel.group_hotel_manager,1,1,1,1

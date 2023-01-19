@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	<template id="pos_credit_sale">
+		<t t-call="web.html_container"> 
+		<t t-call="web.external_layout">
+		
+			<div class="page">
+				
+					<div class="row">
+						<br/>
+						<br/>
+						<br/>
+						<div class="col-xs-12 text-center">
+							<h2>Details of Sales</h2>
+						</div>
+						<div style="float:left; ">
+							<div >
+								<span>Company 	   :</span><span t-esc="company_id" /><br/>
+								<span>Users		   :</span><!-- <span t-field="o.company_id" /> --><br/>
+								<span>Print Date   :</span><br/>
+								<span>Start Period :</span><br/>
+								<span>End Period   :</span><br/>
+							</div>
+						</div>
+					</div>
+				
+			</div>
+		</t>
+		</t>
+	</template>
+	</data>
+</odoo>

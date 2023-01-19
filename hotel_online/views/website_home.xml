@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_menu_reservations" name="Portal layout : reservation menu entries" inherit_id="portal.portal_breadcrumbs" priority="25">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-attf-class="breadcrumb-item active">
+                <a t-if="page_name == 'reservation'" t-attf-href="/my/reservations">Reservations</a>
+                <t t-else="">Reservations</t>
+            </li>
+            <li class="breadcrumb-item active">
+                <t t-if="page_name == 'reservation'" t-esc="order.name"/>
+                <t t-else=''/>
+            </li>
+        </xpath>
+    </template>
+    <template id="portal_my_home_reservations" name="Show Reservations" customize_show="True" inherit_id="portal.portal_my_home" priority="45">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Reservations</t>
+                <t t-set="url" t-value="'/my/reservations'"/>
+                <t t-set="placeholder_count" t-value="'reservation_count'"/>
+            </t>
+        </xpath>
+    </template>
+    <template id="portal_my_reservations" name="My Reservations">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Quotations</t>
+            </t>
+            <t t-if="not reservations">
+                <p>There are currently no reservations for your account.</p>
+            </t>
+            <t t-if="reservations" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>
+                            <span class='d-none d-md-inline'>Reservations #</span>
+                            <span class='d-block d-md-none'>Ref.</span>
+                        </th>
+                        <th class="text-right">Order Date</th>
+                        <th class="text-center"/>
+                        <th class="text-right">Payments</th>
+                        <th class="text-right">Due Amount</th>
+                        <th class="text-right">Total</th>
+                    </tr>
+                </thead>
+                <t t-foreach="reservations" t-as="reservation">
+                    <tr>
+                        <td>
+                            <a t-att-href="'/my/reservations/%s' % (reservation.id)">
+                                <t t-esc="reservation.reservation_no"/>
+                            </a>
+                            
+                        </td>
+                        <td class="text-right">
+                            <span t-field="reservation.date_order" t-options="{'widget': 'date'}"/>&amp;nbsp;
+                            
+                        </td>
+                        <td class="text-center">
+                            <span t-if="reservation.state == 'done'"  class="badge badge-pill badge-success">
+                                <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"/>Done
+                            </span>
+                            <span t-if="reservation.state == 'draft'"  class="badge badge-pill badge-warning">
+                                <i class="fa fa-fw fa-check" role="img" aria-label="Draft" title="Done"/>Draft
+                            </span>
+                            <span t-if="reservation.state == 'confirm'"  class="badge badge-pill badge-info">
+                                <i class="fa fa-fw fa-check" role="img" aria-label="Confirm" title="Done"/>Confirm
+                            </span>
+                            <span t-if="reservation.state == 'cancel'"  class="badge badge-pill badge-danger">
+                                <i class="fa fa-fw fa-check" role="img" aria-label="Cancel" title="Done"/>Cancel
+                            </span>
+                        </td>
+                        <td class="text-right">
+                            <span t-esc="reservation.total_advance"/>
+                        </td>
+                        <td class="text-right">
+                            <t t-if="reservation.state != 'cancel'">
+                                <span t-esc="reservation.remaining_amt"/>
+                            </t>
+                            <t t-else=''>
+                                <span>0.0</span>
+                            </t>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="reservation.total_cost1"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="portal_my_reservations_detailed" name="Reservation Order Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <div class="row mt16 o_portal_sale_sidebar">
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                    <t t-set="title">
+                        <h2 class="mb-0">
+                            <b>
+                                <span data-id="total_amount_header" t-esc="order.total_cost1" t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                            </b>
+                            <!-- <b t-field="order.total_cost1" data-id="total_amount"/> -->
+                        </h2>
+                    </t>
+                </t>
+                <!-- Page content -->
+                <div id="quote_content" class="col-12 col-lg justify-content-end">
+                    <!-- main content -->
+                    <div class="card" id="portal_reservation_content">
+                        <div t-call="hotel_online.reservation_order_portal_content"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="reservation_order_portal_content" name="Reserve Order Portal Content">
+        <!-- Intro -->
+        <div id="introduction" t-attf-class="pb-2 pt-3 card-header bg-white">
+            <h2 class="my-0">
+                <em t-esc="order.name"/>
+            </h2>
+        </div>
+        <div t-attf-class="card-body">
+            <!-- Informations -->
+            <div id="informations">
+                <div class="row" id="so_date">
+                    <div class="mb-3 col-6">
+                        <strong>Order Date:</strong>
+                        <span t-field="order.date_order" t-options='{"widget": "date"}'/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <strong class="d-block mb-1">Guest Address:</strong>
+                        <address t-field="order.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                    </div>
+                </div>
+                <t t-set="invoices" t-value="[i for i in order.account_move_ids if i.state == 'posted']"/>
+                <div t-if="invoices" class="row">
+                    <div class="col">
+                        <strong class="d-block mb-1">Payments</strong>
+                        <ul class="list-group mb-4">
+                            <t t-foreach="invoices" t-as="i">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                    <div>
+                                        <a t-att-href="report_url">
+                                            <span t-esc="i.name"/>
+                                        </a>
+                                        <div class="small d-lg-inline-block">Date:
+                                            <span class="text-muted" t-field="i.date"/>
+                                        </div>
+                                    </div>
+                                    <span t-if="i.state == 'posted'" class="small badge badge-success orders_label_text_align">
+                                        <i class="fa fa-fw fa-check"/>
+                                        <b>Paid</b>
+                                    </span>
+                                    <span t-else="" class="small badge badge-info orders_label_text_align">
+                                        <i class="fa fa-fw fa-clock-o"/>
+                                        <b>Waiting Payment</b>
+                                    </span>
+                                </div>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <section id="details" style="page-break-inside: auto;" class="mt32">
+                <h3 id="details">Pricing</h3>
+                <table t-att-data-order-id="order.id" t-att-data-token="order.access_token" class="table table-sm" id="reservation_order_table">
+                    <thead class="bg-100">
+                        <tr>
+                            <th class="text-left">Products</th>
+                            <th class="text-right">Quantity</th>
+                            <th class="text-right">Unit Price</th>
+                            <th class="text-right">
+                                <span>Taxes</span>
+                            </th>
+                            <th class="text-right">
+                                Amount
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+                        <t t-foreach="order.reservation_line" t-as="line">
+                            <tr >
+                                <td id="room_no">
+                                    <span t-esc="line.room_number.name"/>
+                                </td>
+                                <td class="text-right">
+                                    <div id="room_units">
+                                        1.0 Units
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div id='unit_price'>
+                                        <span t-field="line.price"/>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div id='reservation_taxes'>
+                                        <span t-field="line.taxes_id"/>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div id='reservation_subtotal'>
+                                        <span t-field="line.sub_total1"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </t>
+                        <t t-foreach="order.other_items_ids" t-as="line">
+                            <tr >
+                                <td id="other_items_no">
+                                    <span t-esc="line.product_id.name"/>
+                                </td>
+                                <td class="text-right">
+                                    <div id="other_items_units">
+                                        <span t-esc='line.product_uom_qty'/>
+                                        <span t-field='line.product_uom'/>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div id='other_unit_price'>
+                                        <span t-field="line.price_unit"/>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div id='reservation_taxes'>
+                                        <span t-field="line.tax_id"/>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div id='reservation_subtotal'>
+                                        <span t-field="line.price_subtotal"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <div id="total" class="row" name="total" style="page-break-inside: avoid;">
+                    <div class="col-sm-7 col-md-5 ml-auto">
+                        <t t-call="hotel_online.reservation_order_portal_content_totals_table"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+    <template id="reservation_order_portal_content_totals_table">
+        <table class="table table-sm">
+            <tr class="border-black">
+                <td>
+                    <strong>Subtotal</strong>
+                </td>
+                <td class="text-right">
+                    <span
+                        data-id="untaxed_amt"
+                        t-esc="order.untaxed_amt"
+                        t-options='{"widget": "monetary","display_currency": order.pricelist_id.currency_id}'
+                    />
+                </td>
+            </tr>
+            <tr class="border-black">
+                <td>
+                    <strong>Tax</strong>
+                </td>
+                <td class="text-right">
+                    <span data-id="total_tax" t-esc="order.total_tax" t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                </td>
+            </tr>
+            <tr class="border-black">
+                <td>
+                    <strong>Total</strong>
+                </td>
+                <td class="text-right">
+                    <span data-id="total_amount" t-esc="order.total_cost1" t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                </td>
+            </tr>
+        </table>
+    </template>
+</odoo>

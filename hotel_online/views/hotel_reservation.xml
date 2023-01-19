@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_reservation_form_acquirer123" model="ir.ui.view">
+            <field name="name">hotel.reservation.form.acquirer</field>
+            <field name="model">hotel.reservation</field>
+            <field name="inherit_id" ref="hotel_management.view_hotel_reservation_form1"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='total_cost1']" position="after">
+                	<field name="payment_acquirer_id" readonly="1" attrs="{'invisible': [('payment_acquirer_id', '=', False)]}" options='{"no_open":True}'/>
+                    <field name="payment_tx_id" readonly="1" attrs="{'invisible': [('payment_acquirer_id', '=', False)]}" groups="base.group_no_one"/>
+                    
+                </xpath>
+                <field name="deposit_cost2" position="replace">
+                	<field name="deposit_cost2" attrs="{'invisible': [('payment_acquirer_id', '!=', False)]}"></field>
+                </field>
+            </field>
+        </record>
+</odoo>

@@ -1,0 +1,910 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hotel_transport_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-13 04:09+0000\n"
+"PO-Revision-Date: 2020-08-13 04:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__active
+msgid "Active"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__user_id
+msgid "Assigned to"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__date_assign
+msgid "Assigning Date"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__attachment_ids
+msgid "Attachment that don't come from message."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__date_of_authorization
+msgid "Authorization Date"
+msgstr "Date autorisation"
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_folio_form_inherit_transport
+msgid "Automatic Declaration"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_form_transport
+msgid "Cancel Task"
+msgstr "Annuler Tëche"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__transport_task__state__cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__partner_city
+msgid "City"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.actions.act_window,help:hotel_transport_management.action_view_task
+msgid "Click to create a new task."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__color
+msgid "Color Index"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__company_id
+msgid "Company"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__subtask_planned_hours
+msgid ""
+"Computed using sum of hours planned of all subtasks created from main task. "
+"Usually these hours are less or equal to the Planned Hours (of main task)."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_partner_form
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__transport_partner__state__confirm
+msgid "Confirmed"
+msgstr "Confirmé"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__cost_price
+msgid "Cost Price"
+msgstr "Prix de revient"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__displayed_image_id
+msgid "Cover Image"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master__create_uid
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__create_uid
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_mode__create_uid
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__create_uid
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master__create_date
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__create_date
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_mode__create_date
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__create_date
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__partner_id
+msgid "Customer"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__date_deadline_formatted
+msgid "Date Deadline Formatted"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__date_deadline
+msgid "Deadline"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__description
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_form_transport
+msgid "Description"
+msgstr "Description"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__destination_id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__to_location
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__destination_id
+msgid "Destination"
+msgstr "Destination"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master__display_name
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__display_name
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_mode__display_name
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__display_name
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__transport_task__state__done
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_form_transport
+msgid "Done"
+msgstr "Effectué"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__transport_partner__state__draft
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__email_from
+msgid "Email"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__email_cc
+msgid "Email cc"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__date_end
+msgid "Ending Date"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_form_transport
+msgid "Extra Info"
+msgstr "Info supplémentaire"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__sequence
+msgid "Gives the sequence order when displaying a list of tasks."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__guest_id
+msgid "Guest Name"
+msgstr "Nom du client"
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_folio_form_inherit_transport
+msgid "History"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:res.groups,name:hotel_transport_management.group_transport_user
+msgid "Hotel Management / Transport User"
+msgstr "Gestion Hôtel / Employé Transport"
+
+#. module: hotel_transport_management
+#: model:res.groups,name:hotel_transport_management.group_transport_manager
+msgid "Hotel Management/ Transport Manager"
+msgstr "Gestion Hôtel / Manager Transport"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master__id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_mode__id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__id
+msgid "ID"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__message_needaction
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__message_has_error
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__transport_task__state__open
+msgid "In Progress"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__hotel_reservation__service_type__internal
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__transport_task__service_type__internal
+msgid "Internal"
+msgstr "Interne"
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_folio_form_inherit_transport
+msgid "Invoice Lines"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__chargeable
+msgid "Is Chargeable"
+msgstr "passible"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__pick_up
+msgid "Is Pickup Required"
+msgstr "Ramassage"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__planned_hours
+msgid ""
+"It is the time planned to achieve the task. If this document has sub-tasks, "
+"it means the time needed to achieve this tasks and its childs."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__legend_blocked
+msgid "Kanban Blocked Explanation"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__legend_normal
+msgid "Kanban Ongoing Explanation"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__kanban_state
+msgid "Kanban State"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__kanban_state_label
+msgid "Kanban State Label"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__legend_done
+msgid "Kanban Valid Explanation"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master____last_update
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information____last_update
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_mode____last_update
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner____last_update
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__date_last_stage_update
+msgid "Last Stage Update"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master__write_uid
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__write_uid
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_mode__write_uid
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__write_uid
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master__write_date
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__write_date
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_mode__write_date
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__write_date
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__email_cc
+msgid "List of cc from incoming emails."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master__location_code
+msgid "Location Code"
+msgstr "Code Location"
+
+#. module: hotel_transport_management
+#: model:ir.actions.act_window,name:hotel_transport_management.location_master_action
+#: model:ir.ui.menu,name:hotel_transport_management.location_master_submenu
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.location_master_form
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.location_master_tree
+msgid "Location Master"
+msgstr "Location"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_location_master__name
+msgid "Location Name"
+msgstr "Nom Location"
+
+#. module: hotel_transport_management
+#: model:ir.model,name:hotel_transport_management.model_location_master
+msgid "Location details"
+msgstr "Détails Location"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__attachment_ids
+msgid "Main Attachments"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_folio_form_inherit_transport
+msgid "Manual Description"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__transport_task__state__draft
+msgid "New"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__hotel_reservation__pick_up__no
+msgid "No"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.actions.act_window,help:hotel_transport_management.action_view_task
+msgid ""
+"OpenERP's project management allows you to manage the pipeline\n"
+"                of tasks in order to get things done efficiently. You can\n"
+"                track progress, discuss on tasks, attach documents, etc."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_partner_form
+msgid "Other Information"
+msgstr "Autres informations"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__legend_blocked
+msgid ""
+"Override the default value displayed for the blocked state for kanban "
+"selection, when the task or issue is in that stage."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__legend_done
+msgid ""
+"Override the default value displayed for the done state for kanban "
+"selection, when the task or issue is in that stage."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__legend_normal
+msgid ""
+"Override the default value displayed for the normal state for kanban "
+"selection, when the task or issue is in that stage."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__parent_id
+msgid "Parent Task"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_reservation_form_inherit1
+msgid "PickUp Details"
+msgstr "Détails Navette"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__source_id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__source_id
+msgid "Pickup Location"
+msgstr "Lieu Départ"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__pickup_time
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__pickup_time
+msgid "Pickup Time"
+msgstr "Heure Départ"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__planned_hours
+msgid "Planned Hours"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__priority
+msgid "Priority"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__project_id
+msgid "Project"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__manager_id
+msgid "Project Manager"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__subtask_project_id
+msgid ""
+"Project in which sub-tasks of the current project will be created. It can be"
+" the current project itself."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__rating_ids
+msgid "Rating"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__rating_avg
+msgid "Rating Average"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__rating_last_feedback
+msgid "Rating Last Feedback"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__rating_last_image
+msgid "Rating Last Image"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__rating_last_value
+msgid "Rating Last Value"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__rating_count
+msgid "Rating count"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__rating_last_feedback
+msgid "Reason of the rating"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model,name:hotel_transport_management.model_hotel_reservation
+msgid "Reservation"
+msgstr "Réservation"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__reservation_id
+msgid "Reservation Ref"
+msgstr "Ref Réservation"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.constraint,message:hotel_transport_management.constraint_transport_information_name_uniq
+msgid "Root record is already created !"
+msgstr "Dossier racine est déjê créée !"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__sale_price
+msgid "Sale Price"
+msgstr "Prix de vente"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_folio_form_inherit_transport
+msgid "Service Line"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__service_type
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__service_type
+msgid "Service Type"
+msgstr "Type Service"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__from_location
+msgid "Source"
+msgstr "Source"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__stage_id
+msgid "Stage"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_form_transport
+msgid "Start Task"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__state
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__state
+msgid "State"
+msgstr "Etat"
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_folio_form_inherit_transport
+msgid "States"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__subtask_project_id
+msgid "Sub-task Project"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__subtask_count
+msgid "Sub-task count"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__child_ids
+msgid "Sub-tasks"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__subtask_planned_hours
+msgid "Subtasks"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__tag_ids
+msgid "Tags"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model,name:hotel_transport_management.model_project_task
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_form_transport
+msgid "Task"
+msgstr "Tache"
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_form_transport
+msgid "Task Edition"
+msgstr "Groupe Edition"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__trans_task_id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__task_id
+msgid "Task ID"
+msgstr "ID Tache"
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_form_transport
+msgid "Task Title..."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.actions.act_window,name:hotel_transport_management.action_view_task
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_search_form_transport
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_task_tree2_transport
+#: model:project.project,label_tasks:hotel_transport_management.project_transportation1
+msgid "Tasks"
+msgstr "Tâches"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__email_from
+msgid "These people will receive email."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__hotel_reservation__service_type__third_party
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__transport_task__service_type__third_party
+msgid "Third Party"
+msgstr "Tiers"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__name
+msgid "Title"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__tran_info_id
+msgid "Tranport Information ID"
+msgstr "ID Information Transport"
+
+#. module: hotel_transport_management
+#: model:ir.model,name:hotel_transport_management.model_transport_information
+msgid "Transport Information"
+msgstr "Information Transport"
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_folio_form_inherit_transport
+msgid "Transport Line"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.view_hotel_folio_form_inherit_transport
+msgid "Transport Lines"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.ui.menu,name:hotel_transport_management.transport_master_menu
+msgid "Transport Master"
+msgstr "Transport"
+
+#. module: hotel_transport_management
+#: model:ir.model,name:hotel_transport_management.model_transport_mode
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__trans_mode_id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_information__name
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_mode__name
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__trans_mode_id
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_mode_form
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_mode_tree
+msgid "Transport Mode"
+msgstr "Mode Transport"
+
+#. module: hotel_transport_management
+#: model:ir.actions.act_window,name:hotel_transport_management.transport_partner_action
+#: model:ir.ui.menu,name:hotel_transport_management.transport_partner_form
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_partner_form
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_partner_tree
+msgid "Transport Partner"
+msgstr "Partenaire Transport"
+
+#. module: hotel_transport_management
+#: model:ir.model,name:hotel_transport_management.model_transport_task
+#: model:ir.model.fields,field_description:hotel_transport_management.field_project_task__transport
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__transport
+msgid "Transport Task"
+msgstr "Groupe de Transport"
+
+#. module: hotel_transport_management
+#: model:ir.actions.act_window,name:hotel_transport_management.action_view_task_transport
+#: model:ir.ui.menu,name:hotel_transport_management.menu_action_view_task_transport
+msgid "Transport Tasks"
+msgstr "Groupe de Transport"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__transport_info_ids
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_information_form
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_information_tree
+#: model_terms:ir.ui.view,arch_db:hotel_transport_management.transport_partner_form
+msgid "Transport Type Information"
+msgstr "Transport Type Information"
+
+#. module: hotel_transport_management
+#: model:ir.model,name:hotel_transport_management.model_transport_partner
+msgid "Transport details"
+msgstr "Détails Transport"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_hotel_reservation__trans_partner_id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_partner__partner_id
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__trans_partner_id
+msgid "Transporter Name"
+msgstr "Nom Transporteur"
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__user_email
+msgid "User Email"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,help:hotel_transport_management.field_transport_task__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__working_days_open
+msgid "Working days to assign"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__working_days_close
+msgid "Working days to close"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__working_hours_open
+msgid "Working hours to assign"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields,field_description:hotel_transport_management.field_transport_task__working_hours_close
+msgid "Working hours to close"
+msgstr ""
+
+#. module: hotel_transport_management
+#: model:ir.model.fields.selection,name:hotel_transport_management.selection__hotel_reservation__pick_up__yes
+msgid "Yes"
+msgstr "Oui"

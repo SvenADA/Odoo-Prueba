@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve">
+<t t-extend="PaymentScreenWidget">
+       <t t-jquery=".pos-payment-container .header" t-operation="before">
+       			<div class="header-button-switch">
+            		<div >
+            			<label id="name-label">Link to room:</label>
+						<input type="checkbox" id="link-to-room"  />
+					</div>
+        		</div>
+        		<div class="header-button-switch">
+            		<div >
+            			<label id="name-labels" >Credit Sale:</label>
+						<input type="checkbox" id="credit-sale"  value="false"/>
+					</div>
+        		</div>
+        	
+       </t>
+	   <t t-jquery=".pos-payment-container .header" t-operation="before"> 
+	   			<div id="room-payment" >
+           	 			<label for="room-label">Select Room:</label>
+           	 			 <input placeholder="Select Room" id="room-search-pos" style="width:280px;height:20px;margin:30px 10px 0px 135px" />
+        	  </div>
+	   			<label id="cust-name"> Customer Name:</label>
+	   		 <input placeholder="Select Customer" id="customer-search-pos" style="width:280px;height:20px;margin:30px 10px 0px 110px" />
+	   		 <input type="hidden" id="customer_id" />
+	   		 <div>
+	   		 <button class="newcustomer-button"  id="cust-button" style="margin:10px 0px 0px 250px">Create New</button>
+	   		 </div>
+	   		 <div id="newcust_div" style="display:none">
+	   		 <label id="cust-name12">Customer Name:</label>
+	   		 <input id="name-input" style="width:45%;height:20px;margin:0px 0px 0px 100px"/><br/>
+	   		 <label id="mobile-label" > Mobile:</label>
+	   		 <input id="mobile-input" style="width:45%;height:20px;margin:0px 0px 0px 177px" /><br/>
+	   		 <button class="cancel-button" style="margin:0px 0px 0px 240px" >Cancel</button>
+	   		 </div>
+	   		 
+	   </t>	
+</t>
+
+ <t t-extend="PosWidget">
+    <t t-jquery="#orders" t-operation="after">
+    <ol id="orders-table"  style="display:none"></ol> 
+    </t>
+  </t>
+  
+<t t-name="ReservedTableAlertWidget">
+    	<div class="modal-dialog">
+        	<div class="popup_tbl" id="reserved_tables">
+        		<div>
+        			<br/>
+<!--         			<label id="res_tbl_no"></label>  -->
+        			Selected Tables are already reserved  for <br/> <label id="tbl_res_no"></label>...!!!
+        			<br/><br/><label>Do you want to continue?</label>
+        		</div>
+        		
+        		<div class="button ok" >
+        		Yes
+        		</div>
+        		<div class="button cancel" >
+        		No
+        		</div>
+        		
+            </div>
+        </div>
+    </t>
+    
+ <t t-name="ReservationListPopupWidget">
+    	<div class="modal-dialog">
+        	<div class="popup_res" id="reserved_tables">
+        		<div>
+        			<br/>
+        			<input type="checkbox" id="chk_res" style="width:17px;height:20px;"/><label> Book Table Against Reservation</label> <br/>
+        			<input type="checkbox" id="chk_res_other" style="width:17px;height:20px;"/> <label> For Other Customer</label><br/>
+        	
+        			<div id="res_tbl_del">
+        			<table id="reservation_table" class="oe_list_content" border="1">
+        				<tr>
+        					<th>Reservation Name</th>
+        					<th>Tables</th>
+        					<th>Customer</th>
+        					<th>Time</th>
+        				</tr>
+        			</table>
+        			<br/>
+        			<label id="sel_res_no_lbl">Select Reservation No : </label><select id="sel_res_no"></select>	 
+        		</div>
+        		</div>
+        		<div class="button ok" >
+        		Book Table
+        		</div>
+        		<div class="button cancel" >
+        		Cancel
+        		</div>
+        		
+            </div>
+        </div>
+    </t>
+
+
+
+<t t-name="TableScreenWidget">
+       <div id="table-screen" class="screen" >
+            <header id="table_header"><h2>Select Table</h2></header>
+            <header id="room_header"><h2>Select Room</h2></header>
+            <div class="pos-step-container">
+                <div class="pos-receipt-container">
+                    <div class="dialog" id="table_div">
+                    	<label for="tables">Choose Table:</label>
+                        <select id="select-table" name="tables"  multiple="1">
+                            <!-- <t t-foreach="widget.table_list" t-as="table">
+                                <option t-att-value="table.id" selected="true">
+                                    <t t-esc="table.name"/></option>
+                            </t> -->
+                        </select>
+                    </div>
+                    
+                     <div class="dialog" id="room_div">
+                    	<label for="rooms">Choose Room:</label>
+                        <select id="select-room" name="rooms" >
+                            
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </t>
+    <t t-name="WaiterScreenWidget">
+       <div id="waiter-screen" class="screen" >
+            <header id="waiter_header"><h2>Select Waiter</h2></header>
+            <div class="pos-step-container">
+                <div class="pos-receipt-container">
+                    <div class="dialog" id="waiter_div">
+                    	<!-- <label for="waiter">Choose Waiter:</label>
+                        <select id="select-waiter" name="waiters" > -->
+                        <label id="waiter-name"> Waiter Name:</label>
+	   		 			<input placeholder="Select Waiter" id="waiter-search-pos" style="width:280px;height:23px;margin:6px 0px 0px 33px" />
+                            <!-- <t t-foreach="widget.table_list" t-as="table">
+                                <option t-att-value="table.id" selected="true">
+                                    <t t-esc="table.name"/></option>
+                            </t> -->
+                       <!--  </select> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </t>
+    
+   <!--  <t t-name="RoomScreenWidget">
+       <div id="room-screen" class="screen" >
+            <header><h2>Select Room</h2></header>
+            <div class="pos-step-container">
+                <div class="pos-receipt-container">
+                   
+                </div>
+            </div>
+        </div>
+      
+    </t>
+     -->
+     <t t-extend="PosWidget">
+			<t t-jquery="#placeholder-OrderWidget" t-operation="before">
+           <div id="placeholder-CustomerWaiterNameWidget"></div>
+   		</t>
+     	<t t-jquery=".point-of-sale .placeholder-UsernameWidget" t-operation="after">
+                        <button id="kot" class="kot-g" style="background:linear-gradient(#B2B3D7, #7F82AC) repeat scroll 0 0 transparent">Generate KOT/BOT</button>
+              
+               
+<!--                     	 <button class="neworder-button">+</button> -->
+                      
+                   
+                    <!-- here goes header buttons -->
+               
+        </t>
+     </t>
+    
+    
+    <!-- <t t-extend="OrderButtonWidget">
+        <t t-jquery=".order-selector-button" t-operation="replace">
+            <button class="select-order" id="current_order"><t t-esc="widget.order.get('returnTable').toString('t')"/></button>
+            <button class="select-order"><t t-esc="(widget.order.get_client() ? widget.order.get_client_name()+' : ':'') + widget.order.get_table_name()+ ' / '+ widget.order.get('creationDate').toString('t')"/></button> 
+        </t>
+    </t> -->
+    <t t-name="PosTicket">
+        <div class="pos-sale-ticket">
+            
+            
+            
+<!--             <t t-esc="widget.company.name"/><br /> -->
+			<center>
+			<img t-att-src="'data:image/png;base64,'+widget.shop_obj.shop_img" width="100" height="80"/>
+			</center>
+			
+			<br/>
+			<table border="0" style="font-size:8pt;">
+			<tr id="credit_label">
+				<td colspan="2"><center><b>Credit Sale</b></center></td>
+			</tr>
+			<tr>
+				<td>Shop</td>
+				<td>: <t t-esc="widget.shop_obj.name" style="font-size:18px;"/></td>
+			</tr>
+			<tr>
+				<td>Date</td>
+				<td>: <t t-esc="new Date().toString(Date.CultureInfo.formatPatterns.shortDate + ' ' +Date.CultureInfo.formatPatterns.longTime)"/></td>
+			</tr>
+			<tr>
+				<td>Receipt No</td>
+				<td>: <t t-esc="widget.currentOrder.attributes.name"/></td>
+			</tr>
+			<tr>
+				<td>Cashier</td>
+				<td>: <t t-esc="widget.user.name"/></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td>: <t t-esc="widget.company.phone || ''"/></td>
+			</tr>
+			
+			<tr id="waiter_name_label">
+				<td>Waiter</td>
+				<td>: <span id="waiter_name_span"></span></td>
+			</tr>
+			<tr id="room_no_label">
+				<td>Room No.</td>
+				<td>: <span id="room_name_span"></span><br /></td>
+			</tr>
+			<tr id="customer_name_label">
+				<td>Customer</td>
+				<td>: <span id="customer_name_span"></span></td>
+			</tr>
+			
+            </table><br/>     
+            <table style="font-size:8pt;">
+            	<tr style="font-size:10pt;font-weight:bold;border-bottom: 1px solid #000;word-spacing:2pt;">
+            		<td width="50%">Item/Price</td>
+            		<td width="25%">Qty.</td>
+            		<td width="25%">Item Total</td>
+            	</tr>
+            	
+                <tr t-foreach="widget.currentOrderLines.toArray()" t-as="orderline">
+                    <table style="font-size:8pt;">
+                    	<tr>
+                    		<td colspan="3"><t t-esc="orderline.get_product().get('name')"/></td>
+                    	</tr>
+                    	<tr>
+                    		<td width="50%">
+                    			<t t-esc="widget.format_currency(orderline.get_unit_price())"/>
+                    			<t t-if="orderline.get_discount() > 0">
+                            	<div class="pos-disc-font">
+                                With a <t t-esc="orderline.get_discount()"/>% discount
+                            	</div>
+                        		</t>
+                    		</td>
+                    		<td width="25%">
+                        		x <t t-esc="orderline.get_quantity()"/>
+                    		</td>
+                    		<td width="25%" class="pos-right-align">
+                        		<t t-esc="widget.format_currency(orderline.get_display_price())"/>
+                    		</td>
+                    	</tr>
+                    </table>
+                    <br/>
+                </tr>
+               
+            </table>
+            <hr/>
+            <table style="font-size:8pt;">
+            	<tr>
+                	<td width="52%">Item Count:</td>
+                	<td width="48%"><span id="qty_total"></span></td>
+                </tr>
+			</table>           
+            <br/>        
+            <table style="font-size:8pt">
+            	 
+            	<tr>
+            		<td>Netto :</td>
+            		<td class="pos-right-align"><t t-esc="widget.format_currency(widget.currentOrder.getSubtotal())"/>
+                    </td>
+            	</tr>
+               
+                <tr>
+                	<td>Tax*:</td>
+                	<td class="pos-right-align"><t t-esc="widget.format_currency(widget.currentOrder.getTax())"/>
+                    </td>
+                </tr>
+                <tr>
+
+                	<td>Discount :</td>
+                	<td class="pos-right-align"><t t-esc="widget.format_currency(widget.currentOrder.getDiscountTotal())"/>
+                    </td>
+                </tr>
+                
+            </table>
+<!--             <br /> -->
+<!--             <table> -->
+               
+<!--             </table> -->
+            <br />
+            <table style="font-size:8pt;">
+            	<tr style="font-size:10pt;font-weight:bold;">
+                	<td>Total:</td>
+                	<td class="pos-right-align">
+                    <t t-esc="widget.format_currency(widget.currentOrder.getTotalTaxIncluded())"/>
+                    </td>
+                </tr>
+            	 <tr t-foreach="widget.currentPaymentLines.toArray()" t-as="pline" id="cash_line_label">
+                    <td>
+                        <t t-esc="pline.get_cashregister().get('journal_id')[1]"/>
+                    </td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(pline.get_amount())"/>
+                    </td>
+                </tr>
+            	
+                <tr><td>Change:</td><td class="pos-right-align">
+                    <t t-esc="widget.format_currency(widget.currentOrder.getPaidTotal() - widget.currentOrder.getTotalTaxIncluded())"/>
+                    </td></tr>
+            </table>
+            <br/>
+            <label style="font-size:7pt;">* Inclusive of 11% Government Tax and 10% Service Charge</label>
+        </div>
+    </t>
+    
+     <!-- <t t-extend="OrderWidget">
+     	<t t-jquery=".order-scroller" t-operation="before">
+     		<div id="cust_name" class="order">
+     			<div id="cust_waiter_name">
+     				<table>
+     					<tr>
+     						<td width="120">
+     							<label class="cust_waiter_name_lbl">Customer Name</label>
+     						</td>
+     						<td>
+     							<label class="cust_waiter_name_lbl" >:</label>
+     							<label class="cust_waiter_name_lbl" id="cust_name_lbl"></label>
+     						</td>
+     					</tr>
+     				</table>
+     				
+     			</div>
+     			<div id="waiter_name">
+     				<table>
+     					<tr>
+     						<td width="120">
+     							<label class="cust_waiter_name_lbl">Waiter Name</label>
+     						</td>
+     						<td>
+     							<label class="cust_waiter_name_lbl" >:</label>
+     							<label  class="cust_waiter_name_lbl" id="waiter_name_lbl"></label>
+     						</td>
+     					</tr>
+     				</table>
+     				
+     			</div>
+     		</div>
+     	</t>
+     </t> -->
+     
+      <t t-name="CustomerWaiterNameWidget">
+      	
+      		<div id="cust_name" class="order">
+     			<div id="cust_waiter_name">
+     				<table>
+     					<tr>
+     						<td width="130">
+     							<label class="cust_waiter_name_lbl">Customer Name</label>
+     						</td>
+     						<td>
+     							<label class="cust_waiter_name_lbl" >:</label>
+     							<label class="cust_waiter_name_lbl" id="cust_name_lbl"></label>
+     						</td>
+     					</tr>
+     				</table>
+     				
+     			</div>
+     			<div id="waiter_name">
+     				<div id="div_res_no">
+     				<table>
+     					<tr>
+     						<td width="130">
+     							<label class="cust_waiter_name_lbl">Reservation No</label>
+     						</td>
+     						<td>
+     							<label class="cust_waiter_name_lbl" >:</label>
+     							<label class="cust_waiter_name_lbl" id="tbl_res_no_board"></label>
+     						</td>
+     					</tr>
+     				</table>
+     				</div>
+     				<table>
+     					<tr>
+     						<td width="130">
+     							<label class="cust_waiter_name_lbl">Waiter Name</label>
+     						</td>
+     						<td>
+     							<label class="cust_waiter_name_lbl" >:</label>
+     							<label  class="cust_waiter_name_lbl" id="waiter_name_lbl"></label>
+     						</td>
+     					</tr>
+     				</table>
+     				
+     			</div>
+     		</div>
+      	
+      </t>
+     
+     
+    
+    
+    
+   </templates>

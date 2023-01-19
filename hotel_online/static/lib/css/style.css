@@ -1,0 +1,63 @@
+.img-border{
+border:5px solid #eaeaea;
+}
+
+.pattern_bg{
+background:url('/hotel_online/static/src/images/pattern6.jpg') repeat;
+}
+
+.booking_info{
+background:#f7f7f7;
+margin:5px 0;
+padding:20px 15px; 
+box-shadow:0px 0px 10px #ccc;
+-moz-box-shadow:0px 0px 10px #ccc; 
+-webkit-box-shadow:0px 0px 10px #ccc; 
+float:left; 
+width:100%; 
+opacity: 0.8;
+filter: Alpha(opacity=80);
+}
+
+.booking_info1{
+   background: #fff none repeat scroll 0 0;
+    box-shadow: 0 0 10px #ccc;
+	-moz-box-shadow: 0 0 10px #ccc;
+	-webkit-box-shadow: 0 0 10px #ccc;
+    margin-top: 15px;
+    opacity: 0.8;
+	filter: Alpha(opacity=80);
+    padding: 20px 0 0;
+}
+
+.book_containt_form{
+padding:5px 0;	
+}
+
+h2{
+color:#114052;
+}
+
+.dashed_line{
+clear:both; padding:10px 0; border-bottom:1px dashed #ccc; margin-bottom:15px;
+}
+
+.bookroom_footer{
+background:#114052; color:#fff; padding-top:15px;
+}
+
+.bookroom_footer1{
+background:#114052; color:#fff; padding-bottom:15px
+}
+
+.confirm_button{
+background:#114052;padding:5px; width:100px; color:#fff; font-weight:bold; border:none;border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px;margin-top:10px;
+}
+
+.payment{
+padding-left:50px; margin-left:50px;background:#114052; color:#fff; padding:25px;
+}
+
+.payment li{
+margin-top:15px;
+}
