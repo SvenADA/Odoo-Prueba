@@ -4,7 +4,7 @@ import time
 
 from odoo import netsvc
 from odoo.addons import decimal_precision as dp
-from datetime import timedelta, date
+from datetime import timedelta
 from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools import float_is_zero, float_compare
@@ -624,7 +624,6 @@ class hotel_folio_line(models.Model):
         'sale.order.line', string='order_line_id', ondelete='cascade', required=True, )
     folio_id = fields.Many2one(
         'hotel.folio', string='Folio', ondelete='cascade')
-    
     checkin_date = fields.Datetime('Check In')
     checkout_date = fields.Datetime('Check Out')
     categ_id = fields.Many2one(

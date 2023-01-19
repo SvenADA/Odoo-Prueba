@@ -41,8 +41,7 @@ class stock_picking(models.Model):
         # wf_service = odoo.netsvc.LocalService("workflow")
         for pick in self:
             if not pick.move_lines:
-                raise UserError(
-                    'You cannot process picking without stock moves.')
+                raise UserError('You cannot process picking without stock moves.')
             # self.partner_id.trg_validate(self._uid, 'stock.picking', pick.id,'button_confirm', self._cr)
         return True
 
@@ -68,8 +67,7 @@ class stock_picking(models.Model):
         for pick in self:
             new_picking = None
             complete, too_many, too_few = [], [], []
-            move_product_qty, prodlot_ids, product_avail, partial_qty, product_uoms = {
-            }, {}, {}, {}, {}
+            move_product_qty, prodlot_ids, product_avail, partial_qty, product_uoms = {}, {}, {}, {}, {}
             for move in pick.move_lines:
                 if move.state in ('done', 'cancel'):
                     continue
@@ -96,8 +94,7 @@ class stock_picking(models.Model):
                     product = product_obj.browse(move.product_id.id)
                     move_currency_id = move.company_id.currency_id.id
                     context['currency_id'] = move_currency_id
-                    qty = uom_obj._compute_qty(
-                        product_uom, product_qty, product.uom_id.id)
+                    qty = uom_obj._compute_qty(product_uom, product_qty, product.uom_id.id)
 
                     if product.id in product_avail:
                         product_avail[product.id] += qty
@@ -105,10 +102,8 @@ class stock_picking(models.Model):
                         product_avail[product.id] = product.qty_available
 
                     if qty > 0:
-                        new_price = currency_obj.compute(
-                            product_currency, move_currency_id, product_price)
-                        new_price = uom_obj._compute_price(
-                            product_uom, new_price, product.uom_id)
+                        new_price = currency_obj.compute(product_currency, move_currency_id, product_price)
+                        new_price = uom_obj._compute_price(product_uom, new_price, product.uom_id)
                         if product.qty_available <= 0:
                             new_std_price = new_price
                         else:
@@ -123,8 +118,7 @@ class stock_picking(models.Model):
                         # Record the values that were chosen in the wizard, so they can be
                         # used for inventory valuation if real-time valuation
                         # is enabled.
-                        move.write(
-                            {'price_unit': product_price, 'price_currency_id': product_currency})
+                        move.write({'price_unit': product_price, 'price_currency_id': product_currency})
 
             for move in too_few:
                 product_qty = move_product_qty[move.id]
@@ -134,7 +128,7 @@ class stock_picking(models.Model):
                     self.write(
                         {'name': sequence_obj.next_by_code(
                             'stock.picking.%s' % (type)),
-                         })
+                        })
                     new_picking = self.copy(
                         {
                             'name': new_picking_name,
@@ -195,17 +189,14 @@ class stock_picking(models.Model):
                 # Then we finish the good picking
                 self.write({'backorder_id': new_picking})
                 self.action_move()
-                self.trg_validate(
-                    self._uid, 'stock.picking', new_picking, 'button_done', self._cr)
+                self.trg_validate(self._uid, 'stock.picking', new_picking, 'button_done', self._cr)
                 self.trg_write('stock.picking')
                 delivered_pack_id = new_picking
                 back_order_name = self.browse(delivered_pack_id).name
-                self.message_post(
-                    body=_("Back order <em>%s</em> has been <b>created</b>.") % (back_order_name))
+                self.message_post(body=_("Back order <em>%s</em> has been <b>created</b>.") % (back_order_name))
             else:
                 self.action_move()
-                self.trg_validate(
-                    self._uid, 'stock.picking', pick.id, 'button_done', self._cr)
+                self.trg_validate(self._uid, 'stock.picking', pick.id, 'button_done', self._cr)
                 delivered_pack_id = pick.id
 
             delivered_pack = self.browse(delivered_pack_id)
@@ -255,17 +246,14 @@ class stock_partial_picking_line(models.TransientModel):
 
     product_id = fields.Many2one('product.product', 'Product', required=True)
     quantity = fields.Float("Quantity", required=True)
-    product_uom = fields.Many2one(
-        'uom.uom', 'Unit of Measure', required=True, ondelete='cascade')
-    prodlot_id = fields.Many2one(
-        'stock.production.lot', 'Serial Number', ondelete='cascade')
+    product_uom = fields.Many2one('uom.uom', 'Unit of Measure', required=True, ondelete='cascade')
+    prodlot_id = fields.Many2one('stock.production.lot', 'Serial Number', ondelete='cascade')
     location_id = fields.Many2one('stock.location', 'Location', required=True, ondelete='cascade',
                                   domain=[('usage', '<>', 'view')])
     location_dest_id = fields.Many2one('stock.location', 'Dest. Location', required=True, ondelete='cascade',
                                        domain=[('usage', '<>', 'view')])
     move_id = fields.Many2one('stock.move', "Move", ondelete='cascade')
-    wizard_id = fields.Many2one(
-        'stock.partial.picking', string="Wizard", ondelete='cascade')
+    wizard_id = fields.Many2one('stock.partial.picking', string="Wizard", ondelete='cascade')
     update_cost = fields.Boolean('Need cost update')
     cost = fields.Float("Cost", help="Unit Cost for this product line")
     currency = fields.Many2one('res.currency', string="Currency",
@@ -374,7 +362,7 @@ class stock_partial_picking(models.TransientModel):
                 if float_compare(qty_in_line_uom, wizard_line.quantity, precision_rounding=line_uom.rounding) != 0:
                     raise UserError(
                         'The unit of measure rounding does not allow you to ship "%s %s", only rounding of "%s %s" is accepted by the Unit of Measure.') % (
-                        wizard_line.quantity, line_uom.name, line_uom.rounding, line_uom.name)
+                              wizard_line.quantity, line_uom.name, line_uom.rounding, line_uom.name)
             move_id = wizard_line.move_id.id
 
             if move_id:
@@ -388,15 +376,14 @@ class stock_partial_picking(models.TransientModel):
                 qty_in_initial_uom = uom_obj._compute_qty(
                     line_uom.id, wizard_line.quantity, initial_uom.id)
                 without_rounding_qty = (
-                    wizard_line.quantity / line_uom.factor) * initial_uom.factor
+                                               wizard_line.quantity / line_uom.factor) * initial_uom.factor
                 if float_compare(qty_in_initial_uom, without_rounding_qty,
                                  precision_rounding=initial_uom.rounding) != 0:
                     raise UserError(
                         'The rounding of the initial uom does not allow you to ship "%s %s", as it would let a quantity of "%s %s" to ship and only rounding of "%s %s" is accepted by the uom.') % (
-                        wizard_line.quantity, line_uom.name,
-                        wizard_line.move_id.product_qty -
-                            without_rounding_qty, initial_uom.name,
-                        initial_uom.rounding, initial_uom.name)
+                              wizard_line.quantity, line_uom.name,
+                              wizard_line.move_id.product_qty - without_rounding_qty, initial_uom.name,
+                              initial_uom.rounding, initial_uom.name)
             else:
                 seq_obj_name = 'stock.picking.' + picking_type[:2]
                 move_id = stock_move.create({'name': self.env['ir.sequence'].nect_by_code(seq_obj_name),
@@ -455,14 +442,10 @@ class hotel_restaurant_inventory(models.Model):
             else:
                 for order_record in kot_obj.kot_list:
                     if order_record.state == 'draft':
-                        menu_card_obj = self.env["hotel.menucard"].browse(
-                            order_record.product_id.id)
-                        bom_id = self.env['mrp.bom'].search(
-                            [('name', '=', menu_card_obj.product_id.name)])
-                        shop_obj = self.env['sale.shop'].browse(
-                            kot_obj.shop_id.id)
-                        warehouse_id = self.env['stock.warehouse'].browse(
-                            shop_obj.warehouse_id.id)
+                        menu_card_obj = self.env["hotel.menucard"].browse(order_record.product_id.id)
+                        bom_id = self.env['mrp.bom'].search([('name', '=', menu_card_obj.product_id.name)])
+                        shop_obj = self.env['sale.shop'].browse(kot_obj.shop_id.id)
+                        warehouse_id = self.env['stock.warehouse'].browse(shop_obj.warehouse_id.id)
                         location_id = warehouse_id.lot_stock_id.id
                         self.env.cr.execute("select route_id from stock_route_product where product_id = %s" % (
                             menu_card_obj.product_id.id))
@@ -478,13 +461,10 @@ class hotel_restaurant_inventory(models.Model):
                                 'location_src_id': location_id,
                                 'location_dest_id': location_id,
                             }
-                            mrp_id = self.env[
-                                'mrp.production'].create(mrp_data)
+                            mrp_id = self.env['mrp.production'].create(mrp_data)
                             if mrp_id:
-                                m_order = self.env[
-                                    'mrp.production'].browse(mrp_id)
-                                message = _("Manufacturing Order '%s' has been created.") % (
-                                    m_order.name)
+                                m_order = self.env['mrp.production'].browse(mrp_id)
+                                message = _("Manufacturing Order '%s' has been created.") % (m_order.name)
                                 self.log(kot_obj.id, message)
                         order_record.write({'state': 'in_process'})
         self.write({'state': 'in_process'})
@@ -495,8 +475,7 @@ class hotel_restaurant_inventory(models.Model):
             if order_list.state == "in_process":
                 bom_wizard_obj = self.env['mrp.product.produce']
                 bom_obj = self.env['mrp.production']
-                bom_record = bom_obj.search(
-                    [('origin', '=', self_obj.orderno)])
+                bom_record = bom_obj.search([('origin', '=', self_obj.orderno)])
                 for b_id in bom_record:
                     bom_browse = bom_obj.browse(b_id)
                     if bom_browse.product_id.name == order_list.product_id.name:
@@ -532,13 +511,11 @@ class hotel_restaurant_order(models.Model):
                 raise Warning("There is no item in order ... !")
             else:
                 for line in obj.order_list:
-                    menu_card_obj = self.env[
-                        "hotel.menucard"].browse(line.product_id.id)
+                    menu_card_obj = self.env["hotel.menucard"].browse(line.product_id.id)
                     for data in menu_card_obj.route_ids:
                         for info in data.rule_ids:  # pull_ids
                             if info.action == 'manufacture':
-                                mrp_id = self.env["mrp.bom"].search(
-                                    [('product_id', '=', menu_card_obj.product_id.id)])
+                                mrp_id = self.env["mrp.bom"].search([('product_id', '=', menu_card_obj.product_id.id)])
 
         return super(hotel_restaurant_order, self).confirm_order()
 
@@ -548,14 +525,13 @@ class hotel_restaurant_order(models.Model):
         for self_obj in self:
             stock_brw = self.env['stock.picking'].search(
                 [('origin', '=', self_obj.order_no)])
-            #print('------------- {} '.format(stock_brw))
+            print('------------- {} '.format(stock_brw))
             if stock_brw:
                 if stock_brw.state != 'done':
                     """Here we are manually calling stock picking method to create invoice"""
                     move_ids = stock_brw.move_ids_without_package
                     for move_id in move_ids:
-                        move_id.write(
-                            {'quantity_done': move_id.product_uom_qty})
+                        move_id.write({'quantity_done': move_id.product_uom_qty})
                     response = stock_brw.button_validate()
                     # print('response1-------------- {}'.format(response))
                     ss = stock_brw.draft_force_assign()
@@ -574,8 +550,7 @@ class hotel_restaurant_order(models.Model):
                 for move in res['move_ids']:
                     move_ids.append((0, 0, move))
                 res['move_ids'] = move_ids
-                stock_partial_pick_id = self.env[
-                    'stock.partial.picking'].create(res)
+                stock_partial_pick_id = self.env['stock.partial.picking'].create(res)
                 stock_partial_pick_id.do_partial()
                 stock_brw.write({'state': 'done'})
         return super(hotel_restaurant_order, self).create_invoice()
@@ -588,28 +563,22 @@ class hotel_restaurant_order(models.Model):
                 if addr['invoice']:
                     partner_addr = addr['invoice']
                 else:
-                    res_add = self.env['res.partner.address'].search(
-                        [('partner_id', '=', self_obj.partner_id.id)])
+                    res_add = self.env['res.partner.address'].search([('partner_id', '=', self_obj.partner_id.id)])
                     if res_add:
-                        res_browse = self.env[
-                            'res.partner.address'].browse(res_add)
+                        res_browse = self.env['res.partner.address'].browse(res_add)
                         partner_addr = res_add.id
-            stock_brw = self.env['stock.picking'].search(
-                [('origin', '=', self_obj.order_no)])
+            stock_brw = self.env['stock.picking'].search([('origin', '=', self_obj.order_no)])
             picking_id = None
-
             if stock_brw:
                 for order_items in self_obj.order_list:
 
-                    product_id = self.env["hotel.menucard"].browse(
-                        order_items.product_id.id).product_id.id
+                    product_id = self.env["hotel.menucard"].browse(order_items.product_id.id).product_id.id
                     move_id = self.env['stock.move'].search(
                         [('product_id', '=', product_id), ('picking_id', '=', stock_brw.id)])
                     # print('move_id : {}'.format(move_id))
                     if move_id:
                         if not order_items.price_subtotal:
-                            move_id.write(
-                                {'product_uom_qty': float(order_items.item_qty)})
+                            move_id.write({'product_uom_qty': float(order_items.item_qty)})
                         else:
                             total_qty = 0
                             order_list = self.env['hotel.restaurant.order.list'].search(
@@ -618,18 +587,14 @@ class hotel_restaurant_order(models.Model):
                             # print('order_list : {}'.format(order_list))
                             for order_qty in order_list:
                                 total_qty = total_qty + int(order_qty.item_qty)
-                            brw = move_id.write(
-                                {'product_uom_qty': total_qty, })
+                            brw = move_id.write({'product_uom_qty': total_qty, })
 
                     else:
                         customer_id = self_obj.partner_id.property_stock_customer.id
-                        shop_obj = self.env['sale.shop'].browse(
-                            self_obj.shop_id.id)
-                        warehouse_id = self.env['stock.warehouse'].browse(
-                            shop_obj.warehouse_id.id)
+                        shop_obj = self.env['sale.shop'].browse(self_obj.shop_id.id)
+                        warehouse_id = self.env['stock.warehouse'].browse(shop_obj.warehouse_id.id)
                         add = warehouse_id.lot_stock_id.id
-                        product_id = self.env["hotel.menucard"].browse(
-                            order_items.product_id.id).product_id
+                        product_id = self.env["hotel.menucard"].browse(order_items.product_id.id).product_id
                         # picking_type_ids = self.env["stock.picking.type"].search(
                         #     [('code', '=', 'outgoing'), ('name', '=', 'Delivery Orders')])
                         picking_type_ids = shop_obj.picking_type_id if shop_obj else None
@@ -644,48 +609,45 @@ class hotel_restaurant_order(models.Model):
                             'location_dest_id': customer_id,
                             # 'state': 'assigned',
                         }
-                        pick_line = self.env[
-                            'stock.move'].create(move_line_data)
+                        pick_line = self.env['stock.move'].create(move_line_data)
                         pick_line._action_assign()
 
-            # else:
-            # picking_type_ids = self.env["stock.picking.type"].search(
-            # [('code', '=', 'outgoing'), ('name', '=', 'Delivery Orders')])
+            else:
+                # picking_type_ids = self.env["stock.picking.type"].search(
+                #     [('code', '=', 'outgoing'), ('name', '=', 'Delivery Orders')])
 
-            #     customer_id = self_obj.partner_id.property_stock_customer.id
-            #     shop_obj = self.env['sale.shop'].browse(self_obj.shop_id.id)
-            #     picking_type_id = shop_obj.picking_type_id if shop_obj else None
-            #     warehouse_id = self.env['stock.warehouse'].browse(
-            #         shop_obj.warehouse_id.id)
-            # add = warehouse_id.lot_stock_id.id
+                customer_id = self_obj.partner_id.property_stock_customer.id
+                shop_obj = self.env['sale.shop'].browse(self_obj.shop_id.id)
+                picking_type_id = shop_obj.picking_type_id if shop_obj else None
+                warehouse_id = self.env['stock.warehouse'].browse(shop_obj.warehouse_id.id)
+                # add = warehouse_id.lot_stock_id.id
 
-            # UPdated code to create stock.pick
-            #     if picking_type_id:
-            #         picking = self.env['stock.picking'].create({
-            #             'location_id': warehouse_id.lot_stock_id.id,
-            #             'location_dest_id': customer_id,
-            # 'partner_id': self.test_partner.id,
-            #             'picking_type_id': picking_type_id.id,
-            #             'immediate_transfer': False,
-            #             'origin': self_obj.order_no,
-            #         })
-            #         for order_items in self_obj.order_list:
-            #             menu_card_obj1 = self.env["hotel.menucard"].browse(
-            #                 order_items.product_id.id)
-            #             move_receipt_1 = self.env['stock.move'].create({
-            #                 'name': self_obj.order_no + ': ' + (order_items.product_id.name or ''),
-            #                 'picking_id': picking.id,
-            #                 'picking_type_id': picking_type_id.id,
-            #                 'product_id': menu_card_obj1.product_id.id,
-            #                 'product_uom_qty': order_items.item_qty,
-            #                 'product_uom': menu_card_obj1.uom_id.id,
-            #                 'location_id': warehouse_id.lot_stock_id.id,
-            #                 'location_dest_id': customer_id,
-            #             })
-            #             move_receipt_1._action_assign()
+                ############################# UPdated code to create stock.picking object @###############
+                if picking_type_id:
+                    picking = self.env['stock.picking'].create({
+                        'location_id': warehouse_id.lot_stock_id.id,
+                        'location_dest_id': customer_id,
+                        # 'partner_id': self.test_partner.id,
+                        'picking_type_id': picking_type_id.id,
+                        'immediate_transfer': False,
+                        'origin': self_obj.order_no,
+                    })
+                    for order_items in self_obj.order_list:
+                        menu_card_obj1 = self.env["hotel.menucard"].browse(order_items.product_id.id)
+                        move_receipt_1 = self.env['stock.move'].create({
+                            'name': self_obj.order_no + ': ' + (order_items.product_id.name or ''),
+                            'picking_id': picking.id,
+                            'picking_type_id': picking_type_id.id,
+                            'product_id': menu_card_obj1.product_id.id,
+                            'product_uom_qty': order_items.item_qty,
+                            'product_uom': menu_card_obj1.uom_id.id,
+                            'location_id': warehouse_id.lot_stock_id.id,
+                            'location_dest_id': customer_id,
+                        })
+                        move_receipt_1._action_assign()
 
                     # picking.action_confirm()
-                # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                #############################$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ @###############
 
         return super(hotel_restaurant_order, self).generate_kot()
 
@@ -706,8 +668,7 @@ class hotel_reservation_order(models.Model):
             else:
                 # print("elseee")
                 for line in obj.order_list:
-                    menu_card_obj = self.env[
-                        "hotel.menucard"].browse(line.product_id.id)
+                    menu_card_obj = self.env["hotel.menucard"].browse(line.product_id.id)
                     # print("menu_card_obj  ", menu_card_obj)
                     for data in menu_card_obj.route_ids:
                         # print("dataaaaaaaa", data)
@@ -715,8 +676,7 @@ class hotel_reservation_order(models.Model):
                             # print("infooooo ", info)
                             # print("infooooo action ", info.action)
                             if info.action == 'manufacture':
-                                mrp_id = self.env["mrp.bom"].search(
-                                    [('product_id', '=', menu_card_obj.product_id.id)])
+                                mrp_id = self.env["mrp.bom"].search([('product_id', '=', menu_card_obj.product_id.id)])
                                 # print("Mrp id ", mrp_id)
 
         return super(hotel_reservation_order, self).confirm_order()
@@ -725,8 +685,7 @@ class hotel_reservation_order(models.Model):
         stock_obj = self.env['stock.picking']
         stock_wizard_obj = self.env['stock.partial.picking']
         for self_obj in self:
-            stock_brw = self.env['stock.picking'].search(
-                [('origin', '=', self_obj.order_number)])
+            stock_brw = self.env['stock.picking'].search([('origin', '=', self_obj.order_number)])
             # print("stock_brw---", stock_brw)
             # print("stock_brw----------------", stock_brw.id)
             if stock_brw:
@@ -752,8 +711,7 @@ class hotel_reservation_order(models.Model):
 
                 res['move_ids'] = move_ids
                 # print("res['move_idsssssssssss']  ", res['move_ids'])
-                stock_partial_pick_id = self.env[
-                    'stock.partial.picking'].create(res)
+                stock_partial_pick_id = self.env['stock.partial.picking'].create(res)
                 # print("stock_partial_pick_idddddddddddd  ", stock_partial_pick_id)
                 stock_partial_pick_id.do_partial()
 
@@ -765,8 +723,7 @@ class hotel_reservation_order(models.Model):
         for self_obj in self:
             if self_obj.partner_id:
                 # print("\n\n\nself_obj.partner_idddd", self_obj.partner_id)
-                addr = self_obj.partner_id.address_get(
-                    ['delivery', 'invoice', 'contact'])
+                addr = self_obj.partner_id.address_get(['delivery', 'invoice', 'contact'])
                 # print("addressssssssssssssssssss :", addr)
                 if addr['invoice']:
                     partner_addr = addr['invoice']
@@ -774,23 +731,19 @@ class hotel_reservation_order(models.Model):
                     # print("partner Id", self_obj.partner_id.id)
                 else:
                     # print("partner Id", self_obj.partner_id.id)
-                    res_add = self.env['res.partner.address'].search(
-                        [('partner_id', '=', self_obj.partner_id.id)])
+                    res_add = self.env['res.partner.address'].search([('partner_id', '=', self_obj.partner_id.id)])
                     # print("resssssssssss_add", res_add)
                     if res_add:
-                        res_browse = self.env[
-                            'res.partner.address'].browse(res_add)
+                        res_browse = self.env['res.partner.address'].browse(res_add)
                         # print("res_browseeeeeeeeeeeee", res_browse, res_browse[0].id, res_browse[0], res_browse.id)
                         partner_addr = res_browse.id
                         # print("partner_addrrrrrrrrrr", partner_addr)
             # print("self_obj.order_noooooooooo", self_obj.order_number)
-            stock_brw = self.env['stock.picking'].search(
-                [('origin', '=', self_obj.order_number)])
+            stock_brw = self.env['stock.picking'].search([('origin', '=', self_obj.order_number)])
             if stock_brw:
                 # print("\n\n\nstock brw", stock_brw)
                 for order_items in self_obj.order_list:
-                    product_obj = self.env['hotel.menucard'].browse(
-                        order_items.product_id.id)
+                    product_obj = self.env['hotel.menucard'].browse(order_items.product_id.id)
                     product_id = product_obj.product_id.id
                     # print("brw product id", order_items.product_id[0].id)
                     # print("produuuct id", product_id)
@@ -802,8 +755,7 @@ class hotel_reservation_order(models.Model):
                     if move_id:
                         if not order_items.total:
                             # print("!!!!!!!!!!1order_items.item_qty:::::::::::", order_items.item_qty)
-                            move_id.update(
-                                {'product_uom_qty': order_items.item_qty})
+                            move_id.update({'product_uom_qty': order_items.item_qty})
                             # print("move_id:::::::::::::::::::---------------", move_id)
                         else:
                             total_qty = 0
@@ -818,8 +770,7 @@ class hotel_reservation_order(models.Model):
                                 # print("p_qty", p_qty)
                                 total_qty = total_qty + int(p_qty)
                                 # print("total_qty", total_qty)
-                            brw = move_id.write(
-                                {'product_uom_qty': total_qty, })
+                            brw = move_id.write({'product_uom_qty': total_qty, })
                             order_list = self.env['hotel.restaurant.order.list'].search(
                                 [('product_id', '=', order_items.product_id.id), ('resno', '=', self_obj.order_number)])
                             # print("Order Listtt order_number", order_list)
@@ -830,12 +781,10 @@ class hotel_reservation_order(models.Model):
                             move_id.write({'product_uom_qty': total_qty, })
                     else:
                         customer_id = self_obj.partner_id.property_stock_customer.id
-                        shop_obj = self.env['sale.shop'].browse(
-                            self_obj.shop_id.id)
+                        shop_obj = self.env['sale.shop'].browse(self_obj.shop_id.id)
                         # print("shop_obj", shop_obj)
                         # print("shop_obj.warehouse_id.id", shop_obj.warehouse_id.id)
-                        warehouse_id = self.env['stock.warehouse'].browse(
-                            shop_obj.warehouse_id.id)
+                        warehouse_id = self.env['stock.warehouse'].browse(shop_obj.warehouse_id.id)
                         # print("warehouse_id.lot_stock_id.id", warehouse_id.lot_stock_id.id)
                         add = warehouse_id.lot_stock_id.id
                         # print("add", add)
@@ -850,8 +799,7 @@ class hotel_reservation_order(models.Model):
                             'state': 'assigned',
                         }
                         # print("move_line_data", move_line_data)
-                        pick_line = self.env[
-                            'stock.move'].create(move_line_data)
+                        pick_line = self.env['stock.move'].create(move_line_data)
                         # print("pick_line===", pick_line)
             else:
                 customer_id = self_obj.partner_id.property_stock_customer.id
@@ -865,8 +813,7 @@ class hotel_reservation_order(models.Model):
                 picking_type_ids = shop_obj.picking_type_id if shop_obj else None
                 # print("shop_obj", shop_obj)
                 # print("shop_obj.warehouse_id.id", shop_obj.warehouse_id.id)
-                warehouse_id = self.env['stock.warehouse'].browse(
-                    shop_obj.warehouse_id.id)
+                warehouse_id = self.env['stock.warehouse'].browse(shop_obj.warehouse_id.id)
                 # print("warehouse_id.lot_stock_id.id", warehouse_id.lot_stock_id.id)
                 add = warehouse_id.lot_stock_id.id
                 # print("add", add)
@@ -885,14 +832,12 @@ class hotel_reservation_order(models.Model):
                 # print("picking_idssssss", picking_id.id)
                 pick_id = self.env['stock.picking'].browse(picking_id)
                 # print("pick_id", pick_id)
-                product_list = self.env[
-                    'hotel.restaurant.order.list'].browse(picking_id)
+                product_list = self.env['hotel.restaurant.order.list'].browse(picking_id)
                 # print("product_list", product_list)
                 for order_items in self_obj.order_list:
                     # print("\n\norder_items")
                     # print("order_items.product_id.id--", order_items.product_id.id)
-                    menu_card_obj1 = self.env["hotel.menucard"].browse(
-                        order_items.product_id.id)
+                    menu_card_obj1 = self.env["hotel.menucard"].browse(order_items.product_id.id)
                     # print("menu_card_obj1-- ", menu_card_obj1)
                     move_data = {
                         'name': self_obj.order_number + ': ' + (order_items.product_id.name or ''),
@@ -952,24 +897,16 @@ class hotel_restaurant_inventory_orderlist(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('in_process', 'Process'), ('done', 'Done'),
                               ('canceled', 'Cancel')], 'State', default='draft', required=True,
                              ondelete='cascade')
-    order_no = fields.Char(
-        related='kot_order_list.orderno', string='KOT Number', store=True)
-    ordernobot = fields.Char(
-        related='kot_order_list.ordernobot', string='BOT Number', store=True)
-    shop_id = fields.Many2one(
-        related='kot_order_list.shop_id', string='Shop', store=True)
-    resno = fields.Char(
-        related='kot_order_list.resno', string='Order Number', store=True)
-    date = fields.Date(
-        related='kot_order_list.kot_date', string='Date', store=True)
-    waiter_name = fields.Char(
-        related='kot_order_list.w_name', string='Waiter Name', store=True)
+    order_no = fields.Char(related='kot_order_list.orderno', string='KOT Number', store=True)
+    ordernobot = fields.Char(related='kot_order_list.ordernobot', string='BOT Number', store=True)
+    shop_id = fields.Many2one(related='kot_order_list.shop_id', string='Shop', store=True)
+    resno = fields.Char(related='kot_order_list.resno', string='Order Number', store=True)
+    date = fields.Date(related='kot_order_list.kot_date', string='Date', store=True)
+    waiter_name = fields.Char(related='kot_order_list.w_name', string='Waiter Name', store=True)
     tableno = fields.Char(compute='_table_number', string='Table Number')
     room_no = fields.Char(compute='_room_number', string='Room Number')
-    product_nature = fields.Selection(
-        [('kot', 'KOT'), ('bot', 'BOT')], 'Product Nature')
-    picking_id = fields.Many2one(
-        'stock.picking', string='Picking', invisible=True)
+    product_nature = fields.Selection([('kot', 'KOT'), ('bot', 'BOT')], 'Product Nature')
+    picking_id = fields.Many2one('stock.picking', string='Picking', invisible=True)
 
     def process_kot(self):
         # print("\n\n\n\n***process_kot***")
@@ -978,17 +915,13 @@ class hotel_restaurant_inventory_orderlist(models.Model):
         for self_obj in self:
             if self_obj.product_id:
                 # print("self_obj.product_id", self_obj.product_id)
-                menu_card_obj = self.env["hotel.menucard"].browse(
-                    self_obj.product_id.id)
+                menu_card_obj = self.env["hotel.menucard"].browse(self_obj.product_id.id)
                 # print("menu_card_objjjjjjjjjjj------------", menu_card_obj.product_id.id)
-                bom_id = self.env['mrp.bom'].search(
-                    [('product_id', '=', menu_card_obj.product_id.id)])
+                bom_id = self.env['mrp.bom'].search([('product_id', '=', menu_card_obj.product_id.id)])
                 # print("bom_id", bom_id)
-                shop_obj = self.env['sale.shop'].browse(
-                    self_obj.kot_order_list.shop_id.id)
+                shop_obj = self.env['sale.shop'].browse(self_obj.kot_order_list.shop_id.id)
                 # print("shop_objjj", shop_obj)
-                warehouse_id = self.env['stock.warehouse'].browse(
-                    shop_obj.warehouse_id.id)
+                warehouse_id = self.env['stock.warehouse'].browse(shop_obj.warehouse_id.id)
                 # print("warehouse_iddd", warehouse_id)
                 # print("addresssssssss", warehouse_id)
                 location_id = warehouse_id.lot_stock_id.id
@@ -1016,42 +949,34 @@ class hotel_restaurant_inventory_orderlist(models.Model):
                     if mrp_id:
                         m_order = self.env['mrp.production'].browse(mrp_id)
                         # print("m_orderrrrrrr", m_order)
-                        message = _("Manufacturing Order '%s' has been created.") % (
-                            m_order.name)
+                        message = _("Manufacturing Order '%s' has been created.") % (m_order.name)
 
-                # picking_type_id = self.env['stock.picking.type'].search(
-                #     [('code', '=', 'outgoing'), ('sequence_code', '=', 'OUT'),
-                #      ('warehouse_id', '=', warehouse_id.id),
-                #      ('company_id', '=', self.env.company.id)])
+                picking_type_id = self.env['stock.picking.type'].search(
+                    [('code', '=', 'outgoing'), ('sequence_code', '=', 'OUT'),
+                     ('warehouse_id', '=', warehouse_id.id),
+                     ('company_id', '=', self.env.company.id)])
 
-                # dest_location_id = self.env['stock.location'].sudo().search(
-                #     [('name', '=', 'Customers')])
+                dest_location_id = self.env['stock.location'].sudo().search([('name', '=', 'Customers')])
 
-                # picking_id = self.env['stock.picking'].create({
-                #     'location_id': location_id,
-                #     'location_dest_id': dest_location_id.id,
-                #     'picking_type_id': picking_type_id.id,
-                #     'move_lines': [(0, 0, {
-                #         'name': 'KOT Item',
-                #         'product_id': menu_card_obj.product_id.id,
-                #         'product_uom': menu_card_obj.product_id.uom_id.id,
-                #         'product_uom_qty': self_obj.item_qty,
-                #         'location_id': location_id,
-                #         'location_dest_id': dest_location_id.id,
-                #     })]
-                # })
+                picking_id = self.env['stock.picking'].create({
+                    'location_id': location_id,
+                    'location_dest_id': dest_location_id.id,
+                    'picking_type_id': picking_type_id.id,
+                    'move_lines': [(0, 0, {
+                        'name': 'KOT Item',
+                        'product_id': menu_card_obj.product_id.id,
+                        'product_uom': menu_card_obj.product_id.uom_id.id,
+                        'product_uom_qty': self_obj.item_qty,
+                        'location_id': location_id,
+                        'location_dest_id': dest_location_id.id,
+                    })]
+                })
 
-                if self_obj.picking_id and self_obj.picking_id.state != 'done':
-                    # self.picking_id.action_confirm()
-                    stock_move_rec = self.env['stock.move'].search(
-                        [('picking_id', '=', self_obj.picking_id.id)], limit=1)
-                    stock_move_rec.write({'quantity_done': self_obj.item_qty})
-                    self_obj.picking_id.with_context(
-                        skip_backorder=True).button_validate()
-                    self_obj.write({
-                        'state': 'in_process',
-                    })
-
+                self.write({
+                    'picking_id': picking_id.id,
+                    'state': 'in_process',
+                })
+                self.picking_id.action_confirm()
             # print("self_obj.kot_order_list=======================", self_obj.kot_order_list)
             if self_obj.kot_order_list.state == 'draft':
                 return self_obj.kot_order_list.write({'state': 'in_process'})
@@ -1064,8 +989,7 @@ class hotel_restaurant_inventory_orderlist(models.Model):
         # bom_wizard_obj = self.env['mrp.product.produce']
         bom_obj = self.env['mrp.production']
         # print("iddddddddddddd", self_obj.kot_order_list.orderno)
-        bom_record = bom_obj.search(
-            [('origin', '=', self_obj.kot_order_list.orderno)])
+        bom_record = bom_obj.search([('origin', '=', self_obj.kot_order_list.orderno)])
         # print("bom_recordddddddddd", bom_record)
         for b_id in bom_record:
             bom_browse = self.env['mrp.production'].browse(b_id.id)
@@ -1124,8 +1048,7 @@ class hotel_restaurant_inventory_orderlist(models.Model):
         }
 
     def action_view_kot_delivery(self):
-        action = self.env["ir.actions.actions"]._for_xml_id(
-            "stock.action_picking_tree_all")
+        action = self.env["ir.actions.actions"]._for_xml_id("stock.action_picking_tree_all")
         if self.picking_id:
             action['domain'] = [('id', '=', self.picking_id.id)]
             form_view = [(self.env.ref('stock.view_picking_form').id, 'form')]
@@ -1158,7 +1081,7 @@ class ProductUoM(models.Model):
             if self._context.get('raise-exception', True):
                 raise UserError(_(
                     'Conversion from Product UoM %s to Default UoM %s is not possible as they both belong to different Category!.') % (
-                    from_unit.name, to_unit.name))
+                                    from_unit.name, to_unit.name))
             else:
                 return qty
         amount = qty / from_unit.factor

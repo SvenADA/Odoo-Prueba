@@ -5,7 +5,6 @@ from odoo.exceptions import Warning
 import logging
 _logger = logging.getLogger(__name__)
 
-
 class advance_payment_wizard(models.TransientModel):
     _name = 'advance.payment.wizard'
     _description = 'Advance Payment Detail Wizard'
@@ -24,12 +23,11 @@ class advance_payment_wizard(models.TransientModel):
     @api.model
     def default_get(self, fields):
         res = super(advance_payment_wizard, self).default_get(fields)
-        if self._context:
-            active_model_id = self.env[self._context.get(
-                'active_model')].browse(self._context.get('active_id'))
-            if active_model_id:
-                if active_model_id.partner_id.property_account_receivable_id:
-                    res['deposit_recv_acc'] = active_model_id.partner_id.property_account_receivable_id.id
+        active_model_id = self.env[self._context.get(
+            'active_model')].browse(self._context.get('active_id'))
+        if active_model_id:
+            if active_model_id.partner_id.property_account_receivable_id:
+                res['deposit_recv_acc'] = active_model_id.partner_id.property_account_receivable_id.id
         return res
 
     def _get_default_rec(self):

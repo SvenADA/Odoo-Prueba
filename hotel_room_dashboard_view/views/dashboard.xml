@@ -10,7 +10,7 @@
         <menuitem name="Hotel Dashboard"
                   id="mnu_my_widget_main_hotel"
                   action="hotel_compare_widget_client_actn"
-                  web_icon="hotel_room_dashboard_view,static/description/icon.png"/>
+                  web_icon="hotel_room_dashboard_view,static/description/hotel_dashboard.jpg"/>
     </data>
 </odoo>
 

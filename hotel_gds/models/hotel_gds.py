@@ -78,9 +78,10 @@ class hotel_reservation(models.Model):
     _inherit = "hotel.reservation"
     _description = "Reservation"
 
-    meal_id = fields.Selection([('no_meal', 'No Meal Included'), 
-                                ('break_incl', 'Breakfast Inluded'), 
-                                ('lunch_incl', 'Lunch Inluded')], 'Meal Type', readonly=True, states={'draft': [('readonly', False)]}, default='break_incl')
+    meal_id = fields.Selection(
+        [('no_meal', 'No Meal Included'), ('cont_break', 'Continental Breakfast'), ('buff_break', 'Buffet Breakfast'), (
+            'half_board', 'Half-board'), ('full_board', 'Full-board')], 'Meal Type', readonly=True,
+        states={'draft': [('readonly', False)]})
 
     def gds_reservation_check(self):
         for reservation in self:

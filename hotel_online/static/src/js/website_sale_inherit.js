@@ -22,7 +22,7 @@ odoo.define('hotel_online.cart', function (require) {
             wUtils.sendRequest('/shop/cart/update', {
                 product_id: productID,
                 add_qty:qty_id,
-                express: 1,
+                express: true,
 
             });
             

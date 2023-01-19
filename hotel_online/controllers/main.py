@@ -23,6 +23,8 @@ from odoo.fields import Command
 from odoo.addons.payment.controllers import portal as payment_portal
 import pytz
 import math
+from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo.addons.payment.controllers.post_processing import PaymentPostProcessing
 
 utc_time = datetime.utcnow()
 _logger = logging.getLogger(__name__)
@@ -43,28 +45,61 @@ class PaymentPortal(payment_portal.PaymentPortal):
         :rtype: dict
         :raise: ValidationError if the invoice id or the access token is invalid
         """
+        # Check the order id and the access token
+        _logger.info("REQUEST SESSION====>>>>>>>>>>{}".format(request.session))
         try:
-            self._document_check_access('hotel.reservation', order_id, access_token)
+            if request.session.get('reservation_order_id'):
+                order_sudo = self._document_check_access('hotel.reservation', order_id, access_token)
+            if request.session.get('sale_order_id'):
+                order_sudo = self._document_check_access('sale.order', order_id, access_token)
         except MissingError as error:
             raise error
         except AccessError:
-            raise ValidationError("The access token is invalid.")
+            raise ValidationError(_("The access token is invalid."))
+
+        if order_sudo.state == "cancel":
+            raise ValidationError(_("The order has been canceled."))
+        if request.session.get('reservation_order_id'):
+            if tools.float_compare(kwargs['amount'], order_sudo.total_cost1, precision_rounding=order_sudo.currency_id.rounding):
+                raise ValidationError(_("The cart has been updated. Please refresh the page."))
+        if request.session.get('sale_order_id'):
+            if tools.float_compare(kwargs['amount'], order_sudo.amount_total, precision_rounding=order_sudo.currency_id.rounding):
+                raise ValidationError(_("The cart has been updated. Please refresh the page."))
+
         if order_id:
-            order = request.env['hotel.reservation'].sudo().search(
-                [('id', '=', int(order_id))])
-            request.session['sale_last_order_id'] = order.id
-        kwargs.update({
-            'reference_prefix': None,  # Allow the reference to be computed based on the order
-            'sale_order_id': order_id,  # Include the SO to allow Subscriptions to tokenize the tx
-        })
-        kwargs.pop('custom_create_values', None)  # Don't allow passing arbitrary create values
-        tx_sudo = self._create_transaction(
-            custom_create_values={'sale_order_ids': [Command.set([order_id])]}, **kwargs,
-        )
-        # print("TRANSACTION ID===>>>>>",tx_sudo)
+            if request.session.get('reservation_order_id'):
+                order = request.env['hotel.reservation'].sudo().search(
+                    [('id', '=', int(order_id))])
+                request.session['reservation_last_order_id'] = order.id
+            if request.session.get('sale_order_id'):
+                order = request.env['sale.order'].sudo().search(
+                    [('id', '=', int(order_id))])
+
+                request.session['sale_last_order_id'] = order.id
+        if request.session.get('sale_order_id'):
+            kwargs.update({
+                'reference_prefix': None,  # Allow the reference to be computed based on the order
+                'sale_order_id': order_id,  # Include the SO to allow Subscriptions to tokenize the tx
+            })
+            kwargs.pop('custom_create_values', None)  # Don't allow passing arbitrary create values
+            tx_sudo = self._create_transaction(
+                custom_create_values={'sale_order_ids': [Command.set([order_id])]}, **kwargs,
+            )
+        if request.session.get('reservation_order_id'):
+            kwargs.update({
+                'reference_prefix': order.name,  # Allow the reference to be computed based on the order
+                'reservation_id': order_id,  # Include the SO to allow Subscriptions to tokenize the tx
+            })
+            kwargs.pop('custom_create_values', None)  # Don't allow passing arbitrary create values
+            tx_sudo = self._create_transaction(
+                custom_create_values={
+                                        'reservation_ids': [Command.set([order_id])],
+                                    }, **kwargs,
+            )
 
         # Store the new transaction into the transaction list and if there's an old one, we remove
         # it until the day the ecommerce supports multiple orders at the same time.
+        _logger.info("LAST TRANSACTION ID===>>>>>>>>>>>>{}".format(request.session.get('__website_sale_last_tx_id')))
         last_tx_id = request.session.get('__website_sale_last_tx_id')
         last_tx = request.env['payment.transaction'].browse(last_tx_id).sudo().exists()
         if last_tx:
@@ -73,6 +108,179 @@ class PaymentPortal(payment_portal.PaymentPortal):
 
         return tx_sudo._get_processing_values()
 
+class PaymentPostProcessingInherit(PaymentPostProcessing):
+
+    @http.route(['/payment/status'], type="http", auth="public", website=True, sitemap=False)
+    def display_status(self, **kwargs):
+        _logger.info("\n\n\n\n\n\n\nREQUEST PAYMENT STATUS===>>>>>>>>>>>>>>{}\n\n\n\n\n\n\n".format(request.session))
+        if not request.session.get('reservation_order_id'):
+            if request.session.get('sale_order_id'):
+                sale_order_id = request.env['sale.order'].sudo().search([('id','=', request.session.get('sale_order_id'))])
+                tx = request.website.sale_get_transaction()
+                _logger.info("TRANSACTION===>>>>>>>>{}".format(tx.state))
+                if tx and tx.state == 'done':
+                    sale_order_id.sudo().write({
+                        'state': 'done'
+                    })
+                res = super(PaymentPostProcessingInherit, self).display_status()
+                return res
+        else:
+            _logger.info("REQUEST===>>>>>>>>>>>>>{}".format(request.session))
+            tx = request.website.sale_get_transaction()
+            _logger.info("REQUEST===>>>>>>>>>>>>>{}".format(tx))
+
+            if request.session.get('reservation_order_id'): 
+                order_id = request.website.get_reservation()
+                order_id = request.env['hotel.reservation'].sudo().search([('id', '=', order_id)])
+            
+            order = None
+            # order_obj = request.env['payment.transaction'].browse(order_id)
+            if tx and tx.state == 'done':
+                # print("TRANSACTION==>>>>>>>>>>>>",tx)
+                if request.session.get('reservation_order_id'): 
+                    order = tx.reservation_id
+
+                if order_id:
+                    order_id.confirmed_reservation()
+                    payment_vals = {
+                        'amt': tx.amount,
+                        'reservation_id': order_id.id,
+                        'payment_date': datetime.now().date(),
+                        'deposit_recv_acc': order_id.partner_id.property_account_receivable_id.id,
+                        'journal_id': tx.acquirer_id.journal_id.id,
+                    }
+                    _logger.info("@@@@@@@@@@@@@@@@@@@%s", payment_vals)
+                    if request.session.get('reservation_order_id'): 
+                        wiz_obj = request.env['advance.payment.wizard'].sudo().with_context(active_model='hotel.reservation',
+                                                                                            active_id=order_id.id).create(
+                            payment_vals)
+                        # print("WIZARD OBJECT==>>>>>>>>>>",wiz_obj)
+                        wiz_obj.with_context(active_model='hotel.reservation').payment_process()
+                        _logger.info("WIZARD======>>>>>>>>>>%s", wiz_obj)
+                        order = order_id
+            elif order_id:
+                # print("ORDER IDDDDDDDDDDDDDDDDDDD==>>",order_id)
+                if request.session.get('reservation_order_id'): 
+                    order_obj = request.env['hotel.reservation'].sudo().browse(
+                        order_id)
+                    tx = request.env['payment.transaction'].sudo().search(
+                    [('reservation_id', '=', order_obj.id.id), ('state', '=', 'draft')], limit=1)
+                if request.session.get('sale_order_id'):
+                    order_obj = request.env['sale.order'].sudo().browse(
+                        order_id)
+                    tx = request.env['payment.transaction'].sudo().search(
+                    [('sale_order_id', '=', order_obj.id), ('state', '=', 'draft')], limit=1)
+                # print("order_obj --------",order_obj.id.id)
+                
+                # print("****",tx,tx.state)
+                tx.write({'state': 'done'})
+                if request.session.get('sale_order_id'):  
+                    order = request.session.get('sale_order_id')
+                if request.session.get('reservation_order_id'): 
+                    order = tx.reservation_id
+                print("ORDER=====>>>>>",order)
+                if order:
+                    order.confirmed_reservation()
+                    payment_vals = {
+                        'amt': tx.amount,
+                        'reservation_id': order.id,
+                        'payment_date': datetime.now().date(),
+                        'deposit_recv_acc': order.partner_id.property_account_receivable_id.id,
+                        'journal_id': tx.acquirer_id.journal_id.id,
+                    }
+                    if request.session.get('reservation_order_id'): 
+                        wiz_obj = request.env['advance.payment.wizard'].sudo().create(payment_vals)
+                        # print("WIZARD OBJECT===>>>>>>>>>>>>>",wiz_obj)
+                        wiz_obj.with_context(active_model='hotel.reservation', active_id=order_id.id).payment_process()
+                else:
+                    order = order_id
+                # print("ORDER============>>>>>>>>>>>>",order)
+            # _logger.info("ORDER====>>>>>>>>>>>>>>>>>>>{}".format(order))
+            if request.session.get('reservation_order_id'): 
+                return request.render("hotel_online.confirmation1", {'order': order})
+
+
+class WebsiteShopInherit(WebsiteSale):
+    @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True, csrf=False)
+    def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
+        _logger.info("\n\n\n\n\n\nREQUEST===>>>>>>>>>>>>>>{}\n\n\n\n\n".format(request.session))
+        if not request.session.get('reservation_order_id'):
+            res = super(WebsiteShopInherit, self).cart_update(product_id)
+            return res
+        else:
+            _logger.info("PRODUCT ID===>>>>>>>>>>>>>{}".format(request.session))
+            product_id = request.env['product.template'].sudo().search(
+                [('id', '=', product_id)])
+            
+            vals = {
+                'product_id': product_id.id,
+                'name': product_id.name,
+                'product_uom': product_id.uom_id.id,
+                'product_uom_qty': add_qty,
+                'price_unit': product_id.list_price,
+                
+            }
+            if product_id.taxes_id:
+                vals.update({
+                    'tax_id': [(6, 0, [product_id.taxes_id.id])],
+                })
+            _logger.info("RESERVATION ID====>>>>%s",
+                        request.session.get('reservation_order_id'))
+
+            if request.session.get('reservation_order_id'):
+                order = request.env['hotel.reservation'].sudo().search(
+                    [('id', '=', request.session.get('reservation_order_id'))])
+                other_items_id = request.env['other.items'].sudo().create(vals)
+                vals.update({'other_items_id': order.id, })
+            # else:
+            #     user = request.env['res.users'].sudo().browse(request.uid)
+            #     company = request.env.user.sudo().company_id
+            #     _logger.info("REQUEST UID====>>>>%s", request.uid)
+            #     if request.uid != 4:
+            #         user_id = request.env['res.users'].sudo().search(
+            #             [('id', '=', request.uid)])
+            #         part_id = user_id.partner_id
+            #     else:
+            #         part_id = request.env['res.partner'].sudo().search(
+            #             [('name', '=', 'Public user'), ('active', '=', False)])
+
+            #     _logger.info("USER ID====>>>>>%s", part_id)
+
+            #     shop_ids = request.env['sale.shop'].sudo().search(
+            #         [('company_id', '=', company.id)]).ids
+            #     shop_brw = request.env['sale.shop'].sudo().browse(shop_ids[0])
+                
+
+
+            #     order = request.env['sale.order'].sudo().create({
+            #         'partner_id': part_id.id,
+            #         'shop_id': shop_ids[0],
+            #         'pricelist_id': shop_brw.pricelist_id.id,
+            #         # 'source': 'through_web',
+            #         'date_order': time.strftime('%Y-%m-%d %H:%M:%S'),
+            #     })
+            #     if order:
+            #         vals.update({
+            #             'order_id': order.id
+            #         })
+            #     _logger.info("VALS============={}".format(vals))
+            #     order_line = request.env['sale.order.line'].sudo().create(vals)
+                
+                # order = request.env['hotel.reservation'].sudo().create({
+                #     'partner_id': part_id.id,
+                #     'shop_id': shop_ids[0],
+                #     'pricelist_id': shop_brw.pricelist_id.id,
+                #     'source': 'through_web',
+                #     'date_order': time.strftime('%Y-%m-%d %H:%M:%S'),
+                # })
+
+            #     vals.update({'other_items_id': order.id})
+            #     request.session['reservation_order_id'] = order.id
+            # other_items_id = request.env['other.items'].sudo().create(vals)
+            if request.uid != 4:
+                return request.redirect('/shop/payment')
+            else:
+                return request.redirect('/partner/checkout')
 
 class check(http.Controller):
 
@@ -84,14 +292,8 @@ class check(http.Controller):
         for port in portal_id:
             port.sudo().write({'state': 'draft'})
         request.website.sale_reset()
-        lang_id = request.env['res.lang'].search([('code', '=', request.env.user.lang)])
-        if lang_id and lang_id.date_format == '%m/%d/%Y':
-            date_format = 'mm/dd/yyyy'
-        if lang_id and lang_id.date_format == '%d/%m/%Y':
-            date_format = 'dd/mm/yyyy'
         values.update({
-            'home':True,
-            'date_format':date_format
+            'home':True
         })
         # print(values,'=====================================')
         return request.render("hotel_online.product_show", values)
@@ -118,8 +320,6 @@ class check(http.Controller):
         result = {}
         rm_brw = []
         date_values = list(kwargs.values())
-        lang_id = request.env['res.lang'].search([('code', '=', request.env.user.lang)])
-        date_format = lang_id.date_format
         if not (kwargs['from_date'] and kwargs['to_date']):
             raise Warning("Please Enter Checkin Date And Checkout Date")
         self._uid = SUPERUSER_ID
@@ -185,8 +385,10 @@ class check(http.Controller):
                             book_his)
                         # print("booooooking browsee", book_brw)
                         for bk_his in book_brw:
-                            start_date = datetime.strptime(kwargs['from_date'], '%Y-%m-%d').date()
-                            end_date = datetime.strptime(kwargs['to_date'], '%Y-%m-%d').date()
+                            start_date = datetime.strptime(
+                                kwargs['from_date'], '%m/%d/%Y').date()
+                            end_date = datetime.strptime(
+                                kwargs['to_date'], '%m/%d/%Y').date()
                             try:
                                 chkin_date = datetime.strptime(
                                     str(bk_his.check_in), '%Y-%m-%d %H:%M:%S').date()
@@ -205,13 +407,6 @@ class check(http.Controller):
                             # print("start_date--", start_date, "--end_date--", end_date, "--chkin_date--", chkin_date,
                             #       "--chkout_date--", chkout_date)
                             _logger.info("Booking History ===>>>>>%s", bk_his)
-                            
-                            primera = type(start_date)
-                            segunda = type(chkin_date)
-                            
-                            _logger.info(primera)
-                            _logger.info(segunda)
-                            
                             if ((start_date <= chkin_date and (
                                     chkout_date <= end_date or chkout_date >= end_date >= chkin_date)) or (
                                     start_date >= chkin_date and chkout_date >= end_date) or (
@@ -304,9 +499,6 @@ class check(http.Controller):
         res1, lst = [], []
         room_id = ''
         self._uid = SUPERUSER_ID
-        lang_id = request.env['res.lang'].search([('code', '=', request.env.user.lang)])
-        date_format = lang_id.date_format
-        date_time_format = lang_id.date_format + ' ' +lang_id.time_format
         user = request.env['res.users'].sudo().browse(request.uid)
         company = request.env.user.sudo().company_id
         if request.uid != 4:
@@ -321,9 +513,9 @@ class check(http.Controller):
             [('company_id', '=', company.id)]).ids
         shop_brw = request.env['sale.shop'].sudo().browse(shop_ids[0])
         if 'chkin_id' in kwargs:
-            newdate = kwargs['chkin_id'] + " 14:00:00"
+            newdate = kwargs['chkin_id'] + " 01:00:00"
         if 'chkout_id' in kwargs:
-            newdate1 = kwargs['chkout_id'] + " 12:00:00"
+            newdate1 = kwargs['chkout_id'] + " 00:00:00"
         dt = datetime.strptime(time.strftime(
             '%Y-%m-%d %H:%M:%S'), '%Y-%m-%d %H:%M:%S').date()
         no = int(kwargs['len']) + 1
@@ -415,12 +607,13 @@ class check(http.Controller):
                         book_his)
 
                     for bk_his in book_brw:
+
                         if kwargs['chkin_id'] and kwargs['chkout_id']:
                             start_date = datetime.strptime(
-                                kwargs['chkin_id'], '%Y-%m-%d').date()
+                                kwargs['chkin_id'], '%m/%d/%Y').date()
                             # print('________________')
                             end_date = datetime.strptime(
-                                kwargs['chkout_id'], '%Y-%m-%d').date()
+                                kwargs['chkout_id'], '%m/%d/%Y').date()
                             try:
                                 chkin_date = datetime.strptime(
                                     str(bk_his.check_in), '%Y-%m-%d %H:%M:%S').date()
@@ -462,20 +655,18 @@ class check(http.Controller):
             if 'no_room' in rtype and 'chk' in rtype:
                 if rtype['chk'] == 'on':
                     for lno in range(0, (int(rtype['no_room']))):
-                        
-                        no_of_days = (datetime.strptime(newdate1, '%Y-%m-%d %H:%M:%S') - datetime.strptime(newdate, '%Y-%m-%d %H:%M:%S')).total_seconds()
+                        no_of_days = (datetime.strptime(newdate1, '%m/%d/%Y %H:%M:%S') - datetime.strptime(newdate,
+                                                                                                           '%m/%d/%Y %H:%M:%S')).total_seconds()
                         # print("No Of Dayssss=====>>>>>>>",no_of_days)
-                        
-                        no_of_days = no_of_days / 86400
 
-                        
+                        no_of_days = no_of_days / 86400
                         no_of_days = "{:.2f}".format(no_of_days)
                         _logger.info("DIFFERENCE==>>>>>>>>>{}".format(no_of_days))
                         no_of_days = math.ceil(float(no_of_days))
 
                         _logger.info("NO OF DAYS====>>>>>%s", no_of_days)
                         cin = str(datetime.strptime(
-                            newdate, '%Y-%m-%d %H:%M:%S').date())
+                            newdate, '%m/%d/%Y %H:%M:%S').date())
                         price = shop_brw.sudo().pricelist_id.price_get(
                             res1[lno].product_id.id, no_of_days, {
                                 'uom': res1[lno].product_id.uom_id.id,
@@ -484,8 +675,8 @@ class check(http.Controller):
                         # print("priceeeeeeeeeeeeeeee, cin  ,no_of_days", price, cin, no_of_days)
                         # print("roooOOOOOOOOOOOOOOOOOOOOOOOOoom ", room_id.id)
                         vals = {
-                            'checkin': datetime.strptime(newdate, '%Y-%m-%d %H:%M:%S'),
-                            'checkout': datetime.strptime(newdate1, '%Y-%m-%d %H:%M:%S'),
+                            'checkin': datetime.strptime(newdate, '%m/%d/%Y %H:%M:%S'),
+                            'checkout': datetime.strptime(newdate1, '%m/%d/%Y %H:%M:%S'),
                             'categ_id': room_brwww.cat_id.id,
                             'room_number': res1[lno].product_id.id,
                             # 'taxes_id': [(6, 0, [res1[lno].taxes_id.id])],
@@ -543,8 +734,8 @@ class check(http.Controller):
                         dict.update({'chkin': kwargs['chkin_id']})
                     if 'chkout_id' in kwargs:
                         dict.update({'chkout': kwargs['chkout_id']})
-                    delta = (datetime.strptime(newdate1, '%Y-%m-%d %H:%M:%S')) - (
-                        datetime.strptime(newdate, '%Y-%m-%d %H:%M:%S'))
+                    delta = (datetime.strptime(newdate1, '%m/%d/%Y %H:%M:%S')) - (
+                        datetime.strptime(newdate, '%m/%d/%Y %H:%M:%S'))
 
                     dayss = delta.total_seconds()
                     dayss = dayss / 86400
@@ -605,11 +796,11 @@ class check(http.Controller):
 
             checkin = vals.get('checkin')
             checkin = datetime(checkin.year, checkin.month, checkin.day)
-            checkin = checkin + timedelta(hours=14)
+            checkin = checkin + timedelta(hours=int(time))
 
             checkout = vals.get('checkout')
             checkout = datetime(checkout.year, checkout.month, checkout.day)
-            checkout = checkout + timedelta(hours=12)
+            checkout = checkout + timedelta(hours=int(time))
 
             checkout = checkout - timedelta(seconds=time_difference)
             checkin = checkin - timedelta(seconds=time_difference)
@@ -881,6 +1072,17 @@ class check(http.Controller):
     @http.route(['/page/hotel_online.booking_show', '/partner/checkout'], type='http', auth="public", website=True)
     def checkout(self, **post):
         _logger.info("@@@@@@@@@@@@@@@%s", request.session)
+        if request.session.get('sale_order_id'):
+            cr, context = request.cr, request.context
+            order_id = request.website.get_sale_order_id()
+            redirection = self.checkout_redirection(order_id)
+            _logger.info("REDIRECTION===>>>>>>>>>>{}".format(redirection))
+            if redirection:
+                return redirection
+            values = self.checkout_values()
+
+            return request.render("hotel_online.res_partner_show", values)
+
         if request.session.get('reservation_order_id'):
             # print(self, " ^^^^^^^^ checkout ^^^^^^ ", post)
             cr, context = request.cr, request.context
@@ -888,6 +1090,7 @@ class check(http.Controller):
             reservation = request.website.get_reservation()
             # print("reservationnnnnnnnnn", reservation)
             redirection = self.checkout_redirection(reservation)
+            _logger.info("REDIRECTION===>>>>>>>>>>{}".format(redirection))
             # print("=====redirection ", redirection)
             if redirection:
                 return redirection
@@ -937,7 +1140,10 @@ class check(http.Controller):
             if partner_id:
                 _logger.info("PARTNER ID===>>>>%s", partner_id)
                 partner_id.sudo().write(vals)
-        order = request.website.get_reservation()
+        if request.session.get('sale_order_id'):
+            order = request.website.get_sale_order_id()
+        if request.session.get('reservation_order_id'):
+            order = request.website.get_reservation()
         if not order:
             return request.redirect("/shop")
         redirection = self.checkout_redirection(order)
@@ -965,12 +1171,18 @@ class check(http.Controller):
            did go to a payment.acquirer website but closed the tab without
            paying / canceling
         """
-        order = request.website.get_reservation()
+        _logger.info("REQUEST====>>>>>>>>>>>>>>>{}".format(request))
+        if request.session.get('sale_order_id'):
+            order = request.website.get_sale_order_id()
+            order_browse = request.env['sale.order'].sudo().browse(order)
+        if request.session.get('reservation_order_id'):
+            order = request.website.get_reservation()
+            order_browse = request.env['hotel.reservation'].sudo().browse(order)
         # print("@@@@@@@@@@@@@@@222order::::::::::::::::::::::::::::::::::::::", order)
-        order_browse = request.env['hotel.reservation'].sudo().browse(order)
-        redirection = self.checkout_redirection(order)
-        if redirection:
-            return redirection
+        if order:
+            redirection = self.checkout_redirection(order)
+            if redirection:
+                return redirection
 
         render_values = self._get_shop_payment_values(order_browse, **post)
 
@@ -979,7 +1191,10 @@ class check(http.Controller):
             render_values.pop('tokens', '')
         # print("\n\n\n\n renderrrrrrrrr_valuesss===", render_values)
         _logger.info("RENDER VALUES====>>>>%s", render_values)
-        return request.render("hotel_online.payment123", render_values)
+        if request.session.get('sale_order_id'):
+            return request.render("website_sale.payment", render_values)
+        if request.session.get('reservation_order_id'):
+            return request.render("hotel_online.payment123", render_values)
 
     def _get_shop_payment_values(self, order, **kwargs):
         logged_in = not request.env.user._is_public()
@@ -993,18 +1208,26 @@ class check(http.Controller):
         tokens = request.env['payment.token'].search(
             [('acquirer_id', 'in', acquirers_sudo.ids), ('partner_id', '=', order.partner_id.id)]
         ) if logged_in else request.env['payment.token']
-        fees_by_acquirer = {
-            acq_sudo: acq_sudo._compute_fees(
-                order.total_cost1, order.currency_id, order.partner_id.country_id
-            ) for acq_sudo in acquirers_sudo.filtered('fees_active')
-        }
+        if request.session.get('sale_order_id'):
+            fees_by_acquirer = {
+                acq_sudo: acq_sudo._compute_fees(
+                    order.amount_total, order.currency_id, order.partner_id.country_id
+                ) for acq_sudo in acquirers_sudo.filtered('fees_active')
+            }
+        if request.session.get('reservation_order_id'): 
+            fees_by_acquirer = {
+                acq_sudo: acq_sudo._compute_fees(
+                    order.total_cost1, order.currency_id, order.partner_id.country_id
+                ) for acq_sudo in acquirers_sudo.filtered('fees_active')
+            }
+        
         # Prevent public partner from saving payment methods but force it for logged in partners
         # buying subscription products
         show_tokenize_input = logged_in \
                               and not request.env['payment.acquirer'].sudo()._is_tokenization_required(
             sale_order_id=order.id
         )
-        return {
+        checkout_vals ={
             'website_sale_order': order,
             'errors': [],
             'partner': order.partner_id,
@@ -1015,13 +1238,23 @@ class check(http.Controller):
             'tokens': tokens,
             'fees_by_acquirer': fees_by_acquirer,
             'show_tokenize_input': show_tokenize_input,
-            'amount': order.total_cost1,
             'currency': order.currency_id,
             'partner_id': order.partner_id.id,
-            'access_token': order.access_token,
+            
             'transaction_route': f'/shop/payment/transaction/{order.id}',
             'landing_route': '/shop/payment/validate',
         }
+        if request.session.get('sale_order_id'):
+            checkout_vals.update({
+                'amount': order.amount_total,
+                'access_token': order._portal_ensure_token(),
+            })
+        if request.session.get('reservation_order_id'): 
+            checkout_vals.update({
+                'amount': order.total_cost1,
+                'access_token': order.access_token,
+            })
+        return checkout_vals
 
     @http.route('/shop/payment/validate', type='http', auth="public", website=True, sitemap=False)
     def shop_payment_validate(self, transaction_id=None, sale_order_id=None, **post):
@@ -1030,79 +1263,79 @@ class check(http.Controller):
 
          - UDPATE ME
         """
-
+        order_sale_id = ''
+        order_reserve_id = ''
         transaction_id = request.session.get('__website_sale_last_tx_id')
+        _logger.info("\n\n\n\n\nGOT THE CALL GOT THE CALLL===>>>{}\n\n\n\n".format(transaction_id))
+        _logger.info("SALE ORDER ID===>>>>>>>>{}".format(sale_order_id))
         if sale_order_id is None:
-            order = request.website.get_reservation()
+            if 'sale_last_order_id' in request.session:
+                last_order_id = request.session['sale_last_order_id']
+                order = request.env['sale.order'].sudo().browse(last_order_id).exists()
+
+            if 'reservation_last_order_id' in request.session:
+                last_order_id = request.session['reservation_last_order_id']
+                if request.session.get('reservation_last_order_id'):
+                    order = request.env['hotel.reservation'].sudo().browse(last_order_id).exists()
         else:
-            order = request.env['hotel.reservation'].sudo().browse(sale_order_id)
-            assert order.id == request.session.get('sale_last_order_id')
-        order = request.env['hotel.reservation'].sudo().browse(order)
+            if request.session.get('sale_order_id'):
+                order = request.env['sale.order'].sudo().browse(sale_order_id)
+                assert order.id == request.session.get('sale_last_order_id')
+            if request.session.get('reservation_order_id'):
+                order = request.env['hotel.reservation'].sudo().browse(sale_order_id)
+                assert order.id == request.session.get('reservation_last_order_id')
+
+        
 
         if transaction_id:
             tx = request.env['payment.transaction'].sudo().browse(transaction_id)
-
+            # assert tx in order.transaction_ids()
+        elif order:
+            tx = order.get_portal_last_transaction()
         else:
             tx = None
-
-        if not order or (order.total_cost1 and not tx):
-            return request.redirect('/shop')
-
-        if order and not order.total_cost1 and not tx:
-            # order.with_context(send_email=True).action_confirm()
-            return request.redirect(order.get_portal_url())
-
+        _logger.info("\n\n\n\n\nREQUEST===>>>>>>>>>>>>>>>{}".format(request.session))
+        if request.session.get('sale_last_order_id'):
+            order_sale_id = request.session.get('sale_last_order_id')
+            if not order or (order.amount_total and not tx):
+                return request.redirect('/shop')
+        if request.session.get('reservation_last_order_id'):
+            order_reserve_id = request.session.get('reservation_last_order_id')
+            if order and not order.total_cost1 and not tx:
+                return request.redirect(order.get_portal_url())
+        _logger.info("ORDER SALE ID==>>>>>>>>>>>00000000000000{}".format(order_sale_id))
+        if request.session.get('sale_order_id'):
+            _logger.info("ORDER===>>>>>>>>>>>{}==={}>>>{}".format(order,order.amount_total, tx))
+            if order and not order.amount_total and not tx:
+                _logger.info("BRO NEED HERE")
+                order.with_context(send_email=True).action_confirm()
+                return request.redirect(order.get_portal_url())        
         # clean context and session, then redirect to the confirmation page
+        _logger.info("TRANSACTION========>>>>>>>>>>>>>>>>>>>>{}".format(tx))
+        
+        if request.session.get('reservation_order_id'):
+            self.payment_status()
         request.website.sale_reset()
+        _logger.info("REQUEST===>>>>>>>>>>{}".format(request.session))
+        if tx.state == 'draft' :
+            tx.sudo().write({
+                'state': 'pending'
+            })
         if tx and tx.state == 'draft':
+            _logger.info("DRAFT DRAFT DRAFT")
             return request.redirect('/shop')
 
+        
         PaymentPostProcessing.remove_transactions(tx)
+        
+        _logger.info("ORDER SALE ID==>>>>>>>>>>>{}".format(order_sale_id))
+        if order_sale_id:
+            _logger.info("HERE HERE")
+            return request.redirect('/shop/confirmation')
+        if order_reserve_id: 
+            return request.redirect('/shop/confirmation1')
 
-        return request.redirect('/shop/confirmation1')
-
-    # @http.route('/shop/payment/validate', type='http', auth="public", website=True)
-    # def payment_validate(self, transaction_id=None, sale_order_id=None, **post):
-    #     """ Method that should be called by the server when receiving an update
-    #     for a transaction. State at this point :
-
-    #      - UDPATE ME
-    #     """
-    #     _logger.info("@@@@@@@@@@@@@@@@@@@@@@@@%s",transaction_id)
-
-    #     if not order or (order.total_cost1 and not tx):
-
-    #         return request.redirect('/shop')
-
-    #     elif tx and tx.state == 'cancel':
-    #         order.action_cancel()
-
-    #     # clean context and session, then redirect to the confirmation page
-    #     request.website.sale_reset()
-    #     if tx and tx.state == 'draft':
-    #         return request.redirect('/shop')
-    #     return request.redirect('/shop/confirmation1')
-
-    @http.route(['/shop/confirmation1'], type='http', auth="public", website=True)
-    def payment_confirmation(self, **post):
-        # print("======payment_confirmation========")
-        """ End of checkout process controller. Confirmation is basically seing
-         the status of a sale.order. State at this point :
-          - should not have any context / session info: clean them
-          - take a sale.order id, because we request a sale.order and are not
-            session dependant anymore
-         """
-        sale_order_id = request.session.get('reservation_order_id')
-        _logger.info("SALE ORDER IDDDDD========>>>>>>>%s", sale_order_id)
-        if sale_order_id:
-            order = request.env['hotel.reservation'].sudo().browse(
-                sale_order_id)
-            return request.render("hotel_online.confirmation1", {'order': order})
-        else:
-            return request.redirect('/shop')
-
-    @http.route(['/payment/status'], type="http", auth="public", website=True, sitemap=False)
-    def payment_status_page(self, **kwargs):
+    def payment_status(self):
         tx = request.website.sale_get_transaction()
         order_id = request.website.get_reservation()
         order_id = request.env['hotel.reservation'].sudo().search([('id', '=', order_id)])
@@ -1110,7 +1343,7 @@ class check(http.Controller):
         # order_obj = request.env['payment.transaction'].browse(order_id)
         if tx and tx.state == 'done':
             # print("TRANSACTION==>>>>>>>>>>>>",tx)
-            order = tx.sale_order_id
+            order = tx.reservation_id
 
             if order_id:
                 order_id.confirmed_reservation()
@@ -1154,10 +1387,27 @@ class check(http.Controller):
                 wiz_obj.with_context(active_model='hotel.reservation', active_id=order_id.id).payment_process()
             else:
                 order = order_id
-            # print("ORDER============>>>>>>>>>>>>",order)
-        # _logger.info("ORDER====>>>>>>>>>>>>>>>>>>>{}".format(order))
-        return request.render("hotel_online.confirmation1", {'order': order})
 
+    @http.route(['/shop/confirmation1'], type='http', auth="public", website=True)
+    def payment_confirmation(self, **post):
+        # print("======payment_confirmation========")
+        """ End of checkout process controller. Confirmation is basically seing
+         the status of a sale.order. State at this point :
+          - should not have any context / session info: clean them
+          - take a sale.order id, because we request a sale.order and are not
+            session dependant anymore
+         """
+        _logger.info("\n\n\n\nREQUEST SESSION CONFIRMATION1 ==>>>>>>>>{}\n\n\n\n".format(request.session))
+        reservation_id = request.session.get('reservation_last_order_id')
+        _logger.info("SALE ORDER IDDDDD========>>>>>>>%s", reservation_id)
+        if reservation_id:
+            order = request.env['hotel.reservation'].sudo().browse(
+                reservation_id)
+            return request.render("hotel_online.confirmation1", {'order': order})
+        else:
+            return request.redirect('/shop')
+
+    
     @http.route('/shop/payment/token', type='http', auth='public', website=True, sitemap=False)
     def payment_token(self, pm_id=None, **kwargs):
         """ Method that handles payment using saved tokens
@@ -1193,7 +1443,7 @@ class check(http.Controller):
 
     @http.route('/shop/payment/get_status123/<int:sale_order_id>', type='json', auth="public", website=True)
     def payment_get_status(self, sale_order_id, **post):
-        # print("********payment_get_status**********")
+        print("********payment_get_status**********")
         order = request.env['hotel.reservation'].sudo().browse(sale_order_id)
         assert order.id == request.session.get('reservation_order_id')
         if not order:
@@ -1240,62 +1490,12 @@ class check(http.Controller):
             'validation': None
         }
 
-    @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True, csrf=False)
-    def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
-        product_id = request.env['product.template'].sudo().search(
-            [('id', '=', product_id)])
-        vals = {
-            'product_id': product_id.id,
-            'name': product_id.name,
-            'product_uom': product_id.uom_id.id,
-            'product_uom_qty': add_qty,
-            'price_unit': product_id.list_price,
-            'tax_id': [(6, 0, [product_id.taxes_id.id])],
-        }
-        _logger.info("RESERVATION ID====>>>>%s",
-                     request.session.get('reservation_order_id'))
-        if request.session.get('reservation_order_id'):
-            order = request.env['hotel.reservation'].sudo().search(
-                [('id', '=', request.session.get('reservation_order_id'))])
-            vals.update({'other_items_id': order.id, })
-        else:
-            user = request.env['res.users'].sudo().browse(request.uid)
-            company = request.env.user.sudo().company_id
-            _logger.info("REQUEST UID====>>>>%s", request.uid)
-            if request.uid != 4:
-                user_id = request.env['res.users'].sudo().search(
-                    [('id', '=', request.uid)])
-                part_id = user_id.partner_id
-            else:
-                part_id = request.env['res.partner'].sudo().search(
-                    [('name', '=', 'Public user'), ('active', '=', False)])
-
-            _logger.info("USER ID====>>>>>%s", part_id)
-
-            shop_ids = request.env['sale.shop'].sudo().search(
-                [('company_id', '=', company.id)]).ids
-            shop_brw = request.env['sale.shop'].sudo().browse(shop_ids[0])
-            order = request.env['hotel.reservation'].sudo().create({
-                'partner_id': part_id.id,
-                'shop_id': shop_ids[0],
-                'pricelist_id': shop_brw.pricelist_id.id,
-                'source': 'through_web',
-                'date_order': time.strftime('%Y-%m-%d %H:%M:%S'),
-            })
-            vals.update({'other_items_id': order.id})
-            request.session['reservation_order_id'] = order.id
-        other_items_id = request.env['other.items'].sudo().create(vals)
-        _logger.info("OTHER ITEMS ID===>>>>%s", other_items_id)
-        _logger.info("UID====>>>>>..%s", request.uid)
-        if request.uid != 4:
-            return request.redirect('/shop/payment')
-        else:
-            return request.redirect('/partner/checkout')
-
+    
     @http.route(['/other/items/unlink'], type='json', auth="public", website=True)
     def other_items_unlink(self, **post):
         # print("self ----------------",post)
         _logger.info("POST========>>>>>>%s", post)
+        _logger.info("REQUEST SESSION===>>>>>>>>>>>>{}".format(request.session))
         other_items_id = request.env['other.items'].sudo().search(
             [('id', '=', int(post.get('other_items_id')))])
         _logger.info("POST========>>>>>>%s", other_items_id)
@@ -1304,8 +1504,14 @@ class check(http.Controller):
 
     def checkout_redirection(self, order):
         # print(" ^^^^^^^^ chechout redirect ^^^^^^ ", order)
-        if type(order) == int:
-            order = request.env['hotel.reservation'].sudo().browse(order)
+        _logger.info("REQUEST==>>>>>>>>>>>>>{}".format(request.env.context))
+        if request.session.get('sale_order_id'):
+            order = request.env['sale.order'].sudo().browse(order)
+
+        if request.session.get('reservation_order_id'):
+            if type(order) == int:
+                order = request.env['hotel.reservation'].sudo().browse(order)
+            
             # print("Browseeeee Order  ", order.state)
         if not order or order.state != 'draft':
             request.session['sale_order_id'] = None
@@ -1383,7 +1589,6 @@ class website(models.Model):
             reservation = request.env['hotel.reservation'].sudo().search(
                 [('partner_id', '=', part_id1[0].id)])
             # print("reservation", reservation)
-            reserv_list = reservation
             if reservation:
                 reservation1 = request.env['hotel.reservation'].sudo().browse(
                     reservation[0])
@@ -1391,6 +1596,20 @@ class website(models.Model):
                 request.session['reservation_order_id'] = reservation1.id
                 return reservation1.id
         return reservation_order_id
+
+
+    def get_sale_order_id(self):
+        order_id = request.session.get('sale_order_id')
+        if not order_id:
+            part_id1 = request.env['res.partner'].sudo().search(
+                [('name', '=', 'Public user'), ('active', '=', False)])
+
+            sale_order_ids = request.env['sale.order'].sudo().search([('partner_id', '=', part_id1[0].id)])
+            if sale_order_ids:
+                sale_order_id = request.env['sale.order'].sudo().browse(sale_order_ids[0])
+                request.session['sale_order_id'] = sale_order_id.id
+                return sale_order_id.id
+        return order_id
 
     def sale_get_transaction(self):
         # print("------------sale_get_transaction-------------")
@@ -1408,8 +1627,6 @@ class website(models.Model):
             else:
                 request.session['sale_transaction_id'] = False
         return False
-
-    #
 
     def sale_reset(self):
         request.session.update({

@@ -827,7 +827,7 @@ class HotelReservationLine(models.Model):
 
             if obj.company_id.id == self.env.user.company_id.id:
 
-                policy_obj = self.env['checkout.configuration'].search([('shop_id', '=', obj.line_id.shop_id.id)])
+                policy_obj = self.env['checkout.configuration'].sudo().search([('shop_id', '=', obj.line_id.shop_id.id)])
 
                 # if not policy_obj:
                 #     raise UserError(

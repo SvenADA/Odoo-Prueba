@@ -2,7 +2,7 @@
 
 {
     "name": "Hotel Restaurant Inventory ",
-    "version": "1.0.0.10",
+    "version": "1.0.0.8",
     "author": "Pragmatic TechSoft Pvt Ltd",
     "category": "Generic Modules/Hotel Restaurant Inventory",
     "description": """

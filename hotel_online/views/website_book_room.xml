@@ -39,7 +39,7 @@
                                                         <input type="hidden" name="rm_type" t-att-value="a['chkout']"/>
                                                         <form>
                                                             <div class="book_containt book_containt_form" style="margin-left:10px;">
-                                                                <label>Room Type: </label>
+                                                                <label>Room Type :- </label>
                                                                 <input type="text" name="room_type" t-att-value="a['rm_name']"
 																style="margin-left:35px;" readonly="readonly"/>
                                                                 <strong style="margin-left:35px;">SubTotal :</strong>
@@ -47,27 +47,27 @@
                                                                 <span t-esc="a['img']"/>
                                                             </div>
                                                             <div class="book_containt book_containt_form" style="margin-left:10px;">
-                                                                <label>Arrival Date: </label>
+                                                                <label>Arrival Date :- </label>
                                                                 <input type="text" name="chkin" t-att-value="a['chkin']"
 																style="margin-left:33px;" readonly="readonly"/>
                                                             </div>
                                                             <div class="book_containt book_containt_form" style="margin-left:10px;">
-                                                                <label>Departure Date: </label>
+                                                                <label>Departure Date :- </label>
                                                                 <input type="text" name="chkout" t-att-value="a['chkout']"
 																style="margin-left:11px;" readonly="readonly"/>
                                                             </div>
                                                             <div class="book_containt book_containt_form" style="margin-left:10px;">
-                                                                <label>No. of nights: </label>
+                                                                <label>No. of nights :- </label>
                                                                 <input type="text" name="nights" t-att-value="a['nights']"
 																style="margin-left:25px;" readonly="readonly"/>
                                                             </div>
                                                             <div class="book_containt book_containt_form" style="margin-left:10px;">
-                                                                <label>Adult: </label>
+                                                                <label>Adult :- </label>
                                                                 <input type="text" name="adult" t-att-value="a['adult']"
 																style="margin-left:76px;" readonly="readonly"/>
                                                             </div>
                                                             <div class="book_containt book_containt_form" style="margin-left:10px;">
-                                                                <label>Children: </label>
+                                                                <label>Children :- </label>
                                                                 <input type="text" name="child" t-att-value="a['child']"
 																style="margin-left:55px;" readonly="readonly"/>
                                                             </div>

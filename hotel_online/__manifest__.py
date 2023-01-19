@@ -5,7 +5,7 @@
     'category': 'Website',
     'summary': 'Book Hotel Rooms Online',
     'website': 'https://www.odoo.com/page/website-builder',
-    'version': '1.0.0.27',
+    'version': '1.0.0.30',
     'author': 'Pragmatic TechSoft Pvt Ltd',
     'depends': ['web', 'website', 'hotel_management', 'payment', 'website_sale'],
     'description': """
@@ -23,7 +23,6 @@
     ],
     'assets': {
         'web.assets_frontend': [
-            # '/hotel_online/static/src/js/date.js',
             '/hotel_online/static/src/js/bootstrap.min.js',
             '/hotel_online/static/lib/slider/js/lightslider.js',
             '/hotel_online/static/lib/slider/js/test.js',
@@ -32,7 +31,7 @@
             '/hotel_online/static/lib/slider/css/lightslider.css',
             '/hotel_online/static/lib/slider/css/lightbox.css',
             '/hotel_online/static/lib/css/style.css',
-            '/hotel_online/static/src/js/website_sale_inherit.js'
+            # '/hotel_online/static/src/js/website_sale_inherit.js'
         ],
     },
     'installable': True,

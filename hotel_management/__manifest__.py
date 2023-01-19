@@ -2,7 +2,7 @@
 
 {
     "name": "Hotel Management",
-    "version": "1.0.2.13",
+    "version": "1.0.2.10",
     "author": "Pragmatic TechSoft Pvt Ltd",
     'website': 'http://pragtech.co.in/',
     "category": "Generic Modules/Hotel Management",

@@ -1,5 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+import math
+import pytz
+from dateutil.parser import *
 import time
 from dateutil.relativedelta import relativedelta
 import datetime
@@ -16,12 +20,8 @@ from datetime import datetime, timedelta, timezone
 import logging
 
 _logger = logging.getLogger(__name__)
-from dateutil.parser import *
-import pytz
-import math
 
 utc_time = datetime.utcnow()
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
 # @api.multi
@@ -352,8 +352,8 @@ class hotel_reservation(models.Model):
                         if line:
                             no_of_adults_room += line.room_number.max_adult
                             no_of_child_room += line.room_number.max_child
-                    _logger.info(
-                        '\n\n\n{}\n{}\n{}\n\n\n'.format(res.name, res.adults, vals))
+                    _logger.info('\n\n\n{}\n{}\n{}\n\n\n'.format(
+                        res.name, res.adults, vals))
                     if res.adults <= 0:
                         raise ValidationError(
                             'Please set no of adults for reservation')
@@ -431,8 +431,8 @@ class hotel_reservation(models.Model):
             day_count2 = "{:.2f}".format(day_count2)
             day_count2 = math.ceil(float(day_count2))
 
-            _logger.info(
-                "SELF CONTEXT====>>>>>{}".format(self._context['checkin']))
+            _logger.info("SELF CONTEXT====>>>>>{}".format(
+                self._context['checkin']))
             res_line = {
                 'categ_id': room_brw.categ_id.id,
                 'room_number': room_brw.id,
@@ -966,8 +966,7 @@ class hotel_reservation(models.Model):
                     'product_id': line.room_number.id,
                     'booking_id': reservation.id,
                     'state': 'done',
-                    # room_line_id.categ_id.id,
-                    'category_id': line.room_number.categ_id.id,
+                    'category_id': line.room_number.categ_id.id,  # room_line_id.categ_id.id,
                     'name': line.room_number.name,
                     'check_in_date': line.checkin,
                     'check_out_date': line.checkout,
@@ -986,8 +985,7 @@ class hotel_reservation(models.Model):
                     'checkout_date': line.checkout,
                     'discount': line.discount,
                     'tax_id': [(6, 0, tax_ids)],
-                    # room_line_id.categ_id.id,
-                    'categ_id': line.room_number.categ_id.id,
+                    'categ_id': line.room_number.categ_id.id,  # room_line_id.categ_id.id,
                     'hotel_reservation_line_id': line.id
                 }
                 self.env["hotel_folio.line"].create(vals)
@@ -1309,7 +1307,7 @@ class hotel_reservation_line(models.Model):
     discount = fields.Float('Discount (%)', digits=(16, 2))
     number_of_days = fields.Integer(string="Number Of Days", default=1)
     sub_total1 = fields.Float(
-        string='Sub Total', store=True, readonly=True, compute='count_sub_total1', compute_sudo=False)
+        string='Sub Total', store=True, readonly=True, compute='count_sub_total1')
     taxes_id = fields.Many2many('account.tax', 'reservation_taxes_rel', 'prod_id', 'tax_id', 'Taxes', domain=[
         ('type_tax_use', 'in', ['sale', 'all'])])
     checkin = fields.Datetime(
@@ -1359,47 +1357,40 @@ class hotel_reservation_line(models.Model):
             if checkout_policy_id.name == 'custom':
                 time = int(checkout_policy_id.time)
                 if vals.get('checkin'):
-                    checkin = vals.get('checkin')                    
-                    checkin = datetime(checkin.year, checkin.month, checkin.day)
-                    
-                    
-                    checkin = checkin + timedelta(hours=14)
-                    checkin = checkin - timedelta(seconds=time_difference)
-                    _logger.info(
-                        "AFTER ====>>>>>>>>>>>{}".format(checkin))
-                    
+                    checkin = vals.get('checkin')
+                    checkin = datetime(
+                        checkin.year, checkin.month, checkin.day)
                     checkout_date = checkin + timedelta(days=1)
-                    checkout = datetime(checkin.year, checkin.month, checkin.day+1)
+                    checkout = checkout_date + \
+                        timedelta(hours=00, minutes=00, seconds=00)
 
                     to_string = fields.Datetime.to_string(checkout)
-                    _logger.info("AQUIIIIIIIIIIIIIII")
+                    # _logger.info("TO STRING====>>>>{}".format(to_string))
                     from_string = fields.Datetime.from_string(to_string)
                     # _logger.info("FROM STRING====>>>>{}".format(from_string))
 
                     checkout = from_string
-                    checkout = checkout + timedelta(hours=12)
+                    checkout = checkout + timedelta(hours=time)
                     checkout = checkout - timedelta(seconds=time_difference)
 
                     # _logger.info("\n\n\n\n\nVALS=====>>>>>>>>>>>>>>>>>>{}".format(checkout))
                     vals.update({'checkout': checkout})
-                    vals.update({'checkin': checkin})
 
                 elif self._context.get('checkin'):
-                    _logger.info("AQUIIIIIIIIIIIIIII2")
-                    
+
                     checkin = self._context.get('checkin')
                     check_in_from_string = fields.Datetime.from_string(
                         self._context.get('checkin'))
                     checkin = datetime(
                         check_in_from_string.year, check_in_from_string.month, check_in_from_string.day)
-                    checkin = checkin + timedelta(hours=14)
+                    checkin = checkin + timedelta(hours=int(time))
 
                     checkout = self._context.get('checkout')
                     checkout_from_string = fields.Datetime.from_string(
                         self._context.get('checkout'))
                     checkout = datetime(
                         checkout_from_string.year, checkout_from_string.month, checkout_from_string.day)
-                    checkout = checkout + timedelta(hours=13)
+                    checkout = checkout + timedelta(hours=int(time))
 
                     checkout = checkout - timedelta(seconds=time_difference)
                     checkin = checkin - timedelta(seconds=time_difference)
@@ -1591,8 +1582,8 @@ class hotel_folio(models.Model):
     id_line_ids = fields.One2many(
         'hotel.resv.id.details', 'folio_id', 'ID Line')
     food_lines = fields.One2many('hotel_food.line', 'folio_id')
-    rooms_ref = fields.Char(
-        compute="_rooms_reference", string="Room No", compute_sudo=False)
+    rooms_ref = fields.Char(compute="_rooms_reference",
+                            string="Room No", compute_sudo=False)
     rooms_ref1 = fields.Char(compute="_rooms_reference", compute_sudo=False,
                              string="Room Number", store=True)
 
@@ -2077,6 +2068,7 @@ class hotel_restaurant_order(models.Model):
 
     # @api.multi
     def generate_kot(self):
+
         kot_flag = True
         bot_flag = True
         kot_data = False
@@ -2099,8 +2091,6 @@ class hotel_restaurant_order(models.Model):
                         'pricelist_id': order.pricelist_id.id,
                     }
                     kot_flag = False
-
-                order_id = False
 
                 if product_nature == 'kot' and order_line.states == True:
                     current_qty = int(order_line.item_qty) - \
@@ -2140,48 +2130,9 @@ class hotel_restaurant_order(models.Model):
                         'product_nature': product_nature,
                         # 'total_qty': total_qty,
                     }
-                    order_id = self.env[
-                        'hotel.restaurant.order.list'].create(o_line)
-                    order_id.write(
+                    self.env['hotel.restaurant.order.list'].create(o_line)
+                    self.env['hotel.restaurant.order.list'].write(
                         {'states': 'True', 'previous_qty': order_line.item_qty})
-
-                # Started the code to create stock.picking
-                if order_id:
-
-                    customer_id = order.partner_id.property_stock_customer.id
-                    shop_obj = self.env['sale.shop'].browse(
-                        order.shop_id.id)
-                    picking_type_id = shop_obj.picking_type_id if shop_obj else None
-                    warehouse_id = self.env['stock.warehouse'].browse(
-                        shop_obj.warehouse_id.id)
-
-                    if picking_type_id:
-                        picking = self.env['stock.picking'].create({
-                            'location_id': warehouse_id.lot_stock_id.id,
-                            'location_dest_id': customer_id,
-                            # 'partner_id': self.test_partner.id,
-                            'picking_type_id': picking_type_id.id,
-                            'immediate_transfer': False,
-                            'origin': order.order_no,
-                        })
-                        order_id.write({'picking_id': picking.id})
-
-                        for order_items in order.order_list:
-                            menu_card_obj1 = self.env["hotel.menucard"].browse(
-                                order_items.product_id.id)
-                            move_receipt_1 = self.env['stock.move'].create({
-                                'name': order.order_no + ': ' + (order_items.product_id.name or ''),
-                                'picking_id': picking.id,
-                                'picking_type_id': picking_type_id.id,
-                                'product_id': menu_card_obj1.product_id.id,
-                                'product_uom_qty': order_items.item_qty,
-                                'product_uom': menu_card_obj1.uom_id.id,
-                                'location_id': warehouse_id.lot_stock_id.id,
-                                'location_dest_id': customer_id,
-                            })
-                            move_receipt_1._action_assign()
-
-                # Ended the code of stock.picking creation
 
                 total_qty = 0
                 order_list = self.env['hotel.restaurant.order.list'].search([
@@ -2635,8 +2586,8 @@ class hotel_reservation_order(models.Model):
     waitername1 = fields.Many2one('res.users', 'Waiter User Name')
     pricelist_id = fields.Many2one(
         'product.pricelist', 'Pricelist', required=True)
-    shop_id = fields.Many2one(
-        'sale.shop', 'Hotel', required=True, default=_get_default_shop)
+    shop_id = fields.Many2one('sale.shop', 'Hotel',
+                              required=True, default=_get_default_shop)
 
     company_id = fields.Many2one(
         'res.company', related='shop_id.company_id', string='Company', store=True)
@@ -3089,12 +3040,12 @@ class product_template(models.Model):
         joined = []
         included = res['total_included']
         if currency.compare_amounts(included, price):
-            joined.append(
-                _('%s Incl. Taxes', format_amount(self.env, included, currency)))
+            joined.append(_('%s Incl. Taxes', format_amount(
+                self.env, included, currency)))
         excluded = res['total_excluded']
         if currency.compare_amounts(excluded, price):
-            joined.append(
-                _('%s Excl. Taxes', format_amount(self.env, excluded, currency)))
+            joined.append(_('%s Excl. Taxes', format_amount(
+                self.env, excluded, currency)))
         if joined:
             tax_string = f"(= {', '.join(joined)})"
         else:

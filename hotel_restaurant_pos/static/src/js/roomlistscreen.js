@@ -59,7 +59,7 @@ odoo.define('hotel_restaurant_pos.RoomListScreenWidget', function (require) {
                 var checkin_dt = new Date(checkin.split(" ")[0]).setHours(0, 0, 0, 0);
                 var checkout = room.checkout_date;
                 var checkout_dt = new Date(checkout.split(" ")[0]).setHours(0, 0, 0, 0);
-//                if (checkin_dt <= current_date && checkout_dt >= current_date) {
+                if (checkin_dt <= current_date && checkout_dt >= current_date) {
                     for (var j = 0; j < hotel_folio.length; j++) {
                         if ((hotel_folio[j].state === 'draft')&&(room.folio_id[0] === hotel_folio[j].id)) {
                             if (room) {
@@ -77,7 +77,7 @@ odoo.define('hotel_restaurant_pos.RoomListScreenWidget', function (require) {
                             contents.appendChild(roomline);
                         }
                     }
-//                }
+                }
             }
         }
         back() {

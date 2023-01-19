@@ -18,11 +18,11 @@
 					<div class="container">
 						<form action="/product_search/" type="post">
 							<div style="background:#114052; margin:10px 0px; padding:10px; height:54px; color:#000;">
-								<span class="h4" style="margin-right:5px;color:#fff;">Fecha de ingreso</span>
-								<input id="" type="date" class="" t-att-data-date-format="date_format" size="16" name="from_date"/>
-								<span class="h4" style="margin-right:5px;margin-left:20px;color:#fff;">Fecha de salida</span>
-								<input id="" type="date" t-att-data-date-format="date_format" class="" name="to_date"/>
-								<input type="submit" value="Buscar" style="border:none; background:#428bca; padding:5px; width:90px; color:#fff; margin-left:5px; border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px; font-weight:bold;"/>
+								<span class="h4" style="margin-right:5px;color:#fff;">Checkin Dates</span>
+								<input id="dpd1" class="span2 datepicker" size="16" name = "from_date" />
+								<span class="h4" style="margin-right:5px;margin-left:20px;color:#fff;">Checkout Dates</span>
+								<input id="dpd2" class="span2 datepicker" name = "to_date" />
+								<input type="submit" value="ok" style="border:none; background:#428bca; padding:5px; width:90px; color:#fff; margin-left:5px; border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px; font-weight:bold;"/>
 							</div>
 						</form>
 						<div class='row booking_info row'>

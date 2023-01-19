@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <menuitem id="hotel_management_menu" name="Hotel Management"
-                  web_icon="hotel,static/description/icon.png"/>
+                  web_icon="hotel,static/description/hotel_management_icon.png"/>
         <menuitem id="hotel_configuration_menu" name="Configuration"
                   sequence="7" parent="hotel_management_menu"/>
         <menuitem id="hotel_report_menu" name="Reports" sequence="6"
